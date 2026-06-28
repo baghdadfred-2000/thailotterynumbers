@@ -22,7 +22,7 @@ const LOGO = `<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-h
 const KANOK = `<svg class="kanok" viewBox="0 0 100 100" fill="none" stroke="#F2C14E" stroke-width="2"><path d="M50 5 C70 25 70 45 50 60 C30 45 30 25 50 5 Z M50 95 C30 75 30 55 50 40 C70 55 70 75 50 95 Z"/><circle cx="50" cy="50" r="6"/></svg>`;
 
 const ROUTES = ["", "results", "stats", "search", "check", "about", "contact",
-  "faq", "privacy", "cookies", "terms", "cookie-settings", "accessibility"];
+  "faq", "guides", "responsible-play", "privacy", "cookies", "terms", "cookie-settings", "accessibility"];
 
 /* official GLO prize amounts (baht, per single ticket) */
 const PRIZES = { first:6000000, near:100000, second:200000, third:80000,
@@ -58,7 +58,7 @@ function buildShell(){
   $(".logo-slot").innerHTML = LOGO;
   // nav
   const nav = [["","nav_home"],["results","nav_results"],["stats","nav_stats"],
-    ["search","nav_search"],["check","nav_check"],["faq","nav_faq"],["about","nav_about"],["contact","nav_contact"]];
+    ["search","nav_search"],["check","nav_check"],["guides","nav_guides"],["faq","nav_faq"],["about","nav_about"],["contact","nav_contact"]];
   $("#navLinks").innerHTML = nav.map(([r,k]) =>
     `<a href="/${r}" data-route="${r}">${t(k)}</a>`).join("");
   // footer
@@ -74,7 +74,8 @@ function buildShell(){
       <a href="/about">${t("nav_about")}</a><a href="/faq">${t("nav_faq")}</a><a href="/contact">${t("nav_contact")}</a></div>
     <div><h4>${t("ft_legal")}</h4>
       <a href="/privacy">${t("legal_privacy")}</a><a href="/cookies">${t("legal_cookie")}</a>
-      <a href="/terms">${t("legal_terms")}</a><a href="/cookie-settings">${t("legal_cookie_set")}</a>
+      <a href="/terms">${t("legal_terms")}</a><a href="/responsible-play">${t("legal_responsible")}</a>
+      <a href="/cookie-settings">${t("legal_cookie_set")}</a>
       <a href="/accessibility">${t("legal_access")}</a></div>`;
   $("#ftDisclaimerShort").textContent = t("disclaimer");
   document.querySelectorAll(".ad-slot").forEach(s=>s.setAttribute("data-label", t("ad_label")));
@@ -126,6 +127,7 @@ function render(keepScroll){
   if(!keepScroll) window.scrollTo(0,0);
 
   if (route==="results" && param) return drawDetail(param);
+  if (route==="guides") return;   // /guides and /guides/* are static HTML; leave baked content
   switch(route){
     case "": return home();
     case "results": return results();
@@ -135,6 +137,7 @@ function render(keepScroll){
     case "about": return about();
     case "contact": return contact();
     case "faq": return faq();
+    case "responsible-play": return responsiblePlay();
     case "privacy": return legalPrivacy();
     case "cookies": return legalCookies();
     case "terms": return legalTerms();
@@ -608,6 +611,60 @@ function faq(){
   </section>`;
 }
 
+/* ---------- Responsible Play ---------- */
+function responsiblePlay(){
+  const th = S.lang==="th";
+  $("#view").innerHTML = `<section class="section wrap prose">
+    <span class="eyebrow">${t("legal_responsible")}</span>
+    <h1>${th?"เล่นอย่างมีสติ":"Responsible Play"}</h1>
+    <p class="lead">${th
+      ? "ThaiLotteryNumbers.com เป็นแหล่งข้อมูลและการศึกษา เราเผยแพร่ผลรางวัล สถิติ และบันทึกย้อนหลังของสำนักงานสลากกินแบ่งรัฐบาล (GLO) เพื่อให้ประชาชนค้นหาและทำความเข้าใจงวดที่ออกไปแล้ว เราไม่ใช่ผู้ให้บริการการพนัน ไม่ขายสลาก และไม่มีสิ่งใดในเว็บไซต์นี้ที่เป็นการทำนายหรือการแนะนำให้เล่น"
+      : "ThaiLotteryNumbers.com is an informational and educational resource. We publish official Government Lottery Office (GLO) results, historical records, and statistics so the public can look up and understand draws that have already happened. We are not a gambling operator, we do not sell tickets, and nothing on this site is a prediction or a recommendation to play."}</p>
+
+    <h3>${th?"สลากคือความบันเทิง ไม่ใช่การลงทุน":"The lottery is entertainment, not an investment"}</h3>
+    <p>${th
+      ? "สลากกินแบ่งรัฐบาลเป็นเกมเสี่ยงโชค ทุกงวดเป็นอิสระและสุ่ม ไม่มีรูปแบบ เลข ‘ร้อน’ หรือความถี่ในอดีตใดที่เปลี่ยนโอกาสของเลขที่จะออกงวดถัดไป ผู้ใดก็ตามที่อ้างว่าทำนายเลขที่จะถูกได้นั้นเข้าใจผิดหรือกำลังหลอกลวงคุณ จงถือว่าเงินที่ใช้ซื้อสลากเป็นค่าความบันเทิง ไม่ใช่หนทางหาเงินหรือแก้ปัญหาการเงิน"
+      : "The Thai Government Lottery is a game of chance. Every draw is independent and random. No pattern, \u201chot\u201d number, or historical frequency changes the odds of any number being drawn next \u2014 and anyone claiming to predict winning numbers is mistaken or misleading you. Treat any money spent on tickets as the cost of entertainment, never as a way to make money or solve financial problems."}</p>
+
+    <h3>${th?"เล่นเท่าที่ไหว":"Play within your means"}</h3>
+    <ul>
+      <li>${th?"ใช้เฉพาะเงินที่คุณยอมเสียได้โดยไม่เดือดร้อน":"Only ever spend money you can comfortably afford to lose."}</li>
+      <li>${th?"ตั้งวงเงินส่วนตัวก่อนซื้อ และอย่าไล่ตามเงินที่เสียไป":"Set a personal limit before you buy, and never chase losses."}</li>
+      <li>${th?"การซื้อสลากต้องไม่มาก่อนค่าใช้จ่ายจำเป็น เงินออม หรือความต้องการของครอบครัว":"Lottery spending should never come before essentials, savings, or family needs."}</li>
+      <li>${th?"การซื้อสลากมากขึ้นไม่ได้เพิ่มโอกาสถูกรางวัลที่ 1 อย่างมีนัยสำคัญ":"Buying more tickets does not meaningfully improve your odds of the top prize."}</li>
+    </ul>
+
+    <h3>${th?"เข้าใจความน่าจะเป็น":"Understanding the odds"}</h3>
+    <p>${th
+      ? "การถูกครบทั้งหกหลักเพื่อรับรางวัลที่ 1 นั้นมีโอกาสน้อยมากสำหรับสลากใบเดียว เราอธิบายความน่าจะเป็นจริงด้วยภาษาที่เข้าใจง่ายในคู่มือของเรา เพื่อให้คุณตัดสินใจได้อย่างมีข้อมูลและสมจริง การเข้าใจความน่าจะเป็นคือเกราะป้องกันที่ดีที่สุดจากความคาดหวังเกินจริง"
+      : "Matching all six digits for the first prize is extremely unlikely on any single ticket. We explain the real probabilities in plain language in our guides so you can make informed, realistic decisions. Understanding the odds is the single best protection against unrealistic expectations."}</p>
+
+    <h3>${th?"ดูแลตัวเองและคนรอบข้าง":"Protecting yourself and others"}</h3>
+    <p>${th
+      ? "การเล่นควรเป็นเรื่องสนุก หากมันเลิกสนุก — หากคุณรู้สึกว่าหยุดไม่ได้ ใช้เงินมากกว่าที่ตั้งใจ ปิดบัง หรือกู้ยืมมาเล่น — นั่นคือสัญญาณให้ขอความช่วยเหลือ ความรู้สึกเหล่านี้พบได้บ่อยและมีคนพร้อมช่วยเสมอ"
+      : "Gambling should stay fun. If it stops being fun \u2014 if you feel you can\u2019t stop, if you\u2019re spending more than you intended, hiding it, or borrowing to play \u2014 that is a sign to seek support. These feelings are common and help is available."}</p>
+
+    <h3>${th?"ขอความช่วยเหลือได้ที่ไหน (ประเทศไทย)":"Where to get help (Thailand)"}</h3>
+    <p>${th
+      ? "หากคุณหรือคนที่คุณรู้จักอาจมีปัญหาการพนัน สามารถปรึกษาผู้เชี่ยวชาญได้อย่างเป็นความลับ สายด่วนสุขภาพจิต กรมสุขภาพจิต โทร "
+      : "If you or someone you know may have a gambling problem, you can talk to a professional in confidence. In Thailand, the Department of Mental Health hotline "}<b>1323</b>${th
+      ? " ให้บริการฟรีตลอด 24 ชั่วโมง แพทย์หรือโรงพยาบาลใกล้บ้านสามารถส่งต่อไปยังบริการให้คำปรึกษาได้เช่นกัน"
+      : " offers free, 24-hour mental-health support. Your doctor or a local hospital can also refer you to counselling services."}</p>
+    <p class="muted">${th
+      ? "(หากคุณอยู่นอกประเทศไทย โปรดติดต่อบริการช่วยเหลือผู้มีปัญหาการพนันในประเทศของคุณ)"
+      : "(If you are outside Thailand, please seek a local problem-gambling support service in your country.)"}</p>
+
+    <h3>${th?"ผู้เยาว์":"Minors"}</h3>
+    <p>${th
+      ? "สลากกินแบ่งมีไว้สำหรับผู้ใหญ่เท่านั้น เว็บไซต์นี้ไม่ได้มีไว้สำหรับผู้ที่มีอายุต่ำกว่า 18 ปี"
+      : "The lottery is for adults only. This site is not intended for anyone under 18."}</p>
+
+    <p class="muted">${th
+      ? "เพื่อความบันเทิงและให้ข้อมูลเท่านั้น ไม่มีส่วนเกี่ยวข้องกับสำนักงานสลากกินแบ่งรัฐบาล โปรดตรวจสอบผลกับแหล่งข้อมูลทางการเสมอ อ่านเพิ่มเติมเกี่ยวกับ"
+      : "For entertainment and informational purposes only. Not affiliated with the Government Lottery Office. Always verify results with official sources. Read more about "}<a class="gold" href="/stats">${t("nav_stats")}</a> ${th?"และ":"and "}<a class="gold" href="/faq">${t("nav_faq")}</a>.</p>
+    <div class="spacer"></div>${disclaimerBox()}</section>`;
+}
+
 /* ---------- legal ---------- */
 function prose(eyebrow, title, body){
   $("#view").innerHTML = `<section class="section wrap prose">
@@ -657,6 +714,12 @@ function legalTerms(){
     <p>${t("disclaimer")}</p>
     <h3>No guarantee of accuracy</h3>
     <p>Results are compiled from public records and provided "as is" without warranty of any kind. ${t("every_draw")} Nothing here is gambling advice or a prediction of future outcomes.</p>
+    <h3>Responsible play</h3>
+    <p>This site is for entertainment and information only and is intended for adults (18+). Nothing here is gambling advice, a betting strategy, or a prediction of future results. The lottery is a game of chance; past results never influence future draws. If gambling stops being enjoyable, please see our <a href="/responsible-play">${t("legal_responsible")}</a> page for guidance and support resources.</p>
+    <h3>No facilitation of gambling</h3>
+    <p>We do not sell lottery tickets, accept payments or wagers, or link to any service that does. Links to the Government Lottery Office are provided solely so you can verify official results.</p>
+    <h3>Accuracy and official results</h3>
+    <p>We compile results from official GLO announcements and reliable public records and correct errors promptly, but we provide all data "as is" without warranty. Before claiming any prize, you must verify your numbers against the official Government Lottery Office results. We cannot confirm wins or pay prizes.</p>
     <h3>Limitation of liability</h3>
     <p>To the maximum extent permitted by law, Genext Information Systems is not liable for any loss arising from reliance on information presented here. Always verify numbers with the official Government Lottery Office before acting on them.</p>
     <h3>Intellectual property</h3>
@@ -796,6 +859,7 @@ function interceptLinks(){
     if(!a) return;
     const href = a.getAttribute("href");
     if(!href || !href.startsWith("/")) return;          // ignore external / mailto / anchors
+    if(href === "/guides" || href.startsWith("/guides/")) return;  // static blog: real navigation
     if(a.target==="_blank" || e.metaKey || e.ctrlKey || e.shiftKey) return;
     e.preventDefault();
     if(href !== location.pathname + location.search) navigate(href);

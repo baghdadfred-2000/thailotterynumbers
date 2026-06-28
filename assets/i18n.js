@@ -3,6 +3,7 @@ window.I18N = {
   en:{
     nav_home:"Home", nav_results:"Results", nav_stats:"Statistics", nav_search:"Search",
     nav_check:"Did I Win?", nav_about:"About", nav_contact:"Contact", nav_faq:"FAQ",
+    nav_guides:"Guides", legal_responsible:"Responsible Play",
     faq_title:"Thai Lottery FAQ", faq_sub:"Quick answers to the most common questions about Thai Government Lottery draws, prizes, and how to check your numbers.",
     faq_q1:"When is the Thai lottery drawn?",
     faq_a1:"The Thai Government Lottery is drawn twice a month, on the 1st and the 16th, at around 4:00 PM Bangkok time (ICT). When a draw date falls on certain public holidays the date can be shifted, so it is always worth confirming the schedule.",
@@ -57,7 +58,7 @@ window.I18N = {
     name:"Name", email:"Email", message:"Message", send:"Send message",
     disclaimer:"For entertainment & information only. Not affiliated with the Government Lottery Office (GLO) or any Thai government body. Always verify numbers against official sources.",
     disclaimer_short:"Entertainment & information only — not affiliated with the GLO.",
-    cookie_text:"We use only essential cookies to remember your language and consent choice. No tracking, no ads.",
+    cookie_text:"We use essential cookies to remember your language and consent. This site is also supported by ads served via Google AdSense, which uses cookies. See our Cookie and Privacy policies.",
     cookie_accept:"Got it", cookie_settings:"Cookie settings",
     ft_explore:"Explore", ft_legal:"Legal", ft_about:"Project", ft_data:"Data source",
     legal_privacy:"Privacy Policy", legal_cookie:"Cookie Policy", legal_terms:"Terms & Disclaimer",
@@ -70,6 +71,7 @@ window.I18N = {
   th:{
     nav_home:"หน้าแรก", nav_results:"ผลรางวัล", nav_stats:"สถิติ", nav_search:"ค้นหา",
     nav_check:"ฉันถูกไหม?", nav_about:"เกี่ยวกับ", nav_contact:"ติดต่อ", nav_faq:"คำถามที่พบบ่อย",
+    nav_guides:"คู่มือ", legal_responsible:"เล่นอย่างมีสติ",
     faq_title:"คำถามที่พบบ่อยเกี่ยวกับสลากกินแบ่ง", faq_sub:"คำตอบสั้น ๆ สำหรับคำถามยอดนิยมเกี่ยวกับการออกรางวัล เงินรางวัล และวิธีตรวจหมายเลขสลากกินแบ่งรัฐบาล",
     faq_q1:"สลากกินแบ่งรัฐบาลออกรางวัลเมื่อไร?",
     faq_a1:"สลากกินแบ่งรัฐบาลออกรางวัลเดือนละ 2 ครั้ง ในวันที่ 1 และวันที่ 16 เวลาประมาณ 16:00 น. ตามเวลาประเทศไทย หากตรงกับวันหยุดบางวันอาจมีการเลื่อน จึงควรตรวจสอบกำหนดการทุกครั้ง",
@@ -124,7 +126,7 @@ window.I18N = {
     name:"ชื่อ", email:"อีเมล", message:"ข้อความ", send:"ส่งข้อความ",
     disclaimer:"เพื่อความบันเทิงและให้ข้อมูลเท่านั้น ไม่มีส่วนเกี่ยวข้องกับสำนักงานสลากกินแบ่งรัฐบาล (GLO) หรือหน่วยงานรัฐใด ๆ โปรดตรวจสอบหมายเลขกับแหล่งข้อมูลทางการเสมอ",
     disclaimer_short:"เพื่อความบันเทิงและข้อมูลเท่านั้น — ไม่เกี่ยวข้องกับ GLO",
-    cookie_text:"เราใช้คุกกี้ที่จำเป็นเท่านั้นเพื่อจดจำภาษาและการยินยอมของคุณ ไม่มีการติดตามและไม่มีโฆษณา",
+    cookie_text:"เราใช้คุกกี้ที่จำเป็นเพื่อจดจำภาษาและการยินยอมของคุณ เว็บไซต์นี้ยังมีโฆษณาผ่าน Google AdSense ซึ่งใช้คุกกี้ด้วย ดูรายละเอียดในนโยบายคุกกี้และความเป็นส่วนตัวของเรา",
     cookie_accept:"รับทราบ", cookie_settings:"ตั้งค่าคุกกี้",
     ft_explore:"สำรวจ", ft_legal:"กฎหมาย", ft_about:"โครงการ", ft_data:"แหล่งข้อมูล",
     legal_privacy:"นโยบายความเป็นส่วนตัว", legal_cookie:"นโยบายคุกกี้", legal_terms:"ข้อกำหนด & ข้อปฏิเสธ",
