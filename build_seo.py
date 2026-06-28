@@ -392,7 +392,7 @@ _SPA_BODY = """
     <div class="ft-grid" id="footerGrid"></div>
     <div class="flag-rule"><i></i><i></i><i></i><i></i><i></i></div>
     <div class="ft-bottom">
-      <span>© 2026 Genext Information Systems. All rights reserved.</span>
+      <span>© 2026 Genext Information Systems. All rights reserved. · V1.0</span>
       <span id="ftDisclaimerShort"></span>
     </div>
   </div>
@@ -464,7 +464,7 @@ _BLOG_BODY = """
     </div>
     <div class="flag-rule"><i></i><i></i><i></i><i></i><i></i></div>
     <div class="ft-bottom">
-      <span>© 2026 Genext Information Systems. All rights reserved.</span>
+      <span>© 2026 Genext Information Systems. All rights reserved. · V1.0</span>
       <span><span class="lang-en">For entertainment &amp; information only. Not affiliated with the Government Lottery Office (GLO). Always verify numbers against official sources.</span><span class="lang-th">เพื่อความบันเทิงและให้ข้อมูลเท่านั้น ไม่มีส่วนเกี่ยวข้องกับสำนักงานสลากกินแบ่งรัฐบาล (GLO) โปรดตรวจสอบหมายเลขกับแหล่งข้อมูลทางการเสมอ</span></span>
     </div>
   </div>
