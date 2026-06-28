@@ -1,0 +1,21 @@
+# robots.txt for thailotterynumbers.com
+User-agent: *
+Allow: /
+Disallow: /cookie-settings
+
+# Let Google render everything it needs
+User-agent: Googlebot
+Allow: /
+Allow: /assets/
+
+# AI / answer engines (helps visibility in AI Overviews & citations)
+User-agent: Google-Extended
+Allow: /
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+
+Sitemap: https://thailotterynumbers.com/sitemap.xml
