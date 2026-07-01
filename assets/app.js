@@ -484,7 +484,31 @@ function search(){
 }
 
 /* ---------------- did I win ---------------- */
+/* shared matching engine: returns [ [draw, tierLabel, badgeClass], ... ] for one 6-digit ticket */
+function scanTicket(q){
+  const f3=q.slice(0,3), l3=q.slice(-3), l2=q.slice(-2);
+  const hits=[];
+  S.draws.forEach(d=>{
+    if(d.first===q) hits.push([d,t("prize_first"),"b-gold"]);
+    d.near.forEach(n=>{if(n===q)hits.push([d,t("prize_near"),"b-gold"]);});
+    [["second","prize_second"],["third","prize_third"],["fourth","prize_fourth"],["fifth","prize_fifth"]]
+      .forEach(([k,lbl])=>{ if(d[k].includes(q)) hits.push([d,t(lbl),"b-jade"]); });
+    if(d.front3.includes(f3)) hits.push([d,t("prize_front3"),"b-muted"]);
+    if(d.last3.includes(l3)) hits.push([d,t("prize_last3"),"b-muted"]);
+    if(d.last2===l2) hits.push([d,t("prize_last2"),"b-muted"]);
+  });
+  return hits;
+}
+
+function hitLines(hits){
+  return `<div class="card" style="padding:0">${hits.map(([d,lbl,cls])=>`
+    <a class="result-line" href="/results/${d.date}">
+      <span class="badge ${cls}">${lbl}</span>
+      <span class="muted">${fmtDate(d.date)} →</span></a>`).join("")}</div>`;
+}
+
 function checker(){
+  const BULK_MAX = 25;
   $("#view").innerHTML = `<section class="section wrap">
     <span class="eyebrow">${t("nav_check")}</span><h1>${t("check_title")}</h1>
     <p class="lead">${t("check_sub")}</p><div class="spacer"></div>
@@ -493,33 +517,74 @@ function checker(){
         placeholder="${t("check_ph")}" maxlength="6"></div>
       <button class="btn btn-gold" id="go">${t("check_btn")}</button>
     </div>
-    <div id="out"></div><div class="spacer-lg"></div>${disclaimerBox()}</section>`;
+    <div id="out"></div>
+
+    <div class="spacer-lg"></div>
+    <span class="eyebrow">${t("bulk_title")}</span><h2>${t("bulk_title")}</h2>
+    <p class="lead">${t("bulk_sub")}</p><div class="spacer"></div>
+    <div class="field"><textarea id="bulk" rows="6" inputmode="numeric" spellcheck="false"
+      style="font-family:var(--mono)" placeholder="${t("bulk_ph")}"></textarea></div>
+    <div class="spacer"></div>
+    <button class="btn btn-gold" id="goBulk">${t("bulk_btn")}</button>
+    <div id="bulkOut"></div>
+
+    <div class="spacer-lg"></div>${disclaimerBox()}</section>`;
+
+  /* single-ticket checker */
   const run = () => {
     const q=($("#tk").value||"").replace(/\D/g,"");
     if(q.length!==6) return;
-    const f3=q.slice(0,3), l3=q.slice(-3), l2=q.slice(-2);
-    const hits=[];
-    S.draws.forEach(d=>{
-      if(d.first===q) hits.push([d,t("prize_first"),"b-gold"]);
-      d.near.forEach(n=>{if(n===q)hits.push([d,t("prize_near"),"b-gold"]);});
-      [["second","prize_second"],["third","prize_third"],["fourth","prize_fourth"],["fifth","prize_fifth"]]
-        .forEach(([k,lbl])=>{ if(d[k].includes(q)) hits.push([d,t(lbl),"b-jade"]); });
-      if(d.front3.includes(f3)) hits.push([d,t("prize_front3"),"b-muted"]);
-      if(d.last3.includes(l3)) hits.push([d,t("prize_last3"),"b-muted"]);
-      if(d.last2===l2) hits.push([d,t("prize_last2"),"b-muted"]);
-    });
+    const hits=scanTicket(q);
     $("#out").innerHTML = hits.length ? `
       <div class="spacer"></div>
       <p><span class="badge b-red">★ ${t("check_win")}</span> &nbsp;<b class="mono">${q}</b> · ${hits.length} ${t("appearances")}</p>
       <div class="spacer"></div>
-      <div class="card" style="padding:0">${hits.map(([d,lbl,cls])=>`
-        <a class="result-line" href="/results/${d.date}">
-          <span class="badge ${cls}">${lbl}</span>
-          <span class="muted">${fmtDate(d.date)} →</span></a>`).join("")}</div>`
+      ${hitLines(hits)}`
       : `<div class="empty">${t("check_none")} <b class="mono gold">${q}</b>.</div>`;
   };
   $("#go").onclick=run;
   $("#tk").addEventListener("keyup",e=>{if(e.key==="Enter")run();});
+
+  /* bulk checker — accepts only digits, spaces, commas and new lines */
+  const bulkEl=$("#bulk");
+  const clean=s=>s.replace(/[^\d ,\n]/g,"");
+  bulkEl.addEventListener("input",()=>{
+    const c=clean(bulkEl.value);
+    if(c!==bulkEl.value){
+      const p=Math.max(0,bulkEl.selectionStart-1);
+      bulkEl.value=c;
+      bulkEl.setSelectionRange(p,p);
+    }
+  });
+  const runBulk = () => {
+    const tokens=clean(bulkEl.value).split(/[\s,]+/).filter(Boolean);
+    const seen=new Set(), uniq=[];
+    tokens.forEach(tok=>{ if(/^\d{6}$/.test(tok) && !seen.has(tok)){ seen.add(tok); uniq.push(tok); } });
+    const capped=uniq.slice(0,BULK_MAX);
+    if(!capped.length){
+      $("#bulkOut").innerHTML=`<div class="spacer"></div><div class="empty">${t("bulk_invalid")}</div>`;
+      return;
+    }
+    let winners=0;
+    const items=capped.map(q=>{
+      const hits=scanTicket(q);
+      if(hits.length) winners++;
+      const head = hits.length
+        ? `<p><span class="badge b-red">★ ${t("bulk_win")}</span> &nbsp;<b class="mono">${q}</b> · ${hits.length} ${t("appearances")}</p>`
+        : `<p><b class="mono muted">${q}</b></p>`;
+      const body = hits.length
+        ? `<div class="spacer"></div>${hitLines(hits)}`
+        : `<div class="empty" style="padding:16px">${t("bulk_none")}</div>`;
+      return `<div>${head}${body}</div>`;
+    }).join(`<div class="spacer-lg"></div>`);
+    const note = uniq.length>BULK_MAX
+      ? `<p class="muted" style="font-size:.85rem;margin-top:6px">${t("bulk_limit")}</p>` : ``;
+    $("#bulkOut").innerHTML=`
+      <div class="spacer"></div>
+      <p><b>${capped.length}</b> ${t("bulk_checked")} · <b class="gold">${winners}</b> ${t("bulk_with_matches")}</p>
+      ${note}<div class="spacer-lg"></div>${items}`;
+  };
+  $("#goBulk").onclick=runBulk;
 }
 
 /* ---------------- static pages ---------------- */
