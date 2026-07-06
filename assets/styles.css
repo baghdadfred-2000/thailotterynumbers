@@ -49,14 +49,15 @@ img,svg{display:block}
 /* ---------- layout with side ad rails ---------- */
 .layout{display:flex;justify-content:center;align-items:flex-start;gap:28px}
 #view{flex:1 1 auto;min-width:0;max-width:1180px}
-.ad-rail{width:160px;flex-shrink:0;position:sticky;top:88px;padding-top:24px}
-.ad-slot{min-height:600px;border:1px dashed var(--line);border-radius:12px;background:var(--bg-2);
-  display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
-.ad-slot::before{content:attr(data-label);position:absolute;top:10px;left:0;right:0;text-align:center;
-  font-family:var(--disp);font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-2)}
-.ad-slot:empty::after{content:"";position:absolute;inset:0;background:
-  repeating-linear-gradient(45deg,transparent,transparent 12px,rgba(255,255,255,.015) 12px,rgba(255,255,255,.015) 24px)}
+/* side rails scroll with the page (not sticky) */
+.ad-rail{width:160px;flex-shrink:0;padding-top:24px}
+.ad-slot{width:160px;height:600px;overflow:hidden}
+.ad-slot iframe{display:block;border:0}
+/* leaderboard banner, centered just above the footer */
+.ad-banner{display:flex;justify-content:center;margin:6px auto 30px;max-width:100%;overflow:hidden}
+.ad-banner iframe{display:block;border:0}
 @media(max-width:1380px){.ad-rail{display:none}}
+@media(max-width:768px){.ad-banner{display:none}}
 
 /* ---------- top bar ---------- */
 header.nav{position:sticky;top:0;z-index:50;background:rgba(11,16,38,.82);

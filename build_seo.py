@@ -324,6 +324,16 @@ def article_main(a):
             + '    </section>')
 
 
+# ---------- ad units (Adsterra / highperformanceformat) ----------
+# Each unit is wrapped in its own srcdoc iframe so the global `atOptions`
+# variable is isolated per placement. Without this, the three atOptions
+# assignments on a page would clobber each other (they share one global) and
+# every slot would render the last-declared ad. These strings are injected as
+# .format() VALUES, so their literal { } braces are safe (never re-parsed).
+AD_SIDE = """<div class="ad-slot"><iframe title="Advertisement" width="160" height="600" scrolling="no" frameborder="0" marginwidth="0" marginheight="0" style="border:0;display:block;overflow:hidden" srcdoc='<body style="margin:0;overflow:hidden"><script type="text/javascript">atOptions = {"key":"c56722e9415f1e7dec7c7765e4de5b8b","format":"iframe","height":600,"width":160,"params":{}};</script><script type="text/javascript" src="https://www.highperformanceformat.com/c56722e9415f1e7dec7c7765e4de5b8b/invoke.js"></script></body>'></iframe></div>"""
+
+AD_BANNER = """<div class="ad-banner" aria-hidden="true"><iframe title="Advertisement" width="728" height="90" scrolling="no" frameborder="0" marginwidth="0" marginheight="0" style="border:0;display:block;overflow:hidden" srcdoc='<body style="margin:0;overflow:hidden"><script type="text/javascript">atOptions = {"key":"72fad5ef476409ccc013cc9841ea409d","format":"iframe","height":90,"width":728,"params":{}};</script><script type="text/javascript" src="https://www.highperformanceformat.com/72fad5ef476409ccc013cc9841ea409d/invoke.js"></script></body>'></iframe></div>"""
+
 HEAD = """<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -374,18 +384,18 @@ _SPA_BODY = """
 </header>
 
 <div class="layout">
-  <aside class="ad-rail ad-left" aria-hidden="true">
-    <!-- Google AdSense slot (left). Paste your <ins class="adsbygoogle"> code inside. -->
-    <div class="ad-slot" data-ad="left"></div>
+  <aside class="ad-rail ad-left">
+    {ad_side}
   </aside>
   <main id="view" aria-live="polite">
 {main}
   </main>
-  <aside class="ad-rail ad-right" aria-hidden="true">
-    <!-- Google AdSense slot (right). Paste your <ins class="adsbygoogle"> code inside. -->
-    <div class="ad-slot" data-ad="right"></div>
+  <aside class="ad-rail ad-right">
+    {ad_side}
   </aside>
 </div>
+
+{ad_banner}
 
 <footer class="ft">
   <div class="wrap">
@@ -438,18 +448,18 @@ _BLOG_BODY = """
 </header>
 
 <div class="layout">
-  <aside class="ad-rail ad-left" aria-hidden="true">
-    <!-- Google AdSense slot (left). Paste your <ins class="adsbygoogle"> code inside. -->
-    <div class="ad-slot" data-ad="left" data-label="Advertisement"></div>
+  <aside class="ad-rail ad-left">
+    {ad_side}
   </aside>
   <main id="view">
 {main}
   </main>
-  <aside class="ad-rail ad-right" aria-hidden="true">
-    <!-- Google AdSense slot (right). Paste your <ins class="adsbygoogle"> code inside. -->
-    <div class="ad-slot" data-ad="right" data-label="Advertisement"></div>
+  <aside class="ad-rail ad-right">
+    {ad_side}
   </aside>
 </div>
+
+{ad_banner}
 
 <footer class="ft">
   <div class="wrap">
@@ -529,7 +539,7 @@ def build_blog():
     html = BLOG_TEMPLATE.format(
         title=BLOG_INDEX_TITLE, desc=BLOG_INDEX_DESC, robots="index, follow",
         canonical=f"{SITE}/guides", site=SITE, schema=blog_index_schema(),
-        main=blog_index_main())
+        main=blog_index_main(), ad_side=AD_SIDE, ad_banner=AD_BANNER)
     write(os.path.join(HERE, "guides", "index.html"), html)
     print("wrote guides/index.html (blog index)")
     # Articles
@@ -537,7 +547,7 @@ def build_blog():
         html = BLOG_TEMPLATE.format(
             title=a["title"], desc=a["desc"], robots="index, follow",
             canonical=article_canonical(a), site=SITE, schema=article_schema(a),
-            main=article_main(a))
+            main=article_main(a), ad_side=AD_SIDE, ad_banner=AD_BANNER)
         out = os.path.join(HERE, "guides", a["slug"], "index.html")
         write(out, html)
         print("wrote", os.path.relpath(out, HERE))
@@ -548,7 +558,7 @@ def build_pages():
         html = TEMPLATE.format(
             title=p["title"], desc=p["desc"], robots=robots,
             canonical=canonical(p["slug"]), site=SITE, schema=schema_for(p),
-            main=render_main(p),
+            main=render_main(p), ad_side=AD_SIDE, ad_banner=AD_BANNER,
         )
         out = os.path.join(HERE, "index.html") if p["slug"] == "" \
             else os.path.join(HERE, p["slug"], "index.html")
