@@ -47,10 +47,10 @@ img,svg{display:block}
 .lead{color:var(--muted);max-width:60ch}
 
 /* ---------- layout with side ad rails ---------- */
-.layout{display:flex;justify-content:center;align-items:flex-start;gap:28px}
+.layout{display:flex;justify-content:center;align-items:stretch;gap:28px}
 #view{flex:1 1 auto;min-width:0;max-width:1180px}
-/* side rails scroll with the page (not sticky) */
-.ad-rail{width:160px;flex-shrink:0;padding-top:24px}
+/* side rails scroll with the page (not sticky); ad anchored to the bottom, just above the footer */
+.ad-rail{width:160px;flex-shrink:0;display:flex;flex-direction:column;justify-content:flex-end}
 .ad-slot{width:160px;height:600px;overflow:hidden}
 .ad-slot iframe{display:block;border:0}
 /* leaderboard banner, centered just above the footer */
