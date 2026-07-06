@@ -1,0 +1,64 @@
+# Netlify _headers — https://thailotterynumbers.com
+# Place this file at the PUBLISH ROOT (same level as index.html / robots.txt).
+# Netlify applies every matching block; the most specific path wins on conflicts.
+
+# ===========================================================================
+# GLOBAL: security, privacy & trust headers (apply to every response)
+# ===========================================================================
+/*
+  # Force HTTPS for 2 years, cover subdomains, and be preload-eligible.
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+  # Stop MIME-type sniffing.
+  X-Content-Type-Options: nosniff
+  # Disallow this site being framed by other origins (clickjacking).
+  X-Frame-Options: SAMEORIGIN
+  # Send full URL to same-origin, only the origin cross-origin.
+  Referrer-Policy: strict-origin-when-cross-origin
+  # Lock down powerful APIs the site never uses.
+  Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=(), usb=(), browsing-topics=()
+  # Cross-origin isolation that still allows ad pop-ups / OAuth windows.
+  Cross-Origin-Opener-Policy: same-origin-allow-popups
+  X-DNS-Prefetch-Control: on
+  # Default cache posture: always revalidate. Covers HTML at pretty URLs
+  # (/faq, /results, ...) so new draw results appear without stale caching.
+  Cache-Control: public, max-age=0, must-revalidate
+  # --- CSP in REPORT-ONLY mode first: it logs violations without breaking
+  # --- ads/fonts. Review reports for ~1 week, then promote to enforcing
+  # --- "Content-Security-Policy" (see the audit report for the strict target).
+  Content-Security-Policy-Report-Only: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; script-src 'self' 'unsafe-inline' https://www.highperformanceformat.com https://*.highperformanceformat.com https://pagead2.googlesyndication.com https://*.googlesyndication.com https://adservice.google.com https://*.google.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https:; frame-src https:; upgrade-insecure-requests
+
+# ===========================================================================
+# STATIC ASSETS: long cache for content that rarely changes
+# ===========================================================================
+/assets/*
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+
+# Immutable/rarely-changed binaries — cache hard for a year.
+/assets/logo.svg
+  Cache-Control: public, max-age=31536000, immutable
+/assets/og-image.png
+  Cache-Control: public, max-age=31536000, immutable
+/assets/chart.umd.js
+  Cache-Control: public, max-age=31536000, immutable
+/Thailand-Chiang-Mai-Gate-Market-Lottery-Seller-lg.jpg
+  Cache-Control: public, max-age=31536000, immutable
+
+# App code & styles are NOT fingerprinted, so revalidate hourly.
+/assets/app.js
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+/assets/styles.css
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+/assets/i18n.js
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+/assets/blog.js
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+
+# Draw data JSON — refresh quickly after each 1st/16th draw.
+/assets/data/*
+  Cache-Control: public, max-age=1800, stale-while-revalidate=86400
+
+# ===========================================================================
+# INDEXING CONTROL via header (belt-and-suspenders with the page meta tag)
+# ===========================================================================
+/cookie-settings
+  X-Robots-Tag: noindex, follow

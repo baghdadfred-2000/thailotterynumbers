@@ -1,0 +1,18 @@
+# Netlify _redirects — https://thailotterynumbers.com
+# Place at the PUBLISH ROOT. Rules are evaluated top-to-bottom; real static
+# files (e.g. /faq/index.html) are ALWAYS served before any rule below.
+
+# --- Canonical host --------------------------------------------------------
+# Preferred method: set the apex (thailotterynumbers.com) as the PRIMARY
+# domain in Netlify → Domain management. Netlify then auto-301s www -> apex
+# and http -> https for you.
+#
+# If you are NOT on Netlify DNS, uncomment these explicit rules instead:
+# https://www.thailotterynumbers.com/*  https://thailotterynumbers.com/:splat  301!
+# http://www.thailotterynumbers.com/*   https://thailotterynumbers.com/:splat  301!
+
+# --- Genuine 404s ----------------------------------------------------------
+# FIX: the previous rule "/*  /index.html  200" made every unknown URL return
+# the homepage with HTTP 200 (a "soft 404" Google flags). Serving 404.html
+# with a real 404 status lets Google drop dead URLs cleanly.
+/*    /404.html    404
