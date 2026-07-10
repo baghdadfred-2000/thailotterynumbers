@@ -128,6 +128,7 @@ function render(keepScroll){
 
   if (route==="results" && param) return drawDetail(param);
   if (route==="guides") return;   // /guides and /guides/* are static HTML; leave baked content
+  if (route==="contact") return;  // /contact is static baked HTML (contact form); leave baked content
   switch(route){
     case "": return home();
     case "results": return results();
