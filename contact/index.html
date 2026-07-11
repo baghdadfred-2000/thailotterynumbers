@@ -86,11 +86,11 @@
         <div class="contact-card">
           <h2>Send us a message</h2>
           <p class="sub">Choose a topic and send us your message. We reply to the email address you provide, usually within 2–3 business days.</p>
-          <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="cform" id="contactForm">
-            <input type="hidden" name="form-name" value="contact">
-            <p class="hp">
-              <label>Don't fill this out if you're human: <input name="bot-field"></label>
-            </p>
+          <form name="contact" method="POST" action="https://api.web3forms.com/submit" class="cform" id="contactForm">
+            <input type="hidden" name="access_key" value="c394c121-5e53-49ec-be2b-3fdb67c9a3a3">
+            <input type="hidden" name="subject" value="New contact message — thailotterynumbers.com">
+            <input type="hidden" name="from_name" value="Thai Lottery Numbers Contact Form">
+            <input type="checkbox" name="botcheck" style="display:none;" tabindex="-1" autocomplete="off" aria-hidden="true">
             <div class="field">
               <label class="fl" for="cf-name">Your name <span class="req">*</span></label>
               <input type="text" id="cf-name" name="name" autocomplete="name" required>
@@ -171,9 +171,9 @@
     btn.disabled=true; btn.textContent='Sending…';
     var data=new FormData(form);
     var body=new URLSearchParams(data).toString();
-    fetch('/', {method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body:body})
-      .then(function(r){
-        if(!r.ok) throw new Error('bad status '+r.status);
+    fetch('https://api.web3forms.com/submit', {method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body:JSON.stringify(Object.fromEntries(data))})
+      .then(function(r){ return r.json(); }).then(function(res){
+        if(!res.success) throw new Error(res.message||'bad status');
         form.reset(); ok.classList.add('show');
         ok.scrollIntoView({behavior:'smooth', block:'center'});
       })
