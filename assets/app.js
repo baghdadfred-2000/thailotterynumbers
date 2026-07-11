@@ -60,7 +60,7 @@ function buildShell(){
   const nav = [["","nav_home"],["results","nav_results"],["stats","nav_stats"],
     ["search","nav_search"],["check","nav_check"],["guides","nav_guides"],["faq","nav_faq"],["about","nav_about"],["contact","nav_contact"]];
   $("#navLinks").innerHTML = nav.map(([r,k]) =>
-    `<a href="/${r}" data-route="${r}">${t(k)}</a>`).join("");
+    `<a href="${r==='contact'?'/contact.html':'/'+r}" data-route="${r==='contact'?'contact.html':r}">${t(k)}</a>`).join("");
   // footer
   $("#footerGrid").innerHTML = `
     <div>
@@ -71,7 +71,7 @@ function buildShell(){
       <a href="/results">${t("nav_results")}</a><a href="/stats">${t("nav_stats")}</a>
       <a href="/search">${t("nav_search")}</a><a href="/check">${t("nav_check")}</a></div>
     <div><h4>${t("ft_about")}</h4>
-      <a href="/about">${t("nav_about")}</a><a href="/faq">${t("nav_faq")}</a><a href="/contact">${t("nav_contact")}</a></div>
+      <a href="/about">${t("nav_about")}</a><a href="/faq">${t("nav_faq")}</a><a href="/contact.html">${t("nav_contact")}</a></div>
     <div><h4>${t("ft_legal")}</h4>
       <a href="/privacy">${t("legal_privacy")}</a><a href="/cookies">${t("legal_cookie")}</a>
       <a href="/terms">${t("legal_terms")}</a><a href="/responsible-play">${t("legal_responsible")}</a>
@@ -620,7 +620,7 @@ function about(){
       ? "สถิติที่แสดงมีไว้เพื่อความสนใจและความบันเทิงเท่านั้น ไม่ใช่คำแนะนำในการเล่นหรือการทำนายผลในอนาคต"
       : "The statistics shown are for interest and entertainment only — they are not playing advice or a prediction of future outcomes."}</p>
 
-    <p class="muted">${th?"มีคำถามหรือพบข้อผิดพลาด? ":"Questions or spotted an error? "}<a class="gold" href="/contact">${t("nav_contact")}</a>.</p>
+    <p class="muted">${th?"มีคำถามหรือพบข้อผิดพลาด? ":"Questions or spotted an error? "}<a class="gold" href="/contact.html">${t("nav_contact")}</a>.</p>
     <div class="spacer"></div>${disclaimerBox()}</section>`;
 }
 
@@ -757,7 +757,7 @@ function legalPrivacy(){
     <h3>Your choices &amp; rights</h3>
     <p>You may clear locally stored preferences and cookies at any time through your browser settings or our <a href="/cookie-settings">${t("legal_cookie_set")}</a> page. You may request deletion of any email correspondence by writing to us.</p>
     <h3>Contact</h3>
-    <p>Questions about this policy: <a href="mailto:hello@thailotterynumbers.com">hello@thailotterynumbers.com</a>, or via our <a href="/contact">${t("nav_contact")}</a> page.</p>`);
+    <p>Questions about this policy: <a href="mailto:hello@thailotterynumbers.com">hello@thailotterynumbers.com</a>, or via our <a href="/contact.html">${t("nav_contact")}</a> page.</p>`);
 }
 function legalCookies(){
   prose(t("ft_legal"), t("legal_cookie"), `
@@ -926,6 +926,7 @@ function interceptLinks(){
     const href = a.getAttribute("href");
     if(!href || !href.startsWith("/")) return;          // ignore external / mailto / anchors
     if(href === "/guides" || href.startsWith("/guides/")) return;  // static blog: real navigation
+    if(href === "/contact.html") return;  // static contact page: real navigation
     if(a.target==="_blank" || e.metaKey || e.ctrlKey || e.shiftKey) return;
     e.preventDefault();
     if(href !== location.pathname + location.search) navigate(href);
