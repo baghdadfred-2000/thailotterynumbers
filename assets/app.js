@@ -461,10 +461,17 @@ function search(){
         d.front3.forEach(n=>{if(n===q)hits.push([d,t("prize_front3"),n]);});
         d.last3.forEach(n=>{if(n===q)hits.push([d,t("prize_last3"),n]);});
       } else {
+        // full 6-digit ticket: check every prize tier, including the
+        // partial-match tiers (front-3, last-3, last-2) so a ticket like
+        // 500062 is correctly reported as a last-2 winner.
+        const f3=q.slice(0,3), l3=q.slice(-3), l2=q.slice(-2);
         if(d.first===q) hits.push([d,t("prize_first"),q]);
         d.near.forEach(n=>{if(n===q)hits.push([d,t("prize_near"),n]);});
         [["second","prize_second"],["third","prize_third"],["fourth","prize_fourth"],["fifth","prize_fifth"]]
           .forEach(([k,lbl])=>d[k].forEach(n=>{if(n===q)hits.push([d,t(lbl),n]);}));
+        d.front3.forEach(n=>{if(n===f3)hits.push([d,t("prize_front3"),n]);});
+        d.last3.forEach(n=>{if(n===l3)hits.push([d,t("prize_last3"),n]);});
+        if(d.last2===l2) hits.push([d,t("prize_last2"),d.last2]);
       }
     });
     $("#out").innerHTML = hits.length ? `
