@@ -161,6 +161,7 @@ function home(){
     ${KANOK}
     <div class="hero-grid">
       <div>
+        <span class="hero-tag">${t("hero_tag")}</span>
         <h1>${t("hero_title_a")}<br><span class="g">${t("hero_title_b")}</span></h1>
         <p class="sub">${t("hero_sub")}</p>
         <div class="hero-cta">
@@ -182,6 +183,30 @@ function home(){
         <div class="spacer"></div>
         <div class="lbl muted center" style="font-size:.74rem;letter-spacing:.1em;text-transform:uppercase">${t("next_draw")}</div>
         <div class="countdown" id="cd"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section wrap story-sec">
+    <div class="story-card">
+      <figure class="story-media">
+        <img src="/assets/winner-inthira.jpg" alt="${esc(t("story_caption"))}" loading="lazy">
+        <figcaption>${t("story_caption")}</figcaption>
+      </figure>
+      <div class="story-body">
+        <span class="eyebrow">★ ${t("story_eyebrow")}</span>
+        <h2>${t("story_title")}</h2>
+        <p class="story-kicker">${t("story_kicker")}</p>
+        <p>${t("story_p1")}</p>
+        <blockquote class="story-quote">“${t("story_quote")}”</blockquote>
+        <p>${t("story_p2")}</p>
+        <div class="story-facts">
+          <div class="story-fact"><b>${t("story_fact1_v")}</b><span>${t("story_fact1_l")}</span></div>
+          <div class="story-fact"><b>${t("story_fact2_v")}</b><span>${t("story_fact2_l")}</span></div>
+          <div class="story-fact"><b>${t("story_fact3_v")}</b><span>${t("story_fact3_l")}</span></div>
+        </div>
+        <a class="btn btn-gold story-cta" href="/check">${t("story_cta")}</a>
+        <p class="story-by">${t("story_by")}</p>
       </div>
     </div>
   </section>
@@ -962,3 +987,4 @@ async function boot(){
 }
 boot();
 })();
+/* v2 makeover */
