@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spirit Numbers — Find Your Lucky Thai Lottery Numbers | ThaiLotteryNumbers.com</title>
+<meta name="description" content="Let a friendly spirit reveal your personal lucky 2-digit numbers from your Chinese zodiac, Thai birth-day color, and numerology. A fun, free feature of ThaiLotteryNumbers.com.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://thailotterynumbers.com/spirit-numbers/">
+<meta name="theme-color" content="#0B1026">
+<link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" type="image/png" href="/favicon.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:site_name" content="Thai Lottery Numbers">
+<meta property="og:title" content="Spirit Numbers — Find Your Lucky Thai Lottery Numbers">
+<meta property="og:description" content="A friendly spirit reads your Chinese zodiac, Thai birth-day color, and numerology to reveal your personal lucky 2-digit numbers.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://thailotterynumbers.com/spirit-numbers/">
+<meta property="og:image" content="https://thailotterynumbers.com/assets/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;600;700&family=Sarabun:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: { extend: {
+    colors: {
+      navy:  "#0B1026", navy2: "#0E1430", panel: "#141A38", panel2:"#1B2350",
+      line:  "#262F5C", gold:  "#F2C14E", goldsoft:"#F7D778", golddeep:"#C8901F",
+      mist:  "#9AA3C7", jade:  "#2BB7A3", flag:  "#EF3340"
+    },
+    fontFamily: {
+      disp: ["Kanit","system-ui","sans-serif"],
+      body: ["Sarabun","system-ui","sans-serif"],
+      mono: ["Space Mono","ui-monospace","monospace"]
+    }
+  }}
+};
+</script>
+<style type="text/tailwindcss">
+  @layer utilities { .text-glow { text-shadow: 0 4px 24px rgba(242,193,78,.35); } }
+</style>
+<style>
+  body{background:#0B1026;
+    background-image:
+      radial-gradient(1000px 560px at 85% -8%, rgba(239,51,64,.10), transparent 60%),
+      radial-gradient(900px 560px at -5% 10%, rgba(43,183,163,.08), transparent 55%),
+      radial-gradient(1200px 700px at 50% 115%, rgba(242,193,78,.07), transparent 60%);
+    background-attachment:fixed}
+  ::selection{background:#F2C14E;color:#0B1026}
+
+  /* ---------- the floating ghost ---------- */
+  #ghost{position:fixed;z-index:5;width:110px;pointer-events:none;opacity:0;
+    transition:opacity 1.2s ease;left:0;top:0;will-change:transform}
+  #ghost.awake{opacity:.55}
+  #ghost.excited{opacity:.8}
+  #ghost svg{filter:drop-shadow(0 10px 30px rgba(242,193,78,.25))}
+  .ghost-bob{animation:bob 3.2s ease-in-out infinite}
+  @keyframes bob{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-14px) rotate(2deg)}}
+  #ghost{animation:drift 26s ease-in-out infinite}
+  @keyframes drift{
+    0%   {transform:translate(8vw, 18vh) scale(1)}
+    15%  {transform:translate(72vw, 12vh) scale(.9)}
+    30%  {transform:translate(84vw, 58vh) scale(1.05)}
+    45%  {transform:translate(48vw, 74vh) scale(.95)}
+    60%  {transform:translate(10vw, 62vh) scale(1.1)}
+    75%  {transform:translate(22vw, 28vh) scale(.9)}
+    90%  {transform:translate(60vw, 40vh) scale(1)}
+    100% {transform:translate(8vw, 18vh) scale(1)}
+  }
+  /* small ambient spirits on the hero */
+  .spirit{position:absolute;pointer-events:none;opacity:.16;animation:spiritfloat 9s ease-in-out infinite}
+  .spirit:nth-child(2){animation-delay:-3s}
+  .spirit:nth-child(3){animation-delay:-6s}
+  @keyframes spiritfloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-26px)}}
+
+  /* wizard transitions */
+  .step{display:none}
+  .step.on{display:block;animation:rise .45s ease both}
+  @keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+  .num-tile{animation:pop .5s cubic-bezier(.2,1.4,.4,1) both}
+  @keyframes pop{from{opacity:0;transform:scale(.4)}to{opacity:1;transform:scale(1)}}
+  .shimmer{background:linear-gradient(100deg,#141A38 40%,#1B2350 50%,#141A38 60%);
+    background-size:200% 100%;animation:shine 1.2s linear infinite}
+  @keyframes shine{to{background-position:-200% 0}}
+
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+    #ghost{opacity:0!important}
+  }
+</style>
+</head>
+<body class="font-body text-slate-100 min-h-screen flex flex-col">
+
+<!-- floating ghost -->
+<div id="ghost" aria-hidden="true"><div class="ghost-bob">
+<svg viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg">
+  <defs><linearGradient id="gg" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#F7D778" stop-opacity=".95"/>
+    <stop offset="1" stop-color="#F2C14E" stop-opacity=".55"/></linearGradient></defs>
+  <path fill="url(#gg)" d="M60 6C33 6 14 27 14 55v56c0 6 7 9 11 5l7-7 9 9c3 3 8 3 11 0l8-8 8 8c3 3 8 3 11 0l9-9 7 7c4 4 11 1 11-5V55C106 27 87 6 60 6Z"/>
+  <circle cx="44" cy="52" r="6.5" fill="#0B1026"/>
+  <circle cx="76" cy="52" r="6.5" fill="#0B1026"/>
+  <circle cx="46" cy="50" r="2" fill="#F5F7FA"/>
+  <circle cx="78" cy="50" r="2" fill="#F5F7FA"/>
+  <ellipse cx="60" cy="72" rx="7" ry="9" fill="#0B1026" opacity=".85"/>
+</svg></div></div>
+
+<!-- header -->
+<header class="sticky top-0 z-40 backdrop-blur-lg bg-navy/85 border-b border-line/60">
+  <div class="max-w-5xl mx-auto px-6 h-16 flex items-center gap-4">
+    <a href="/" class="flex items-center gap-3 font-disp font-bold">
+      <svg viewBox="0 0 64 64" class="w-9 h-9" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs><clipPath id="r"><circle cx="32" cy="32" r="25"/></clipPath>
+        <linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F7D778"/><stop offset=".5" stop-color="#F2C14E"/><stop offset="1" stop-color="#C8901F"/></linearGradient></defs>
+        <circle cx="32" cy="32" r="30" fill="url(#g)"/><circle cx="32" cy="32" r="26.5" fill="#0B1026"/>
+        <g clip-path="url(#r)"><rect x="7" y="7" width="50" height="50" fill="#EF3340"/><rect x="7" y="15" width="50" height="34" fill="#F5F7FA"/><rect x="7" y="22" width="50" height="20" fill="#241E4E"/><rect x="7" y="15" width="50" height="7" fill="#F5F7FA"/><rect x="7" y="42" width="50" height="7" fill="#F5F7FA"/></g>
+        <circle cx="32" cy="32" r="25" fill="none" stroke="url(#g)" stroke-width="2.5"/>
+        <text x="32" y="38" text-anchor="middle" font-family="monospace" font-weight="700" font-size="15" fill="#F2C14E" stroke="#0B1026" stroke-width=".6">88</text></svg>
+      <span class="text-[1.02rem] leading-tight">Thai Lottery<b class="text-gold">Numbers</b><small class="block font-body font-normal text-[.62rem] tracking-[.16em] text-mist/70 uppercase">.com</small></span>
+    </a>
+    <a href="/" class="ml-auto text-sm text-mist hover:text-white font-disp">← Back to home</a>
+  </div>
+</header>
+
+<main class="flex-1 w-full max-w-5xl mx-auto px-6 pb-20">
+
+  <!-- ============ HERO / ENTRY ============ -->
+  <section id="hero" class="relative text-center pt-16 pb-10">
+    <svg class="spirit w-14" style="left:8%;top:30%" viewBox="0 0 120 140"><path fill="#F2C14E" d="M60 6C33 6 14 27 14 55v56c0 6 7 9 11 5l7-7 9 9c3 3 8 3 11 0l8-8 8 8c3 3 8 3 11 0l9-9 7 7c4 4 11 1 11-5V55C106 27 87 6 60 6Z"/></svg>
+    <svg class="spirit w-10" style="right:12%;top:18%" viewBox="0 0 120 140"><path fill="#F2C14E" d="M60 6C33 6 14 27 14 55v56c0 6 7 9 11 5l7-7 9 9c3 3 8 3 11 0l8-8 8 8c3 3 8 3 11 0l9-9 7 7c4 4 11 1 11-5V55C106 27 87 6 60 6Z"/></svg>
+    <svg class="spirit w-8" style="right:26%;top:64%" viewBox="0 0 120 140"><path fill="#2BB7A3" d="M60 6C33 6 14 27 14 55v56c0 6 7 9 11 5l7-7 9 9c3 3 8 3 11 0l8-8 8 8c3 3 8 3 11 0l9-9 7 7c4 4 11 1 11-5V55C106 27 87 6 60 6Z"/></svg>
+
+    <p class="font-disp font-semibold text-[.78rem] tracking-[.24em] uppercase text-gold">✦ Special feature</p>
+    <h1 class="font-disp font-bold text-5xl md:text-6xl mt-3 text-glow">Spirit <span class="text-gold">Numbers</span></h1>
+    <p class="text-mist max-w-xl mx-auto mt-5 text-lg">A friendly spirit reads your <b class="text-slate-100">Chinese zodiac</b>, your <b class="text-slate-100">Thai birth-day color</b>, and your <b class="text-slate-100">core numerology number</b> — then whispers the lucky two-digit numbers hidden in your stars.</p>
+    <button id="summon" class="mt-9 font-disp font-semibold text-lg bg-gradient-to-br from-goldsoft to-golddeep text-[#2A1C04] px-9 py-4 rounded-2xl shadow-[0_10px_34px_-10px_rgba(242,193,78,.6)] hover:-translate-y-0.5 hover:shadow-[0_16px_40px_-10px_rgba(242,193,78,.75)] transition">
+      👻 Summon Your Spirit Numbers
+    </button>
+    <p class="text-mist/60 text-xs mt-5">Free · takes 30 seconds · for entertainment only</p>
+  </section>
+
+  <!-- ============ WIZARD ============ -->
+  <section id="wizard" class="hidden max-w-lg mx-auto pt-12">
+    <div class="flex justify-center gap-2 mb-7" id="dots"></div>
+    <div class="bg-panel border border-line rounded-2xl p-8 shadow-[0_18px_48px_-22px_rgba(0,0,0,.8)] relative overflow-hidden">
+      <div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-golddeep via-goldsoft to-golddeep"></div>
+
+      <div class="step" data-step="0">
+        <p class="font-disp text-gold text-sm tracking-[.14em] uppercase mb-2">The spirit stirs…</p>
+        <h2 class="font-disp font-semibold text-2xl mb-1">What shall the spirit call you?</h2>
+        <p class="text-mist text-sm mb-5">A nickname is fine — or leave it blank and stay mysterious.</p>
+        <input id="nick" type="text" maxlength="24" placeholder="Your nickname"
+          class="w-full bg-navy2 border border-line rounded-xl px-4 py-3.5 font-body text-lg focus:outline-none focus:ring-2 focus:ring-gold">
+      </div>
+
+      <div class="step" data-step="1">
+        <p class="font-disp text-gold text-sm tracking-[.14em] uppercase mb-2">The spirit leans closer…</p>
+        <h2 class="font-disp font-semibold text-2xl mb-1">On which day were you born?</h2>
+        <p class="text-mist text-sm mb-5">The day of the month, 1–31.</p>
+        <select id="bday" class="w-full bg-navy2 border border-line rounded-xl px-4 py-3.5 font-mono text-lg focus:outline-none focus:ring-2 focus:ring-gold"></select>
+      </div>
+
+      <div class="step" data-step="2">
+        <p class="font-disp text-gold text-sm tracking-[.14em] uppercase mb-2">The candles flicker…</p>
+        <h2 class="font-disp font-semibold text-2xl mb-1">And in which month?</h2>
+        <p class="text-mist text-sm mb-5">Your birth month.</p>
+        <select id="bmonth" class="w-full bg-navy2 border border-line rounded-xl px-4 py-3.5 font-body text-lg focus:outline-none focus:ring-2 focus:ring-gold"></select>
+      </div>
+
+      <div class="step" data-step="3">
+        <p class="font-disp text-gold text-sm tracking-[.14em] uppercase mb-2">The final whisper…</p>
+        <h2 class="font-disp font-semibold text-2xl mb-1">Which year were you born?</h2>
+        <p class="text-mist text-sm mb-5">Western (e.g. 1971) or Thai Buddhist year (e.g. 2514) — both work.</p>
+        <input id="byear" type="number" min="1900" max="2600" placeholder="e.g. 1971 or 2514"
+          class="w-full bg-navy2 border border-line rounded-xl px-4 py-3.5 font-mono text-lg focus:outline-none focus:ring-2 focus:ring-gold">
+        <p id="yearerr" class="hidden text-flag text-sm mt-2">Please enter a valid year (and a real calendar date).</p>
+      </div>
+
+      <div class="flex justify-between items-center mt-7">
+        <button id="back" class="font-disp text-mist hover:text-white px-4 py-2 rounded-xl border border-line bg-navy2 disabled:opacity-30" disabled>← Back</button>
+        <button id="next" class="font-disp font-semibold bg-gradient-to-br from-goldsoft to-golddeep text-[#2A1C04] px-7 py-2.5 rounded-xl shadow-[0_8px_24px_-10px_rgba(242,193,78,.55)] hover:-translate-y-0.5 transition">Continue →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ READING (brief pause) ============ -->
+  <section id="reading" class="hidden text-center pt-24 pb-16">
+    <div class="text-6xl ghost-bob inline-block">👻</div>
+    <h2 class="font-disp font-semibold text-2xl mt-6">The spirit is reading your stars…</h2>
+    <div class="max-w-xs mx-auto mt-6 space-y-3">
+      <div class="shimmer h-3 rounded-full"></div>
+      <div class="shimmer h-3 rounded-full w-4/5 mx-auto"></div>
+      <div class="shimmer h-3 rounded-full w-3/5 mx-auto"></div>
+    </div>
+  </section>
+
+  <!-- ============ RESULTS ============ -->
+  <section id="results" class="hidden pt-12">
+    <p class="text-center font-disp text-gold text-sm tracking-[.2em] uppercase">✦ The spirit has spoken</p>
+    <h2 id="greet" class="text-center font-disp font-bold text-3xl md:text-4xl mt-2"></h2>
+
+    <div class="grid md:grid-cols-3 gap-4 mt-9">
+      <div class="bg-panel border border-line rounded-2xl p-6 text-center">
+        <div id="zanimalIcon" class="text-5xl"></div>
+        <p class="font-disp text-gold text-xs tracking-[.16em] uppercase mt-3">Chinese zodiac</p>
+        <h3 id="zanimal" class="font-disp font-semibold text-xl mt-1"></h3>
+        <p id="zdesc" class="text-mist text-sm mt-2"></p>
+        <span id="zelement" class="inline-block mt-3 text-xs font-disp px-3 py-1 rounded-full border border-jade/50 text-jade bg-jade/10"></span>
+      </div>
+      <div class="bg-panel border border-line rounded-2xl p-6 text-center">
+        <div id="colorDot" class="w-12 h-12 rounded-full mx-auto border-4 border-white/20"></div>
+        <p class="font-disp text-gold text-xs tracking-[.16em] uppercase mt-3">Thai lucky color</p>
+        <h3 id="colorName" class="font-disp font-semibold text-xl mt-1"></h3>
+        <p id="colorDesc" class="text-mist text-sm mt-2"></p>
+      </div>
+      <div class="bg-panel border border-line rounded-2xl p-6 text-center">
+        <div id="coreNum" class="font-mono font-bold text-5xl text-gold text-glow"></div>
+        <p class="font-disp text-gold text-xs tracking-[.16em] uppercase mt-3">Core number</p>
+        <h3 class="font-disp font-semibold text-xl mt-1">Your numerology essence</h3>
+        <p id="coreDesc" class="text-mist text-sm mt-2"></p>
+      </div>
+    </div>
+
+    <div class="mt-10 bg-gradient-to-br from-panel2 to-navy2 border border-gold/40 rounded-2xl p-8 relative overflow-hidden">
+      <div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-golddeep via-goldsoft to-golddeep"></div>
+      <h3 class="font-disp font-semibold text-2xl text-center">👻 Your Spirit Numbers</h3>
+      <p class="text-mist text-sm text-center mt-1">Tap any number to copy it.</p>
+      <div id="numbers" class="flex flex-wrap justify-center gap-4 mt-7"></div>
+      <div class="flex flex-wrap justify-center gap-3 mt-8">
+        <button id="copyAll" class="font-disp text-sm px-5 py-2.5 rounded-xl border border-line bg-navy2 text-mist hover:text-white">📋 Copy all</button>
+        <button id="regen" class="font-disp font-semibold text-sm bg-gradient-to-br from-goldsoft to-golddeep text-[#2A1C04] px-5 py-2.5 rounded-xl hover:-translate-y-0.5 transition">✨ Generate new numbers</button>
+        <a href="/check" class="font-disp text-sm px-5 py-2.5 rounded-xl border border-gold/50 text-gold bg-gold/10 hover:bg-gold/20">Check them against 20 years of draws →</a>
+      </div>
+      <p class="text-center font-disp text-goldsoft mt-8 text-lg">May these Spirit Numbers bring you good luck and prosperity. 🙏</p>
+    </div>
+
+    <div class="text-center mt-8">
+      <button id="restart" class="font-disp text-sm text-mist hover:text-white underline underline-offset-4">Start over with different details</button>
+    </div>
+  </section>
+</main>
+
+<footer class="border-t border-line/60 bg-navy2/60">
+  <div class="max-w-5xl mx-auto px-6 py-8 text-center">
+    <p class="text-mist/80 text-xs max-w-2xl mx-auto">Spirit Numbers is a fun entertainment feature on thailotterynumbers.com. It is not affiliated with the Government Lottery Office (GLO) or any official lottery organization. Lottery results are completely random — no method can predict them. This tool is for entertainment purposes only. Please play responsibly and within your means.</p>
+    <p class="text-mist/50 text-xs mt-4">© 2026 Genext Information Systems · <a class="hover:text-gold" href="/">Home</a> · <a class="hover:text-gold" href="/responsible-play">Responsible Play</a> · <a class="hover:text-gold" href="/privacy">Privacy</a></p>
+  </div>
+</footer>
+
+<div id="toast" class="hidden fixed bottom-6 left-1/2 -translate-x-1/2 bg-gold text-navy font-disp font-semibold px-6 py-2.5 rounded-full shadow-xl z-50"></div>
+
+<script>
+(() => {
+"use strict";
+const $ = s => document.querySelector(s);
+
+/* ---------------- data ---------------- */
+const ZODIAC = [
+  ["Rat","🐀","Quick-witted and resourceful — Rats spot opportunity before anyone else and turn small chances into big wins."],
+  ["Ox","🐂","Steady and dependable — the Ox builds fortune patiently, and luck rewards that quiet persistence."],
+  ["Tiger","🐅","Brave and charismatic — Tigers attract bold luck and are at their strongest when they trust their instincts."],
+  ["Rabbit","🐇","Gentle and intuitive — Rabbits sense good fortune coming and glide gracefully toward it."],
+  ["Dragon","🐉","Powerful and magnetic — the luckiest sign of all, Dragons carry natural prosperity wherever they go."],
+  ["Snake","🐍","Wise and mysterious — Snakes read what others miss, and fortune favors their calm precision."],
+  ["Horse","🐎","Energetic and free-spirited — Horses gallop toward luck and thrive on momentum and optimism."],
+  ["Goat","🐐","Kind and artistic — Goats draw gentle, steady fortune through warmth and creativity."],
+  ["Monkey","🐒","Clever and playful — Monkeys charm luck itself, finding golden paths where none seemed to exist."],
+  ["Rooster","🐓","Confident and precise — Roosters shine brightest at dawn, greeting fortune before others wake."],
+  ["Dog","🐕","Loyal and honest — Dogs are protected by good karma, and sincere hearts attract sincere luck."],
+  ["Pig","🐖","Generous and warm — Pigs enjoy abundant fortune, for prosperity loves an open, giving spirit."]
+];
+const ELEMENTS = {0:"Metal",1:"Metal",2:"Water",3:"Water",4:"Wood",5:"Wood",6:"Fire",7:"Fire",8:"Earth",9:"Earth"};
+const ELEM_NOTE = {Metal:"Metal (Gold) — strength, clarity and wealth",Water:"Water — flow, wisdom and adaptability",
+  Wood:"Wood — growth, vitality and new beginnings",Fire:"Fire — passion, energy and visibility",
+  Earth:"Earth — stability, patience and abundance"};
+const DAYS = [
+  ["Sunday","Red","#E23B45","Born on the Sun's day — red carries power, honor and victory for you."],
+  ["Monday","Yellow / Cream","#F2D14E","Born on the Moon's day — yellow and cream bring calm charm and steady fortune."],
+  ["Tuesday","Pink","#F286A0","Born on Mars' day — pink softens fire into charisma and draws admirers and luck alike."],
+  ["Wednesday","Green","#3FB56A","Born on Mercury's day — green grows prosperity and keeps your path fresh and open."],
+  ["Thursday","Orange","#F2913D","Born on Jupiter's day — orange radiates wisdom, learning and expanding fortune."],
+  ["Friday","Light Blue","#6FC3E8","Born on Venus' day — light blue attracts love, beauty and smooth good luck."],
+  ["Saturday","Purple","#8E6FD8","Born on Saturn's day — purple holds deep, quiet power and karmic protection."]
+];
+const CORE_NOTE = {1:"a pioneer — luck finds you when you lead",2:"a harmonizer — fortune flows through partnerships",
+  3:"a creator — joy and expression attract your luck",4:"a builder — steady effort compounds into fortune",
+  5:"an adventurer — change itself is your lucky charm",6:"a guardian — luck returns what you give to others",
+  7:"a seeker — insight reveals numbers others overlook",8:"an achiever — the number of wealth and power",
+  9:"a sage — nine is Thailand's luckiest number, and it is yours by birth"};
+/* day-of-week flavored pools (inspiration lists from Thai tradition) */
+const DAY_POOLS = [
+  [10,19,37,55,73,25,52],      /* Sun */
+  [25,52,15,21,59,92],         /* Mon */
+  [68,86,66,88,63,89],         /* Tue */
+  [24,42,46,64,23,32],         /* Wed */
+  [17,71,13,31,57,75],         /* Thu */
+  [45,54,44,55,46,64],         /* Fri */
+  [70,7,27,72,78,87],          /* Sat */
+];
+const THAI_POPULAR = [9,19,29,39,49,59,69,79,89,99,90,91,95,15,51,56,65,24,42,63];
+
+/* ---------------- state ---------------- */
+const S = { step:0, nick:"", d:1, m:1, y:null, ce:null };
+const STEPS = 4;
+
+/* ---------------- helpers ---------------- */
+const pad = n => String(n).padStart(2,"0");
+const digitsum = n => String(n).split("").reduce((a,c)=>a+ +c,0);
+const reduce1 = n => { while(n>9) n = digitsum(n); return n; };
+const shuffle = a => { for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; };
+
+function coreNumber(d,m,y){ return reduce1(digitsum(d)+digitsum(m)+digitsum(y)); }
+
+function luckyNumbers(d,m,y,dow){
+  const core = coreNumber(d,m,y);
+  const corePool = []; for(let n=1;n<100;n++) if(reduce1(n)===core) corePool.push(n);
+  const ninePool = []; for(let n=1;n<100;n++){ const s=pad(n); if(s.includes("9")) ninePool.push(n); }
+  const nineCore = corePool.filter(n=>pad(n).includes("9"));
+  const picks = new Set();
+  const take = (pool,count)=>{ for(const n of shuffle([...pool])){ if(count<=0)break; if(!picks.has(n)){picks.add(n);count--;} } };
+  take(nineCore,2);                       // 9-numbers aligned to core
+  take(DAY_POOLS[dow],2);                 // birth-day tradition
+  take(ninePool,2);                       // more auspicious nines
+  take(corePool,1);                       // pure core resonance
+  take(THAI_POPULAR,8);                   // top up with Thai favorites
+  const out = [...picks].slice(0,8);
+  // guarantee at least 3 contain a 9
+  let nines = out.filter(n=>pad(n).includes("9")).length;
+  for(let i=out.length-1; i>=0 && nines<3; i--){
+    if(!pad(out[i]).includes("9")){
+      const cand = ninePool.find(n=>!out.includes(n));
+      if(cand){ out[i]=cand; nines++; }
+    }
+  }
+  return shuffle(out).map(pad);
+}
+
+/* year: accept CE or Thai Buddhist Era */
+function toCE(y){ return y >= 2400 ? y - 543 : y; }
+function validDate(d,m,y){ const t=new Date(y,m-1,d); return t.getFullYear()===y&&t.getMonth()===m-1&&t.getDate()===d; }
+
+/* ---------------- wizard ui ---------------- */
+const dotsEl = $("#dots");
+function drawDots(){
+  dotsEl.innerHTML = Array.from({length:STEPS},(_,i)=>
+    `<span class="w-2.5 h-2.5 rounded-full ${i<=S.step?"bg-gold":"bg-line"}"></span>`).join("");
+}
+function showStep(){
+  document.querySelectorAll(".step").forEach(el=>el.classList.toggle("on",+el.dataset.step===S.step));
+  $("#back").disabled = S.step===0;
+  $("#next").textContent = S.step===STEPS-1 ? "👻 Reveal my numbers" : "Continue →";
+  drawDots();
+  const g=$("#ghost"); g.classList.add("awake");
+  if(S.step===STEPS-1) g.classList.add("excited");
+}
+
+function begin(){
+  $("#hero").classList.add("hidden");
+  $("#wizard").classList.remove("hidden");
+  S.step=0; showStep(); $("#nick").focus();
+}
+
+function next(){
+  if(S.step===1){ S.d=+$("#bday").value; }
+  if(S.step===2){ S.m=+$("#bmonth").value; }
+  if(S.step===0){ S.nick=$("#nick").value.trim(); }
+  if(S.step<STEPS-1){ S.step++; showStep(); return; }
+  // final: validate year + date
+  const raw=+$("#byear").value;
+  const ce=toCE(raw);
+  if(!raw || ce<1900 || ce>new Date().getFullYear() || !validDate(S.d,S.m,ce)){
+    $("#yearerr").classList.remove("hidden"); return;
+  }
+  $("#yearerr").classList.add("hidden");
+  S.y=raw; S.ce=ce;
+  reveal();
+}
+
+function back(){ if(S.step>0){ S.step--; showStep(); } }
+
+/* ---------------- results ---------------- */
+function reveal(){
+  $("#wizard").classList.add("hidden");
+  $("#reading").classList.remove("hidden");
+  window.scrollTo(0,0);
+  setTimeout(()=>{
+    $("#reading").classList.add("hidden");
+    renderResults();
+    $("#results").classList.remove("hidden");
+  }, 1800);
+}
+
+function renderResults(){
+  const {d,m,ce}=S;
+  const dow=new Date(ce,m-1,d).getDay();
+  const [dayName,colName,colHex,colDesc]=DAYS[dow];
+  const zi=(ce-4)%12;
+  const [zname,zicon,zdesc]=ZODIAC[zi];
+  const elem=ELEMENTS[ce%10];
+  const core=coreNumber(d,m,ce);
+
+  $("#greet").textContent = S.nick ? `${S.nick}, the spirits know you well…` : "The spirits know you well…";
+  $("#zanimalIcon").textContent=zicon;
+  $("#zanimal").textContent=`${elem} ${zname}`;
+  $("#zdesc").textContent=zdesc;
+  $("#zelement").textContent=ELEM_NOTE[elem];
+  $("#colorDot").style.background=colHex;
+  $("#colorName").textContent=colName;
+  $("#colorDesc").textContent=`${colDesc} (You were born on a ${dayName}.)`;
+  $("#coreNum").textContent=core;
+  $("#coreDesc").textContent=`Core number ${core}: ${CORE_NOTE[core]}.`;
+  renderNumbers();
+}
+
+function renderNumbers(){
+  const dow=new Date(S.ce,S.m-1,S.d).getDay();
+  const nums=luckyNumbers(S.d,S.m,S.ce,dow);
+  $("#numbers").innerHTML=nums.map((n,i)=>`
+    <button data-n="${n}" class="num-tile font-mono font-bold text-3xl md:text-4xl text-gold bg-navy2 border-2 border-gold/60 rounded-2xl w-20 h-20 md:w-24 md:h-24 hover:scale-105 hover:border-gold transition shadow-[inset_0_-6px_14px_rgba(0,0,0,.5),0_8px_18px_-8px_rgba(242,193,78,.5)]"
+      style="animation-delay:${i*90}ms">${n}</button>`).join("");
+  document.querySelectorAll("#numbers button").forEach(b=>b.onclick=()=>copy(b.dataset.n));
+}
+
+function copy(text){
+  (navigator.clipboard?.writeText(text)||Promise.reject()).then(()=>toast(`Copied ${text} ✓`)).catch(()=>toast(text));
+}
+function toast(msg){
+  const el=$("#toast"); el.textContent=msg; el.classList.remove("hidden");
+  clearTimeout(el._t); el._t=setTimeout(()=>el.classList.add("hidden"),1600);
+}
+
+/* ---------------- boot ---------------- */
+$("#bday").innerHTML=Array.from({length:31},(_,i)=>`<option value="${i+1}">${i+1}</option>`).join("");
+const MONTHS=["January","February","March","April","May","June","July","August","September","October","November","December"];
+$("#bmonth").innerHTML=MONTHS.map((mn,i)=>`<option value="${i+1}">${mn}</option>`).join("");
+
+$("#summon").onclick=begin;
+$("#next").onclick=next;
+$("#back").onclick=back;
+$("#regen").onclick=renderNumbers;
+$("#copyAll").onclick=()=>copy([...document.querySelectorAll("#numbers button")].map(b=>b.dataset.n).join(" "));
+$("#restart").onclick=()=>{ $("#results").classList.add("hidden"); $("#ghost").classList.remove("excited"); begin(); };
+document.addEventListener("keyup",e=>{ if(e.key==="Enter" && !$("#wizard").classList.contains("hidden")) next(); });
+})();
+</script>
+</body>
+</html>

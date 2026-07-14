@@ -85,6 +85,11 @@ window.I18N = {
     story_fact3_v:"1", story_fact3_l:"Ticket she could afford",
     story_by:"Reported by the ThaiLotteryNumbers editorial team",
     story_cta:"Check your own numbers",
+    ghost_eyebrow:"New · Special feature",
+    ghost_title:"Spirit Numbers",
+    ghost_sub:"Let a friendly spirit read your Chinese zodiac, your Thai birth-day color, and your core numerology number — then reveal the lucky two-digit numbers hidden in your stars.",
+    ghost_cta:"Summon your numbers",
+    ghost_note:"Free · 30 seconds · for entertainment only",
   },
   th:{
     nav_home:"หน้าแรก", nav_results:"ผลรางวัล", nav_stats:"สถิติ", nav_search:"ค้นหา",
@@ -171,6 +176,11 @@ window.I18N = {
     story_fact3_v:"1", story_fact3_l:"ใบเดียวที่ซื้อไหว",
     story_by:"เรียบเรียงโดยทีมบรรณาธิการ ThaiLotteryNumbers",
     story_cta:"ตรวจเลขของคุณ",
+    ghost_eyebrow:"ใหม่ · ฟีเจอร์พิเศษ",
+    ghost_title:"เลขภูตน้อย Spirit Numbers",
+    ghost_sub:"ให้ภูตน้อยใจดีอ่านนักษัตรจีน สีมงคลประจำวันเกิด และเลขศาสตร์ประจำตัวของคุณ แล้วเผยเลขนำโชคสองหลักที่ซ่อนอยู่ในดวงดาวของคุณ",
+    ghost_cta:"เรียกเลขนำโชคของคุณ",
+    ghost_note:"ฟรี · ใช้เวลา 30 วินาที · เพื่อความบันเทิงเท่านั้น",
   }
 };
 /* v2 makeover */

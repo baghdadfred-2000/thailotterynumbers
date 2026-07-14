@@ -212,6 +212,29 @@ function home(){
   </section>
 
   <section class="section wrap" style="padding-top:0">
+    <a class="ghost-promo" href="/spirit-numbers/">
+      <div class="gp-ghost" aria-hidden="true">
+        <svg viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="gpg" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#F7D778" stop-opacity=".95"/>
+            <stop offset="1" stop-color="#F2C14E" stop-opacity=".55"/></linearGradient></defs>
+          <path fill="url(#gpg)" d="M60 6C33 6 14 27 14 55v56c0 6 7 9 11 5l7-7 9 9c3 3 8 3 11 0l8-8 8 8c3 3 8 3 11 0l9-9 7 7c4 4 11 1 11-5V55C106 27 87 6 60 6Z"/>
+          <circle cx="44" cy="52" r="6.5" fill="#0B1026"/><circle cx="76" cy="52" r="6.5" fill="#0B1026"/>
+          <circle cx="46" cy="50" r="2" fill="#F5F7FA"/><circle cx="78" cy="50" r="2" fill="#F5F7FA"/>
+          <ellipse cx="60" cy="72" rx="7" ry="9" fill="#0B1026" opacity=".85"/>
+        </svg>
+      </div>
+      <div class="gp-body">
+        <span class="eyebrow">✦ ${t("ghost_eyebrow")}</span>
+        <h2>${t("ghost_title")}</h2>
+        <p>${t("ghost_sub")}</p>
+        <span class="btn btn-gold gp-btn">👻 ${t("ghost_cta")}</span>
+        <span class="gp-note">${t("ghost_note")}</span>
+      </div>
+    </a>
+  </section>
+
+  <section class="section wrap" style="padding-top:0">
     <span class="eyebrow">${t("prizes_title")}</span>
     <h2>${t("prizes_title")}</h2><p class="lead">${t("prizes_sub")}</p>
     <div class="spacer"></div>
@@ -959,6 +982,7 @@ function interceptLinks(){
     if(!href || !href.startsWith("/")) return;          // ignore external / mailto / anchors
     if(href === "/guides" || href.startsWith("/guides/")) return;  // static blog: real navigation
     if(href === "/contact.html") return;  // static contact page: real navigation
+    if(href === "/spirit-numbers" || href.startsWith("/spirit-numbers/")) return;  // static feature page: real navigation
     if(a.target==="_blank" || e.metaKey || e.ctrlKey || e.shiftKey) return;
     e.preventDefault();
     if(href !== location.pathname + location.search) navigate(href);
