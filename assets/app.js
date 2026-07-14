@@ -231,6 +231,9 @@ function home(){
         <span class="btn btn-gold gp-btn">👻 ${t("ghost_cta")}</span>
         <span class="gp-note">${t("ghost_note")}</span>
       </div>
+      <div class="gp-media" aria-hidden="true">
+        <img src="/assets/tickets.jpg" alt="" loading="lazy">
+      </div>
     </a>
   </section>
 
