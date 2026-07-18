@@ -39,7 +39,7 @@ PREDICT = """
         <img src="/assets/charts/last2-frequency.svg" alt="Bar chart showing how often each last-two-digit number from 00 to 99 has won the Thai lottery last-two prize; the bars sit close to a flat average line, showing a roughly even, random spread." loading="lazy" width="900" height="380">
         <figcaption>Last-two-digit wins by number across the full archive. The spread is close to flat &mdash; exactly what a fair, random draw produces.</figcaption>
       </figure>
-      <p>Notice there is no meaningful pattern: the tallest and shortest bars differ by only a handful of wins out of hundreds of draws, and they are scattered with no structure. A &ldquo;hot&rdquo; number is just one that happens to sit slightly above the average so far. That tells you nothing about the next draw. You can explore the same data yourself on our <a href="/stats">statistics page</a> and look up any specific number in the <a href="/search">number search</a>.</p>
+      <p>Notice there is no meaningful pattern: the tallest and shortest bars differ by only a handful of wins out of hundreds of draws, and they are scattered with no structure. A &ldquo;hot&rdquo; number is just one that happens to sit slightly above the average so far. That tells you nothing about the next draw. You can explore the same data yourself on our <a href="/stats/">statistics page</a> and look up any specific number in the <a href="/search/">number search</a>.</p>
 
       <h3>Your real odds, tier by tier</h3>
       <p>It helps to see the actual numbers. For any single six-digit ticket:</p>
@@ -48,7 +48,7 @@ PREDICT = """
         <li><b>Last two digits</b> &mdash; there are 100 possible pairs (00&ndash;99), so about <b>1 in 100</b>. This is why the last-two prize, at &#3647;2,000, is the one most people ever win.</li>
         <li><b>Last three or front three</b> &mdash; each three-digit number is 1 in 1,000; because two numbers are drawn in each of those tiers, your chance of matching one is about <b>1 in 500</b>.</li>
       </ul>
-      <p>These odds are fixed by how the draw works. No statistic, system or ritual shifts them by even a fraction. We break every tier down in <a href="/guides/thai-lottery-odds-tier-by-tier">Understanding Lottery Odds</a>.</p>
+      <p>These odds are fixed by how the draw works. No statistic, system or ritual shifts them by even a fraction. We break every tier down in <a href="/guides/thai-lottery-odds-tier-by-tier/">Understanding Lottery Odds</a>.</p>
 
       <h3>Why buying more tickets barely moves the needle</h3>
       <p>Buying additional tickets does increase your absolute chance &mdash; but from almost nothing to slightly more than almost nothing. Ten different six-digit numbers raise your first-prize chance to about 10 in 1,000,000, which is still effectively zero, while your spending rises in a straight line. The lottery is designed so that, on average, players receive back less than they put in; that gap is what funds the prize pool and public programmes. Spending more does not change that arithmetic in your favour.</p>
@@ -58,8 +58,8 @@ PREDICT = """
       <p>Be far more cautious with anyone who <b>sells</b> predictions, &ldquo;leaked&rdquo; numbers or guaranteed systems. They cannot deliver what they promise &mdash; the maths makes that impossible &mdash; and paying for it only guarantees a loss before the draw even happens. If a seller could really predict results, they would have no reason to sell them to you.</p>
 
       <h3>How to use our statistics the right way</h3>
-      <p>So what are the tools on this site good for? Plenty &mdash; as long as you treat them as a record, not a crystal ball. Use the <a href="/results">results archive</a> to look up past draws, the <a href="/search">number search</a> to see a number&rsquo;s history, the <a href="/stats">statistics</a> to satisfy curiosity about the long-term spread, and the <a href="/check">Did I Win? checker</a> to confirm a ticket you already hold. They make a genuinely random game easy to explore and verify. They do not, and cannot, tell you what is coming next.</p>
-      <p>If playing ever stops feeling like harmless fun, please read our <a href="/responsible-play">Responsible Play</a> guidance, which includes support resources in Thailand.</p>
+      <p>So what are the tools on this site good for? Plenty &mdash; as long as you treat them as a record, not a crystal ball. Use the <a href="/results/">results archive</a> to look up past draws, the <a href="/search/">number search</a> to see a number&rsquo;s history, the <a href="/stats/">statistics</a> to satisfy curiosity about the long-term spread, and the <a href="/check/">Did I Win? checker</a> to confirm a ticket you already hold. They make a genuinely random game easy to explore and verify. They do not, and cannot, tell you what is coming next.</p>
+      <p>If playing ever stops feeling like harmless fun, please read our <a href="/responsible-play/">Responsible Play</a> guidance, which includes support resources in Thailand.</p>
 """
 
 PREDICT_FAQ = [
@@ -81,7 +81,7 @@ HOW_IT_WORKS = """
       <p>The lottery is administered by the <b>Government Lottery Office (GLO)</b>, a Thai state enterprise. It is one of only two forms of legal gambling in Thailand (the other being horse racing in Bangkok). A share of the proceeds funds the prize pool, with the remainder going to state revenue and public-welfare programmes. You can always verify official results and rules at <a href="https://www.glo.or.th" target="_blank" rel="noopener nofollow">glo.or.th</a>.</p>
 
       <h3>When the draw happens</h3>
-      <p>Draws are held twice a month, on the <b>1st and the 16th</b>, at around 4:00&nbsp;PM Bangkok time (ICT). The draw is televised, with the show running through the afternoon and the headline numbers revealed close to 4:00&nbsp;PM. When a draw date lands on certain public or Buddhist holidays it can be shifted by a day or two, and year-end dates are sometimes moved (for example a 30&nbsp;December draw in place of 1&nbsp;January). Our home page shows a countdown to the next scheduled draw, and the full schedule is covered in <a href="/guides/when-is-thai-lottery-drawn">When Is the Thai Lottery Drawn?</a></p>
+      <p>Draws are held twice a month, on the <b>1st and the 16th</b>, at around 4:00&nbsp;PM Bangkok time (ICT). The draw is televised, with the show running through the afternoon and the headline numbers revealed close to 4:00&nbsp;PM. When a draw date lands on certain public or Buddhist holidays it can be shifted by a day or two, and year-end dates are sometimes moved (for example a 30&nbsp;December draw in place of 1&nbsp;January). Our home page shows a countdown to the next scheduled draw, and the full schedule is covered in <a href="/guides/when-is-thai-lottery-drawn/">When Is the Thai Lottery Drawn?</a></p>
 
       <h3>How tickets are structured</h3>
       <p>Thai lottery tickets are <b>pre-printed</b>, each carrying a unique six-digit number. They are sold in <b>pairs</b>, and the official price is 80&nbsp;baht per ticket (160&nbsp;baht for the pair). Each printed set contains one million tickets, numbered 000000 to 999999. Because tickets are pre-printed rather than chosen, you are buying whatever numbers a vendor has in stock &mdash; which is why people hunt through vendors&rsquo; books for numbers they like.</p>
@@ -103,13 +103,13 @@ HOW_IT_WORKS = """
         <li><b>Last three digits</b> &mdash; &#3647;4,000 (2 numbers)</li>
         <li><b>Last two digits</b> &mdash; &#3647;2,000 (1 number)</li>
       </ul>
-      <p>The full breakdown of each tier is in <a href="/guides/thai-lottery-prize-tiers-explained">Prize Tiers Explained</a>. Note that the front-three prize is a relatively recent addition, introduced on 1&nbsp;September 2015.</p>
+      <p>The full breakdown of each tier is in <a href="/guides/thai-lottery-prize-tiers-explained/">Prize Tiers Explained</a>. Note that the front-three prize is a relatively recent addition, introduced on 1&nbsp;September 2015.</p>
 
       <h3>Checking and claiming</h3>
-      <p>After a draw you can compare your number against every tier. Our <a href="/check">Did I Win? checker</a> scans your six digits against 20 years of results in seconds, and the <a href="/results">results archive</a> holds every official draw. A match here is for your information only &mdash; any real win must be confirmed and paid through the GLO. The full process, including deadlines and what to bring, is in <a href="/guides/how-to-claim-thai-lottery-prize">How to Claim a Prize</a>.</p>
+      <p>After a draw you can compare your number against every tier. Our <a href="/check/">Did I Win? checker</a> scans your six digits against 20 years of results in seconds, and the <a href="/results/">results archive</a> holds every official draw. A match here is for your information only &mdash; any real win must be confirmed and paid through the GLO. The full process, including deadlines and what to bring, is in <a href="/guides/how-to-claim-thai-lottery-prize/">How to Claim a Prize</a>.</p>
 
       <h3>A note on the odds</h3>
-      <p>The lottery is popular despite long odds: matching all six digits for the first prize is about a 1-in-a-million chance on any single ticket. The numbers are random and independent, so no past result predicts a future one. If you choose to play, please treat it as entertainment and see our <a href="/responsible-play">Responsible Play</a> guidance.</p>
+      <p>The lottery is popular despite long odds: matching all six digits for the first prize is about a 1-in-a-million chance on any single ticket. The numbers are random and independent, so no past result predicts a future one. If you choose to play, please treat it as entertainment and see our <a href="/responsible-play/">Responsible Play</a> guidance.</p>
 """
 
 PRIZE_TIERS = """
@@ -142,13 +142,13 @@ PRIZE_TIERS = """
       <p>Because two numbers are drawn for each three-digit prize, and one for the two-digit prize, these tiers produce many more winners than the six-digit prizes.</p>
 
       <h3>The front-three prize is newer</h3>
-      <p>If you look at older results you will notice there is no front-three figure before <b>1&nbsp;September 2015</b> &mdash; that prize was introduced on that date, replacing an earlier &ldquo;first-three&rdquo; arrangement. Our <a href="/results">results archive</a> reflects this: draws before September 2015 show last-three and last-two prizes but no front-three.</p>
+      <p>If you look at older results you will notice there is no front-three figure before <b>1&nbsp;September 2015</b> &mdash; that prize was introduced on that date, replacing an earlier &ldquo;first-three&rdquo; arrangement. Our <a href="/results/">results archive</a> reflects this: draws before September 2015 show last-three and last-two prizes but no front-three.</p>
 
       <h3>The pair system</h3>
       <p>Every ticket is part of a pair with an identical number. Vendors often split pairs and sell single tickets, so check whether you are holding one ticket or two. If you hold the full pair and the number wins, every prize amount above is <b>doubled</b> &mdash; a paired first prize, for example, pays &#3647;12,000,000.</p>
 
       <h3>Check your number</h3>
-      <p>To see which tier (if any) a number has matched, enter it in our <a href="/check">Did I Win? checker</a> or look up its history in the <a href="/search">number search</a>. As always, confirm any win with the official Government Lottery Office before celebrating &mdash; and remember that past results never predict future ones.</p>
+      <p>To see which tier (if any) a number has matched, enter it in our <a href="/check/">Did I Win? checker</a> or look up its history in the <a href="/search/">number search</a>. As always, confirm any win with the official Government Lottery Office before celebrating &mdash; and remember that past results never predict future ones.</p>
 """
 
 DRAW_DATES = """
@@ -167,10 +167,10 @@ DRAW_DATES = """
       <p>The end of the year is the most common time for a shift. Rather than drawing on 1&nbsp;January, the calendar is often adjusted so that a draw lands on <b>30&nbsp;December</b> instead. You can see this in our own archive: several years record a 30&nbsp;December draw in place of an early-January one. If you are tracking the very start or end of a year, double-check which date applies.</p>
 
       <h3>How many draws happen in a year?</h3>
-      <p>In a normal year there are 24 draws. The total occasionally varies &mdash; for example, draws were disrupted in 2020 &mdash; which is one reason our statistics are based on the actual recorded draws rather than an assumed two-per-month. You can browse every recorded draw, filtered by year, in the <a href="/results">results archive</a>.</p>
+      <p>In a normal year there are 24 draws. The total occasionally varies &mdash; for example, draws were disrupted in 2020 &mdash; which is one reason our statistics are based on the actual recorded draws rather than an assumed two-per-month. You can browse every recorded draw, filtered by year, in the <a href="/results/">results archive</a>.</p>
 
       <h3>Never miss a result</h3>
-      <p>The fastest way to stay current is to check back here on the afternoon of the 1st and 16th, or use our <a href="/check">Did I Win? checker</a> once results are in. Our home page also shows a live countdown to the next scheduled draw. Whatever the date, remember that each draw is independent &mdash; the timing has no bearing on which numbers come up.</p>
+      <p>The fastest way to stay current is to check back here on the afternoon of the 1st and 16th, or use our <a href="/check/">Did I Win? checker</a> once results are in. Our home page also shows a live countdown to the next scheduled draw. Whatever the date, remember that each draw is independent &mdash; the timing has no bearing on which numbers come up.</p>
 """
 
 # ---------------------------------------------------------------------------
@@ -180,7 +180,7 @@ CLAIM = """
       <p class="lead">Won something? Congratulations &mdash; but a winning Thai lottery ticket is only worth its prize if you claim it correctly and on time. This guide walks through the process step by step, including where to go, what to bring, and the deadlines that matter. Always confirm the current procedure with the <a href="https://www.glo.or.th" target="_blank" rel="noopener nofollow">Government Lottery Office</a>, as details can change.</p>
 
       <h3>Step 1: Verify the win</h3>
-      <p>First, confirm your number actually matched a prize tier. Check it against the official results &mdash; you can use our <a href="/check">Did I Win? checker</a> for a quick scan, but treat the official GLO announcement as the final word before doing anything else.</p>
+      <p>First, confirm your number actually matched a prize tier. Check it against the official results &mdash; you can use our <a href="/check/">Did I Win? checker</a> for a quick scan, but treat the official GLO announcement as the final word before doing anything else.</p>
 
       <h3>Step 2: Sign the back of the ticket</h3>
       <p>As soon as you know you hold a winner, <b>sign your name on the back of the ticket</b>. The Thai lottery ticket is a <b>bearer instrument</b> &mdash; whoever holds it can claim it &mdash; so signing it helps protect against loss or theft. A ticket that is lost, badly torn or destroyed generally cannot be claimed, so keep it safe and intact.</p>
@@ -199,7 +199,7 @@ CLAIM = """
       </ul>
 
       <h3>Step 5: Receive payment, minus duty</h3>
-      <p>A small <b>stamp duty</b> is deducted at the point of claim &mdash; 0.5% for the standard Government Lottery (1% for the Charity Lottery). That is the only Thai deduction on the prize itself; any vendor commission on a small cash claim is separate. We explain the deductions in detail in <a href="/guides/thai-lottery-taxes-stamp-duty">Taxes &amp; Stamp Duty</a>.</p>
+      <p>A small <b>stamp duty</b> is deducted at the point of claim &mdash; 0.5% for the standard Government Lottery (1% for the Charity Lottery). That is the only Thai deduction on the prize itself; any vendor commission on a small cash claim is separate. We explain the deductions in detail in <a href="/guides/thai-lottery-taxes-stamp-duty/">Taxes &amp; Stamp Duty</a>.</p>
 
       <h3>The deadline: two years</h3>
       <p>You have <b>two years from the draw date</b> to claim a prize. After that, an unclaimed prize is forfeited and the money is turned over to the state as public revenue. Don&rsquo;t leave a winning ticket in a drawer &mdash; check and claim promptly.</p>
@@ -208,7 +208,7 @@ CLAIM = """
       <p>If you bought an official <b>digital ticket through the Pao Tang app</b>, there is no paper ticket to present: a win is recorded against your account and paid out through the platform according to its own process.</p>
 
       <h3>Avoid claim scams</h3>
-      <p>You never have to pay a fee in advance to &ldquo;release&rdquo; a legitimate lottery prize, and no official will ask for your banking passwords. Be wary of anyone who contacts you claiming you have won a lottery you didn&rsquo;t enter. For more, see <a href="/responsible-play">Responsible Play</a>, and verify everything through official GLO channels.</p>
+      <p>You never have to pay a fee in advance to &ldquo;release&rdquo; a legitimate lottery prize, and no official will ask for your banking passwords. Be wary of anyone who contacts you claiming you have won a lottery you didn&rsquo;t enter. For more, see <a href="/responsible-play/">Responsible Play</a>, and verify everything through official GLO channels.</p>
 """
 
 CLAIM_HOWTO = [
@@ -254,7 +254,7 @@ TAXES = """
       <p>Foreign nationals can claim Thai prizes on the same terms, with the same stamp duty. The complication is your <b>home country</b>: many countries tax worldwide income or foreign lottery winnings, and you may need to declare the funds when bringing large amounts across a border. Keep the official receipt from the GLO as proof, and check your own country&rsquo;s rules with a local tax adviser.</p>
 
       <h3>Keep your paperwork</h3>
-      <p>When you claim, especially for a larger prize, you receive official documentation of the win and the duty paid. Keep it &mdash; it is your evidence of where the money came from and what was deducted. For the full claiming walkthrough, see <a href="/guides/how-to-claim-thai-lottery-prize">How to Claim a Prize</a>.</p>
+      <p>When you claim, especially for a larger prize, you receive official documentation of the win and the duty paid. Keep it &mdash; it is your evidence of where the money came from and what was deducted. For the full claiming walkthrough, see <a href="/guides/how-to-claim-thai-lottery-prize/">How to Claim a Prize</a>.</p>
 """
 
 TAXES_FAQ = [
@@ -276,7 +276,7 @@ HOT_COLD = """
       <p>A <b>hot number</b> is one that has been drawn more often than average over a chosen period. A <b>cold number</b> is one that has been drawn less often, or not at all. That is the entire definition. It is a description of the past &mdash; a tally &mdash; and nothing more.</p>
 
       <h3>How we calculate them</h3>
-      <p>For each prize category &mdash; last-two, front-three, last-three &mdash; we count how many times every possible number has appeared as a winner across our archive of recorded draws, then rank them. The numbers at the top of the count are &ldquo;hot&rdquo;; those at the bottom are &ldquo;cold&rdquo;. You can see the live ranking, plus a heat grid and per-number trends, on our <a href="/stats">statistics page</a>.</p>
+      <p>For each prize category &mdash; last-two, front-three, last-three &mdash; we count how many times every possible number has appeared as a winner across our archive of recorded draws, then rank them. The numbers at the top of the count are &ldquo;hot&rdquo;; those at the bottom are &ldquo;cold&rdquo;. You can see the live ranking, plus a heat grid and per-number trends, on our <a href="/stats/">statistics page</a>.</p>
       <figure class="fig">
         <img src="/assets/charts/last2-frequency.svg" alt="Bar chart of how often each last-two-digit number from 00 to 99 has won, with the bars clustered around a flat average line." loading="lazy" width="900" height="380">
         <figcaption>Last-two-digit win counts across the full archive. &ldquo;Hot&rdquo; numbers are simply the slightly taller bars &mdash; the variation is what randomness looks like.</figcaption>
@@ -286,13 +286,13 @@ HOT_COLD = """
       <p>Look at the chart and you will see the bars cluster around the average, with some a little higher and some a little lower. Over hundreds of draws, the most-drawn last-two number has appeared only a handful more times than the average, and the spread has no pattern. This is exactly what <b>random variation</b> looks like: in any fair process, some outcomes get slightly ahead and others fall slightly behind, purely by chance. The gaps are noise, not signal.</p>
 
       <h3>The mistake almost everyone makes</h3>
-      <p>The temptation is to treat hot numbers as &ldquo;on a streak&rdquo; (so back them) or cold numbers as &ldquo;due&rdquo; (so back them too). Both are versions of the same error. Because every draw is <b>independent</b>, a number&rsquo;s past frequency has zero influence on the next draw. A hot number is not more likely to come up again, and a cold number is not owed an appearance. We explain the underlying maths in <a href="/guides/why-you-cant-predict-lottery-numbers">Why You Can&rsquo;t Predict Lottery Numbers</a>.</p>
+      <p>The temptation is to treat hot numbers as &ldquo;on a streak&rdquo; (so back them) or cold numbers as &ldquo;due&rdquo; (so back them too). Both are versions of the same error. Because every draw is <b>independent</b>, a number&rsquo;s past frequency has zero influence on the next draw. A hot number is not more likely to come up again, and a cold number is not owed an appearance. We explain the underlying maths in <a href="/guides/why-you-cant-predict-lottery-numbers/">Why You Can&rsquo;t Predict Lottery Numbers</a>.</p>
 
       <h3>So are the stats useless?</h3>
       <p>Not at all &mdash; they are just for the right job. Frequency stats are genuinely interesting as a record: they let you see how an honest random process plays out over 20 years, settle arguments about which number has actually come up most, and explore the data behind the lottery. They satisfy curiosity. What they cannot do is tell you what is coming next. Use them that way and they are a great tool; use them as a prediction and they will only cost you money.</p>
 
       <h3>Explore responsibly</h3>
-      <p>Dig into the numbers on the <a href="/stats">statistics page</a> and look up any number&rsquo;s full history in the <a href="/search">number search</a>. If choosing numbers ever starts to feel like more than fun, our <a href="/responsible-play">Responsible Play</a> page has guidance and support resources.</p>
+      <p>Dig into the numbers on the <a href="/stats/">statistics page</a> and look up any number&rsquo;s full history in the <a href="/search/">number search</a>. If choosing numbers ever starts to feel like more than fun, our <a href="/responsible-play/">Responsible Play</a> page has guidance and support resources.</p>
 """
 
 ODDS = """
@@ -326,7 +326,7 @@ ODDS = """
       <p>Each extra ticket with a different number adds one more chance in a million at the first prize. Ten tickets give you about 10 in 1,000,000 &mdash; still essentially zero &mdash; while costing ten times as much. The overall payout ratio of the lottery is well below the amount staked, which is how it funds prizes and public programmes. In other words, on average it returns less than you put in, by design. That is fine for entertainment; it is not a strategy for making money.</p>
 
       <h3>The odds never change</h3>
-      <p>Crucially, none of these odds shift from draw to draw or because of any number&rsquo;s history. They are fixed by the structure of the game. A number that hasn&rsquo;t appeared in years has the same 1-in-100 (or 1-in-a-million) chance as any other. For why that is, read <a href="/guides/why-you-cant-predict-lottery-numbers">Why You Can&rsquo;t Predict Lottery Numbers</a>, and to check a number&rsquo;s actual history use our <a href="/search">number search</a>. Please keep play within your means &mdash; see <a href="/responsible-play">Responsible Play</a>.</p>
+      <p>Crucially, none of these odds shift from draw to draw or because of any number&rsquo;s history. They are fixed by the structure of the game. A number that hasn&rsquo;t appeared in years has the same 1-in-100 (or 1-in-a-million) chance as any other. For why that is, read <a href="/guides/why-you-cant-predict-lottery-numbers/">Why You Can&rsquo;t Predict Lottery Numbers</a>, and to check a number&rsquo;s actual history use our <a href="/search/">number search</a>. Please keep play within your means &mdash; see <a href="/responsible-play/">Responsible Play</a>.</p>
 """
 
 DATA_20Y = """
@@ -347,39 +347,39 @@ DATA_20Y = """
       <p>The last-two-digit prize is the richest part of the record &mdash; one winning pair every draw, for 464 draws. If the lottery is fair, every pair from 00 to 99 should appear roughly the same number of times over a long span, with only chance-driven wobble. That is what we see: across the archive the average pair has won about <b>4&ndash;5 times</b>, the most-drawn pair has appeared around <b>11 times</b>, and at the other extreme some pairs have come up only once. One pair has not appeared as a last-two winner at all in the recorded draws.</p>
 
       <h3>Doesn&rsquo;t a missing number prove a pattern?</h3>
-      <p>It&rsquo;s the opposite. With 100 possible pairs and 464 draws, pure chance guarantees that some numbers race ahead while others lag or get skipped entirely &mdash; that scatter is the signature of randomness, not evidence against it. If every number had appeared exactly the same number of times, <i>that</i> would be suspicious. A number that has never come up is not &ldquo;cold&rdquo; or &ldquo;avoided&rdquo;; it has the same chance as any other in the next draw. We unpack this in <a href="/guides/what-hot-and-cold-numbers-mean">What Hot and Cold Numbers Really Mean</a>.</p>
+      <p>It&rsquo;s the opposite. With 100 possible pairs and 464 draws, pure chance guarantees that some numbers race ahead while others lag or get skipped entirely &mdash; that scatter is the signature of randomness, not evidence against it. If every number had appeared exactly the same number of times, <i>that</i> would be suspicious. A number that has never come up is not &ldquo;cold&rdquo; or &ldquo;avoided&rdquo;; it has the same chance as any other in the next draw. We unpack this in <a href="/guides/what-hot-and-cold-numbers-mean/">What Hot and Cold Numbers Really Mean</a>.</p>
 
       <h3>The honest takeaway</h3>
-      <p>Twenty years of data is a wonderful thing to explore, but it does not reveal a system, because there isn&rsquo;t one. The value of a long record is that it lets you <i>see</i> randomness clearly &mdash; the even-ish spread, the meaningless streaks, the gaps &mdash; and understand why no past result predicts a future one. Browse it all in the <a href="/results">results archive</a> and the <a href="/stats">statistics page</a>, search any number&rsquo;s history in <a href="/search">number search</a>, and read how we compile the data on our <a href="/about">About</a> page.</p>
+      <p>Twenty years of data is a wonderful thing to explore, but it does not reveal a system, because there isn&rsquo;t one. The value of a long record is that it lets you <i>see</i> randomness clearly &mdash; the even-ish spread, the meaningless streaks, the gaps &mdash; and understand why no past result predicts a future one. Browse it all in the <a href="/results/">results archive</a> and the <a href="/stats/">statistics page</a>, search any number&rsquo;s history in <a href="/search/">number search</a>, and read how we compile the data on our <a href="/about/">About</a> page.</p>
 """
 
 FAQ_ARTICLE = """
       <p class="lead">A plain-language reference to the questions we&rsquo;re asked most about the Thai Government Lottery &mdash; from draw times and prize amounts to claiming, taxes and whether anyone can predict the numbers. For deeper detail, follow the links into our full guides.</p>
 
       <h3>The basics</h3>
-      <p><b>When is the Thai lottery drawn?</b> Twice a month, on the 1st and the 16th, at around 4:00&nbsp;PM Bangkok time. Some holidays can shift the date; see <a href="/guides/when-is-thai-lottery-drawn">When Is the Thai Lottery Drawn?</a></p>
+      <p><b>When is the Thai lottery drawn?</b> Twice a month, on the 1st and the 16th, at around 4:00&nbsp;PM Bangkok time. Some holidays can shift the date; see <a href="/guides/when-is-thai-lottery-drawn/">When Is the Thai Lottery Drawn?</a></p>
       <p><b>How much does a ticket cost?</b> The official price is 80&nbsp;baht per ticket. Tickets are pre-printed, carry a six-digit number, and are sold in pairs (160&nbsp;baht for the pair).</p>
       <p><b>Who runs it?</b> The Government Lottery Office (GLO), a Thai state enterprise. Proceeds help fund prizes and public-welfare programmes.</p>
 
       <h3>Prizes</h3>
       <p><b>How much is the first prize?</b> &#3647;6,000,000 per ticket. As tickets are sold in pairs, a matching pair pays &#3647;12,000,000.</p>
-      <p><b>What do the smaller prizes pay?</b> The last two digits pay &#3647;2,000; the front three and last three pay &#3647;4,000 each; second to fifth prizes pay &#3647;200,000, &#3647;80,000, &#3647;40,000 and &#3647;20,000; and the two numbers adjacent to the first prize pay &#3647;100,000 each. Full detail in <a href="/guides/thai-lottery-prize-tiers-explained">Prize Tiers Explained</a>.</p>
-      <p><b>What are my odds?</b> About 1 in 1,000,000 for the first prize on a single ticket, and about 1 in 100 for the last-two prize. See <a href="/guides/thai-lottery-odds-tier-by-tier">Understanding the Odds</a>.</p>
+      <p><b>What do the smaller prizes pay?</b> The last two digits pay &#3647;2,000; the front three and last three pay &#3647;4,000 each; second to fifth prizes pay &#3647;200,000, &#3647;80,000, &#3647;40,000 and &#3647;20,000; and the two numbers adjacent to the first prize pay &#3647;100,000 each. Full detail in <a href="/guides/thai-lottery-prize-tiers-explained/">Prize Tiers Explained</a>.</p>
+      <p><b>What are my odds?</b> About 1 in 1,000,000 for the first prize on a single ticket, and about 1 in 100 for the last-two prize. See <a href="/guides/thai-lottery-odds-tier-by-tier/">Understanding the Odds</a>.</p>
 
       <h3>Checking &amp; claiming</h3>
-      <p><b>How do I check my ticket?</b> Enter your six-digit number in our <a href="/check">Did I Win? checker</a>, which scans every tier across 20 years of draws. Always confirm against the official GLO results before claiming.</p>
-      <p><b>How do I claim a prize?</b> Small prizes (up to 20,000 baht) are paid in cash by authorised vendors; larger prizes are claimed in person at a Government Lottery Office with the signed ticket and ID. Full walkthrough in <a href="/guides/how-to-claim-thai-lottery-prize">How to Claim a Prize</a>.</p>
+      <p><b>How do I check my ticket?</b> Enter your six-digit number in our <a href="/check/">Did I Win? checker</a>, which scans every tier across 20 years of draws. Always confirm against the official GLO results before claiming.</p>
+      <p><b>How do I claim a prize?</b> Small prizes (up to 20,000 baht) are paid in cash by authorised vendors; larger prizes are claimed in person at a Government Lottery Office with the signed ticket and ID. Full walkthrough in <a href="/guides/how-to-claim-thai-lottery-prize/">How to Claim a Prize</a>.</p>
       <p><b>How long do I have to claim?</b> Two years from the draw date, after which the prize is forfeited to the state.</p>
-      <p><b>How much tax is taken?</b> A stamp duty of 0.5% on the Government Lottery (1% on the Charity Lottery). See <a href="/guides/thai-lottery-taxes-stamp-duty">Taxes &amp; Stamp Duty</a>.</p>
+      <p><b>How much tax is taken?</b> A stamp duty of 0.5% on the Government Lottery (1% on the Charity Lottery). See <a href="/guides/thai-lottery-taxes-stamp-duty/">Taxes &amp; Stamp Duty</a>.</p>
 
       <h3>Numbers &amp; odds</h3>
-      <p><b>Can past results predict future numbers?</b> No. Every draw is independent and random, so frequency history never changes the odds of the next draw. Our statistics are for interest only &mdash; read <a href="/guides/why-you-cant-predict-lottery-numbers">Why You Can&rsquo;t Predict Lottery Numbers</a>.</p>
-      <p><b>What are &ldquo;hot&rdquo; and &ldquo;cold&rdquo; numbers?</b> Simply numbers that have appeared more or less often in the past. Interesting, but not predictive &mdash; see <a href="/guides/what-hot-and-cold-numbers-mean">What Hot and Cold Numbers Really Mean</a>.</p>
+      <p><b>Can past results predict future numbers?</b> No. Every draw is independent and random, so frequency history never changes the odds of the next draw. Our statistics are for interest only &mdash; read <a href="/guides/why-you-cant-predict-lottery-numbers/">Why You Can&rsquo;t Predict Lottery Numbers</a>.</p>
+      <p><b>What are &ldquo;hot&rdquo; and &ldquo;cold&rdquo; numbers?</b> Simply numbers that have appeared more or less often in the past. Interesting, but not predictive &mdash; see <a href="/guides/what-hot-and-cold-numbers-mean/">What Hot and Cold Numbers Really Mean</a>.</p>
       <p><b>How far back does your data go?</b> Roughly 20 years &mdash;464 recorded draws from 2006 to today, added automatically as results are published.</p>
 
       <h3>Eligibility</h3>
       <p><b>Can foreigners play and claim?</b> Yes. Anyone can buy tickets from licensed vendors in Thailand, and any holder of a valid winning ticket can claim it &mdash; bring a passport as ID.</p>
-      <p>Still have a question? <a href="/contact">Contact us</a> and we&rsquo;ll do our best to help. Please also see our <a href="/responsible-play">Responsible Play</a> guidance.</p>
+      <p>Still have a question? <a href="/contact.html">Contact us</a> and we&rsquo;ll do our best to help. Please also see our <a href="/responsible-play/">Responsible Play</a> guidance.</p>
 """
 
 FAQ_ARTICLE_FAQ = [
@@ -434,10 +434,10 @@ CULTURE = """
 
       <h3>Lucky numbers and the lottery &mdash; the honest part</h3>
       <p>All of this flows straight into the lottery. Vendors often price tickets carrying lucky digits &mdash; strings of nines and eights, repeated digits, ascending runs, birth dates, or a plate number from a recent stroke of good fortune &mdash; at a premium, and buyers will flip through a vendor&rsquo;s book hunting for the &ldquo;right&rdquo; number. Numbers also arrive from dreams, a monk&rsquo;s blessing, or the news.</p>
-      <p>Here is the part we never soften: <b>the draw is random and independent.</b> A &ldquo;lucky&rdquo; 999999 ticket has exactly the same chance as a &ldquo;dreaded&rdquo; 444444 one &mdash; about 1 in 1,000,000 for the first prize, or 1 in 100 for the last two digits. Choosing a number for its meaning is a lovely tradition, but it does not change your odds, and paying extra for a lucky number simply costs more for the same chance. We work through the maths in <a href="/guides/why-you-cant-predict-lottery-numbers">Why You Can&rsquo;t Predict Lottery Numbers</a>.</p>
+      <p>Here is the part we never soften: <b>the draw is random and independent.</b> A &ldquo;lucky&rdquo; 999999 ticket has exactly the same chance as a &ldquo;dreaded&rdquo; 444444 one &mdash; about 1 in 1,000,000 for the first prize, or 1 in 100 for the last two digits. Choosing a number for its meaning is a lovely tradition, but it does not change your odds, and paying extra for a lucky number simply costs more for the same chance. We work through the maths in <a href="/guides/why-you-cant-predict-lottery-numbers/">Why You Can&rsquo;t Predict Lottery Numbers</a>.</p>
 
       <h3>Enjoy the culture, respect the odds</h3>
-      <p>These beliefs are a rich, living part of Thai life, and they deserve curiosity rather than ridicule. Play a number that means something to you, by all means &mdash; for the meaning, the memory or the fun of it. Just hold it lightly, treat any spending as entertainment, and see our <a href="/responsible-play">Responsible Play</a> guidance if it ever stops being fun. You can look up the real history of any number in our <a href="/search">number search</a>.</p>
+      <p>These beliefs are a rich, living part of Thai life, and they deserve curiosity rather than ridicule. Play a number that means something to you, by all means &mdash; for the meaning, the memory or the fun of it. Just hold it lightly, treat any spending as entertainment, and see our <a href="/responsible-play/">Responsible Play</a> guidance if it ever stops being fun. You can look up the real history of any number in our <a href="/search/">number search</a>.</p>
 """
 
 CULTURE_TH = """
@@ -475,10 +475,10 @@ CULTURE_TH = """
 
       <h3>เลขมงคลกับสลาก — ส่วนที่ต้องพูดตรง ๆ</h3>
       <p>ทั้งหมดนี้ไหลตรงเข้าสู่สลากกินแบ่ง ผู้ขายมักตั้งราคาสลากที่มีเลขมงคล — เลขเก้าและแปดเรียงกัน เลขซ้ำ ลำดับไล่ขึ้น วันเกิด หรือเลขป้ายทะเบียนจากเหตุการณ์โชคดีล่าสุด — สูงกว่าปกติ และผู้ซื้อก็พลิกหาเลข &ldquo;ที่ใช่&rdquo; ในแผงของผู้ขาย เลขยังมาจากความฝัน การให้พรของพระ หรือข่าว</p>
-      <p>และนี่คือส่วนที่เราจะไม่พูดให้อ่อนลง <b>การออกรางวัลเป็นการสุ่มและเป็นอิสระ</b> สลากเลข &ldquo;มงคล&rdquo; 999999 มีโอกาสเท่ากันเป๊ะกับเลข &ldquo;ต้องห้าม&rdquo; 444444 — ประมาณ 1 ใน 1,000,000 สำหรับรางวัลที่ 1 หรือ 1 ใน 100 สำหรับเลขท้าย 2 ตัว การเลือกเลขด้วยความหมายเป็นธรรมเนียมที่งดงาม แต่ไม่ได้เปลี่ยนโอกาสของคุณ และการจ่ายแพงขึ้นเพื่อเลขมงคลก็เพียงทำให้เสียเงินมากขึ้นเพื่อโอกาสเท่าเดิม เราอธิบายคณิตศาสตร์ไว้ใน <a href="/guides/why-you-cant-predict-lottery-numbers">ทำไมจึงทำนายเลขสลากไม่ได้</a></p>
+      <p>และนี่คือส่วนที่เราจะไม่พูดให้อ่อนลง <b>การออกรางวัลเป็นการสุ่มและเป็นอิสระ</b> สลากเลข &ldquo;มงคล&rdquo; 999999 มีโอกาสเท่ากันเป๊ะกับเลข &ldquo;ต้องห้าม&rdquo; 444444 — ประมาณ 1 ใน 1,000,000 สำหรับรางวัลที่ 1 หรือ 1 ใน 100 สำหรับเลขท้าย 2 ตัว การเลือกเลขด้วยความหมายเป็นธรรมเนียมที่งดงาม แต่ไม่ได้เปลี่ยนโอกาสของคุณ และการจ่ายแพงขึ้นเพื่อเลขมงคลก็เพียงทำให้เสียเงินมากขึ้นเพื่อโอกาสเท่าเดิม เราอธิบายคณิตศาสตร์ไว้ใน <a href="/guides/why-you-cant-predict-lottery-numbers/">ทำไมจึงทำนายเลขสลากไม่ได้</a></p>
 
       <h3>เพลิดเพลินกับวัฒนธรรม เคารพความน่าจะเป็น</h3>
-      <p>ความเชื่อเหล่านี้เป็นส่วนหนึ่งที่มีชีวิตและงดงามของวัฒนธรรมไทย สมควรได้รับความสนใจมากกว่าการเยาะเย้ย หากอยากเล่นเลขที่มีความหมายกับคุณก็เชิญเลย — เพื่อความหมาย ความทรงจำ หรือความสนุก เพียงถือไว้อย่างเบา ๆ ถือว่าเงินที่ใช้เป็นค่าความบันเทิง และดูแนวทางที่หน้า <a href="/responsible-play">เล่นอย่างมีสติ</a> หากมันเลิกสนุก คุณค้นประวัติของเลขใด ๆ ได้ที่ <a href="/search">ค้นหาหมายเลข</a></p>
+      <p>ความเชื่อเหล่านี้เป็นส่วนหนึ่งที่มีชีวิตและงดงามของวัฒนธรรมไทย สมควรได้รับความสนใจมากกว่าการเยาะเย้ย หากอยากเล่นเลขที่มีความหมายกับคุณก็เชิญเลย — เพื่อความหมาย ความทรงจำ หรือความสนุก เพียงถือไว้อย่างเบา ๆ ถือว่าเงินที่ใช้เป็นค่าความบันเทิง และดูแนวทางที่หน้า <a href="/responsible-play/">เล่นอย่างมีสติ</a> หากมันเลิกสนุก คุณค้นประวัติของเลขใด ๆ ได้ที่ <a href="/search/">ค้นหาหมายเลข</a></p>
 """
 
 CULTURE_FAQ = [

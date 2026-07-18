@@ -105,6 +105,7 @@ PAGES = [
    intro=[
      "ThaiLotteryNumbers.com is a free, independent reference for the Thai Government Lottery (GLO). We publish each official result as soon as it is announced and pair it with roughly 20 years of historical draws — from 2006 to today — so you can look up any past number, study how often it has appeared, and check whether a ticket has ever matched a prize.",
      "The Thai Government Lottery is drawn twice a month, on the 1st and the 16th at around 4:00 PM Bangkok time. The first prize pays 6,000,000 baht per ticket, with further prizes for the adjacent numbers, the second through fifth tiers, and the front-three, last-three and last-two digits. Our tools cover every tier: browse the full results archive, search any 2-, 3-, or 6-digit number, explore frequency statistics, and use the &ldquo;Did I Win?&rdquo; checker.",
+     "Real luck still strikes: on 1 June 2026, Inthira Saisun — a 25-year-old pregnant vegetable vendor from Tak province — won the ฿6,000,000 first prize with a single ticket, number 173770, after the number came to her in a dream. Read her story on this page.",
      "Everything here is for information and entertainment only. We are not affiliated with the Government Lottery Office, we do not sell tickets, and our statistics are not a prediction — every draw is independent and random, so past frequency never changes future odds. Always verify any result against official GLO sources, and please see our Responsible Play guidance before you take part.",
    ],
    priority="1.0", changefreq="daily"),
@@ -332,11 +333,18 @@ def article_main(a):
 # .format() VALUES, so their literal { } braces are safe (never re-parsed).
 AD_SIDE = """<div class="ad-slot"><iframe title="Advertisement" width="160" height="600" scrolling="no" frameborder="0" marginwidth="0" marginheight="0" style="border:0;display:block;overflow:hidden" srcdoc='<body style="margin:0;overflow:hidden"><script type="text/javascript">atOptions = {"key":"c56722e9415f1e7dec7c7765e4de5b8b","format":"iframe","height":600,"width":160,"params":{}};</script><script type="text/javascript" src="https://www.highperformanceformat.com/c56722e9415f1e7dec7c7765e4de5b8b/invoke.js"></script></body>'></iframe></div>"""
 
-AD_BANNER = """<div class="ad-banner" aria-hidden="true"><iframe title="Advertisement" width="728" height="90" scrolling="no" frameborder="0" marginwidth="0" marginheight="0" style="border:0;display:block;overflow:hidden" srcdoc='<body style="margin:0;overflow:hidden"><script type="text/javascript">atOptions = {"key":"72fad5ef476409ccc013cc9841ea409d","format":"iframe","height":90,"width":728,"params":{}};</script><script type="text/javascript" src="https://www.highperformanceformat.com/72fad5ef476409ccc013cc9841ea409d/invoke.js"></script></body>'></iframe></div>"""
+AD_BANNER = """<div class="ad-banner" aria-hidden="true"><iframe title="Advertisement" width="728" height="90" scrolling="no" frameborder="0" marginwidth="0" marginheight="0" style="border:0;display:block;overflow:hidden" srcdoc='<body style="margin:0;overflow:hidden"><script type="text/javascript">atOptions = {"key":"72fad5ef476409ccc013cc9841ea409d","format":"iframe","height":90,"width":728,"params":{}};</script><script type="text/javascript" src="https://www.highperformanceformat.com/72fad5ef476409ccc013cc9841ea409d/invoke.js"></script><style class="xadr-fix">.xadr{position:absolute!important;top:auto!important;bottom:calc(100% + 100px)!important;width:160px!important;z-index:40;line-height:0}.xadr iframe{border:0;display:block;overflow:hidden}.xadr-l{left:calc(50% - 676px)!important;right:auto!important}.xadr-r{right:calc(50% - 676px)!important;left:auto!important}@media(max-width:1400px){.xadr{display:none!important}}[data-xadr-footer]{position:relative}</style>
+</body>'></iframe></div>"""
+
+# Footer-anchored side rails (160x300). Absolutely positioned via .xadr CSS in
+# AD_BANNER's xadr-fix block, relative to the [data-xadr-footer] footer.
+AD_XADR = """<div class="xadr xadr-l" aria-label="Advertisement"><iframe title="Advertisement" width="160" height="300" scrolling="no" frameborder="0" marginwidth="0" marginheight="0" style="border:0;display:block;overflow:hidden" srcdoc='<body style="margin:0;overflow:hidden"><script type="text/javascript">atOptions = {"key":"9be06fd037140de6cef9638b63fd0299","format":"iframe","height":300,"width":160,"params":{}};</script><script type="text/javascript" src="https://www.highperformanceformat.com/9be06fd037140de6cef9638b63fd0299/invoke.js"></script></body>'></iframe></div><div class="xadr xadr-r" aria-label="Advertisement"><iframe title="Advertisement" width="160" height="300" scrolling="no" frameborder="0" marginwidth="0" marginheight="0" style="border:0;display:block;overflow:hidden" srcdoc='<body style="margin:0;overflow:hidden"><script type="text/javascript">atOptions = {"key":"9be06fd037140de6cef9638b63fd0299","format":"iframe","height":300,"width":160,"params":{}};</script><script type="text/javascript" src="https://www.highperformanceformat.com/9be06fd037140de6cef9638b63fd0299/invoke.js"></script></body>'></iframe></div>"""
 
 HEAD = """<!DOCTYPE html>
 <html lang="en">
 <head>
+<style class="xad-off">.xadr,.ad-rail,.side-rail,.rail-ad,.wz-rail{{display:none!important}}</style>
+<link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" type="image/png" href="/favicon.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{title}</title>
@@ -384,20 +392,16 @@ _SPA_BODY = """
 </header>
 
 <div class="layout">
-  <aside class="ad-rail ad-left">
-    {ad_side}
-  </aside>
+  
   <main id="view" aria-live="polite">
 {main}
   </main>
-  <aside class="ad-rail ad-right">
-    {ad_side}
-  </aside>
+  
 </div>
 
 {ad_banner}
 
-<footer class="ft">
+<footer class="ft" data-xadr-footer>{ad_xadr}
   <div class="wrap">
     <div class="ft-grid" id="footerGrid"></div>
     <div class="flag-rule"><i></i><i></i><i></i><i></i><i></i></div>
@@ -438,7 +442,7 @@ _BLOG_BODY = """
       <a href="/guides/" class="active"><span class="lang-en">Guides</span><span class="lang-th">คู่มือ</span></a>
       <a href="/faq/"><span class="lang-en">FAQ</span><span class="lang-th">คำถามที่พบบ่อย</span></a>
       <a href="/about/"><span class="lang-en">About</span><span class="lang-th">เกี่ยวกับ</span></a>
-      <a href="/contact"><span class="lang-en">Contact</span><span class="lang-th">ติดต่อ</span></a>
+      <a href="/contact.html"><span class="lang-en">Contact</span><span class="lang-th">ติดต่อ</span></a>
     </nav>
     <div class="lang-toggle" role="group" aria-label="Language">
       <button data-lang="en" class="on">EN</button>
@@ -448,20 +452,16 @@ _BLOG_BODY = """
 </header>
 
 <div class="layout">
-  <aside class="ad-rail ad-left">
-    {ad_side}
-  </aside>
+  
   <main id="view">
 {main}
   </main>
-  <aside class="ad-rail ad-right">
-    {ad_side}
-  </aside>
+  
 </div>
 
 {ad_banner}
 
-<footer class="ft">
+<footer class="ft" data-xadr-footer>{ad_xadr}
   <div class="wrap">
     <div class="ft-grid">
       <div>
@@ -469,7 +469,7 @@ _BLOG_BODY = """
         <p class="muted" style="font-size:.86rem"><span class="lang-en">Compiled from official GLO announcements and reliable public records.</span><span class="lang-th">รวบรวมจากประกาศทางการของ GLO และบันทึกสาธารณะที่เชื่อถือได้</span></p>
       </div>
       <div><h4><span class="lang-en">Explore</span><span class="lang-th">สำรวจ</span></h4><a href="/results/"><span class="lang-en">Results</span><span class="lang-th">ผลรางวัล</span></a><a href="/stats/"><span class="lang-en">Statistics</span><span class="lang-th">สถิติ</span></a><a href="/search/"><span class="lang-en">Search</span><span class="lang-th">ค้นหา</span></a><a href="/check/"><span class="lang-en">Did I Win?</span><span class="lang-th">ฉันถูกไหม?</span></a></div>
-      <div><h4><span class="lang-en">Project</span><span class="lang-th">โครงการ</span></h4><a href="/about/"><span class="lang-en">About</span><span class="lang-th">เกี่ยวกับ</span></a><a href="/faq/"><span class="lang-en">FAQ</span><span class="lang-th">คำถามที่พบบ่อย</span></a><a href="/contact"><span class="lang-en">Contact</span><span class="lang-th">ติดต่อ</span></a></div>
+      <div><h4><span class="lang-en">Project</span><span class="lang-th">โครงการ</span></h4><a href="/about/"><span class="lang-en">About</span><span class="lang-th">เกี่ยวกับ</span></a><a href="/faq/"><span class="lang-en">FAQ</span><span class="lang-th">คำถามที่พบบ่อย</span></a><a href="/contact.html"><span class="lang-en">Contact</span><span class="lang-th">ติดต่อ</span></a></div>
       <div><h4><span class="lang-en">Legal</span><span class="lang-th">กฎหมาย</span></h4><a href="/privacy/"><span class="lang-en">Privacy Policy</span><span class="lang-th">นโยบายความเป็นส่วนตัว</span></a><a href="/cookies/"><span class="lang-en">Cookie Policy</span><span class="lang-th">นโยบายคุกกี้</span></a><a href="/terms/"><span class="lang-en">Terms & Disclaimer</span><span class="lang-th">ข้อกำหนด & ข้อปฏิเสธ</span></a><a href="/responsible-play/"><span class="lang-en">Responsible Play</span><span class="lang-th">เล่นอย่างมีสติ</span></a><a href="/cookie-settings/"><span class="lang-en">Cookie Settings</span><span class="lang-th">ตั้งค่าคุกกี้</span></a><a href="/accessibility/"><span class="lang-en">Accessibility</span><span class="lang-th">การเข้าถึง</span></a></div>
     </div>
     <div class="flag-rule"><i></i><i></i><i></i><i></i><i></i></div>
@@ -513,7 +513,7 @@ def render_main(p):
     return f'    <section class="seo-intro wrap">\n{inner}\n    </section>'
 
 def blog_index_schema():
-    can = f"{SITE}/guides"
+    can = f"{SITE}/guides/"
     items = [{"@type": "ListItem", "position": 1, "name": "Home", "item": f"{SITE}/"},
              {"@type": "ListItem", "position": 2, "name": "Guides", "item": can}]
     page = {"@type": "CollectionPage", "@id": can + "#webpage", "url": can,
@@ -539,7 +539,7 @@ def build_blog():
     html = BLOG_TEMPLATE.format(
         title=BLOG_INDEX_TITLE, desc=BLOG_INDEX_DESC, robots="index, follow",
         canonical=f"{SITE}/guides/", site=SITE, schema=blog_index_schema(),
-        main=blog_index_main(), ad_side=AD_SIDE, ad_banner=AD_BANNER)
+        main=blog_index_main(), ad_side=AD_SIDE, ad_banner=AD_BANNER, ad_xadr=AD_XADR)
     write(os.path.join(HERE, "guides", "index.html"), html)
     print("wrote guides/index.html (blog index)")
     # Articles
@@ -547,7 +547,7 @@ def build_blog():
         html = BLOG_TEMPLATE.format(
             title=a["title"], desc=a["desc"], robots="index, follow",
             canonical=article_canonical(a), site=SITE, schema=article_schema(a),
-            main=article_main(a), ad_side=AD_SIDE, ad_banner=AD_BANNER)
+            main=article_main(a), ad_side=AD_SIDE, ad_banner=AD_BANNER, ad_xadr=AD_XADR)
         out = os.path.join(HERE, "guides", a["slug"], "index.html")
         write(out, html)
         print("wrote", os.path.relpath(out, HERE))
@@ -558,7 +558,7 @@ def build_pages():
         html = TEMPLATE.format(
             title=p["title"], desc=p["desc"], robots=robots,
             canonical=canonical(p["slug"]), site=SITE, schema=schema_for(p),
-            main=render_main(p), ad_side=AD_SIDE, ad_banner=AD_BANNER,
+            main=render_main(p), ad_side=AD_SIDE, ad_banner=AD_BANNER, ad_xadr=AD_XADR,
         )
         out = os.path.join(HERE, "index.html") if p["slug"] == "" \
             else os.path.join(HERE, p["slug"], "index.html")
