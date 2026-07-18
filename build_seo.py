@@ -48,7 +48,7 @@ EDITORIAL = "By the ThaiLotteryNumbers editorial team · Genext Information Syst
 from article_content import ARTICLES
 
 def article_canonical(a):
-    return f"{SITE}/guides/{a['slug']}"
+    return f"{SITE}/guides/{a['slug']}/"
 
 # Cards for the Guides index, newest first (bilingual; falls back to EN)
 def guide_cards(lang):
@@ -60,7 +60,7 @@ def guide_cards(lang):
         else:
             cat = a["category"]; h1 = a["h1"]; desc = a["desc"]; upd = "Updated " + a["updated"]
         cards.append(
-            f'<a class="guide-card" href="/guides/{a["slug"]}">'
+            f'<a class="guide-card" href="/guides/{a["slug"]}/">'
             f'<span class="gc-cat">{cat}</span>'
             f'<div class="gc-title">{h1}</div>'
             f'<div class="gc-desc">{desc}</div>'
@@ -77,25 +77,25 @@ BLOG_INDEX_EN = """      <span class="eyebrow">Guides</span>
       <h1>Thai Lottery Guides</h1>
       <p class="lead">Plain-language guides to how the Thai Government Lottery works, how prizes are claimed, and how to read the statistics responsibly. Everything here is educational — never a prediction of results.</p>
       <h3>How the lottery works</h3>
-      <p>Draws take place twice a month, on the 1st and the 16th at around 4:00 PM Bangkok time. Prizes range from the first prize (฿6,000,000 per ticket) down to the last-two digits (฿2,000). Browse every draw in our <a href="/results">results archive</a>.</p>
+      <p>Draws take place twice a month, on the 1st and the 16th at around 4:00 PM Bangkok time. Prizes range from the first prize (฿6,000,000 per ticket) down to the last-two digits (฿2,000). Browse every draw in our <a href="/results/">results archive</a>.</p>
       <h3>Checking &amp; claiming prizes</h3>
-      <p>Small prizes can be paid by authorised vendors, while large prizes are claimed at the Government Lottery Office with photo ID and the original ticket. Check your number first with our <a href="/check">Did I Win? checker</a>, then confirm with the <a href="https://www.glo.or.th" target="_blank" rel="noopener nofollow">GLO</a>.</p>
+      <p>Small prizes can be paid by authorised vendors, while large prizes are claimed at the Government Lottery Office with photo ID and the original ticket. Check your number first with our <a href="/check/">Did I Win? checker</a>, then confirm with the <a href="https://www.glo.or.th" target="_blank" rel="noopener nofollow">GLO</a>.</p>
       <h3>Understanding the numbers</h3>
-      <p>Frequency statistics — &ldquo;hot&rdquo; and &ldquo;cold&rdquo; numbers — are interesting but cannot predict results, because every draw is independent and random. Explore our <a href="/stats">statistics</a> and <a href="/search">number search</a>.</p>
+      <p>Frequency statistics — &ldquo;hot&rdquo; and &ldquo;cold&rdquo; numbers — are interesting but cannot predict results, because every draw is independent and random. Explore our <a href="/stats/">statistics</a> and <a href="/search/">number search</a>.</p>
       <h3>Playing responsibly</h3>
-      <p>The lottery is entertainment, not an investment. Play within your means and always set a limit. If it ever becomes a problem, support is available — read our <a href="/responsible-play">Responsible Play</a> guidance.</p>"""
+      <p>The lottery is entertainment, not an investment. Play within your means and always set a limit. If it ever becomes a problem, support is available — read our <a href="/responsible-play/">Responsible Play</a> guidance.</p>"""
 
 BLOG_INDEX_TH = """      <span class="eyebrow">คู่มือ</span>
       <h1>คู่มือสลากกินแบ่งรัฐบาล</h1>
       <p class="lead">คู่มือภาษาที่เข้าใจง่ายเกี่ยวกับการทำงานของสลากกินแบ่งรัฐบาล วิธีขึ้นเงินรางวัล และวิธีอ่านสถิติอย่างถูกต้อง เนื้อหาทั้งหมดเพื่อการศึกษา ไม่ใช่การทำนายผลรางวัล</p>
       <h3>วิธีการทำงานของสลาก</h3>
-      <p>การออกรางวัลมีเดือนละสองครั้ง คือวันที่ 1 และ 16 เวลาประมาณ 16:00 น. ตามเวลาประเทศไทย รางวัลมีตั้งแต่รางวัลที่ 1 (฿6,000,000 ต่อใบ) ไปจนถึงเลขท้าย 2 ตัว (฿2,000) ดูผลทุกงวดได้ที่ <a href="/results">คลังผลรางวัล</a></p>
+      <p>การออกรางวัลมีเดือนละสองครั้ง คือวันที่ 1 และ 16 เวลาประมาณ 16:00 น. ตามเวลาประเทศไทย รางวัลมีตั้งแต่รางวัลที่ 1 (฿6,000,000 ต่อใบ) ไปจนถึงเลขท้าย 2 ตัว (฿2,000) ดูผลทุกงวดได้ที่ <a href="/results/">คลังผลรางวัล</a></p>
       <h3>การตรวจและขึ้นเงินรางวัล</h3>
-      <p>รางวัลเล็กขึ้นเงินได้กับตัวแทนจำหน่าย ส่วนรางวัลใหญ่ต้องขึ้นที่สำนักงานสลากกินแบ่งรัฐบาลพร้อมบัตรประชาชนและสลากตัวจริง ตรวจหมายเลขของคุณก่อนได้ที่ <a href="/check">เครื่องตรวจสลาก</a> แล้วยืนยันกับ <a href="https://www.glo.or.th" target="_blank" rel="noopener nofollow">GLO</a></p>
+      <p>รางวัลเล็กขึ้นเงินได้กับตัวแทนจำหน่าย ส่วนรางวัลใหญ่ต้องขึ้นที่สำนักงานสลากกินแบ่งรัฐบาลพร้อมบัตรประชาชนและสลากตัวจริง ตรวจหมายเลขของคุณก่อนได้ที่ <a href="/check/">เครื่องตรวจสลาก</a> แล้วยืนยันกับ <a href="https://www.glo.or.th" target="_blank" rel="noopener nofollow">GLO</a></p>
       <h3>ทำความเข้าใจตัวเลข</h3>
-      <p>สถิติความถี่ — เลข &ldquo;ร้อน&rdquo; และ &ldquo;เย็น&rdquo; — น่าสนใจแต่ทำนายผลไม่ได้ เพราะทุกงวดเป็นอิสระและสุ่ม สำรวจได้ที่ <a href="/stats">สถิติ</a> และ <a href="/search">ค้นหาหมายเลข</a></p>
+      <p>สถิติความถี่ — เลข &ldquo;ร้อน&rdquo; และ &ldquo;เย็น&rdquo; — น่าสนใจแต่ทำนายผลไม่ได้ เพราะทุกงวดเป็นอิสระและสุ่ม สำรวจได้ที่ <a href="/stats/">สถิติ</a> และ <a href="/search/">ค้นหาหมายเลข</a></p>
       <h3>เล่นอย่างมีสติ</h3>
-      <p>สลากคือความบันเทิง ไม่ใช่การลงทุน เล่นเท่าที่ไหวและตั้งวงเงินเสมอ หากเริ่มเป็นปัญหา มีแหล่งช่วยเหลืออยู่ — อ่านแนวทางได้ที่หน้า <a href="/responsible-play">เล่นอย่างมีสติ</a></p>"""
+      <p>สลากคือความบันเทิง ไม่ใช่การลงทุน เล่นเท่าที่ไหวและตั้งวงเงินเสมอ หากเริ่มเป็นปัญหา มีแหล่งช่วยเหลืออยู่ — อ่านแนวทางได้ที่หน้า <a href="/responsible-play/">เล่นอย่างมีสติ</a></p>"""
 
 # slug, title, description (<=160), h1, intro paragraph(s), priority, changefreq, flags
 PAGES = [
@@ -164,7 +164,7 @@ PAGES = [
         <li>Buying more tickets does not meaningfully improve your odds of the top prize.</li>
       </ul>
       <h3>Understanding the odds</h3>
-      <p>Matching all six digits for the first prize is extremely unlikely on any single ticket. We explain the real probabilities in plain language in our <a href="/guides">guides</a> so you can make informed, realistic decisions. Understanding the odds is the single best protection against unrealistic expectations.</p>
+      <p>Matching all six digits for the first prize is extremely unlikely on any single ticket. We explain the real probabilities in plain language in our <a href="/guides/">guides</a> so you can make informed, realistic decisions. Understanding the odds is the single best protection against unrealistic expectations.</p>
       <h3>Protecting yourself and others</h3>
       <p>Gambling should stay fun. If it stops being fun — if you feel you can&rsquo;t stop, if you&rsquo;re spending more than you intended, hiding it, or borrowing to play — that is a sign to seek support. These feelings are common and help is available.</p>
       <h3>Where to get help (Thailand)</h3>
@@ -193,7 +193,7 @@ PAGES = [
       <h3>Entertainment &amp; information only</h3>
       <p>For entertainment and information only. Not affiliated with the Government Lottery Office (GLO) or any Thai government body. Always verify numbers against official sources.</p>
       <h3>Responsible play</h3>
-      <p>This site is for entertainment and information only and is intended for adults (18+). Nothing here is gambling advice, a betting strategy, or a prediction of future results. The lottery is a game of chance; past results never influence future draws. If gambling stops being enjoyable, please see our <a href="/responsible-play">Responsible Play</a> page for guidance and support resources.</p>
+      <p>This site is for entertainment and information only and is intended for adults (18+). Nothing here is gambling advice, a betting strategy, or a prediction of future results. The lottery is a game of chance; past results never influence future draws. If gambling stops being enjoyable, please see our <a href="/responsible-play/">Responsible Play</a> page for guidance and support resources.</p>
       <h3>No facilitation of gambling</h3>
       <p>We do not sell lottery tickets, accept payments or wagers, or link to any service that does. Links to the Government Lottery Office are provided solely so you can verify official results.</p>
       <h3>Accuracy and official results</h3>
@@ -212,7 +212,7 @@ PAGES = [
 ]
 
 def canonical(slug):
-    return f"{SITE}/" if slug == "" else f"{SITE}/{slug}"
+    return f"{SITE}/" if slug == "" else f"{SITE}/{slug}/"
 
 def breadcrumb(slug, h1):
     items = [{"@type": "ListItem", "position": 1, "name": "Home", "item": f"{SITE}/"}]
@@ -303,7 +303,7 @@ def _article_block(a, lang):
     faq_head = "คำถามที่พบบ่อย" if th else "Frequently asked questions"
     crumb = ('      <nav class="crumb" aria-label="Breadcrumb">'
              f'<a href="/">{home}</a><span>&rsaquo;</span>'
-             f'<a href="/guides">{guides_l}</a><span>&rsaquo;</span>{h1}</nav>')
+             f'<a href="/guides/">{guides_l}</a><span>&rsaquo;</span>{h1}</nav>')
     head = (f'      <h1>{h1}</h1>\n'
             f'      <p class="byline"><b>{editor}</b><br>{updated_l}: {a["updated"]}</p>')
     faq_html = ""
@@ -431,13 +431,13 @@ _BLOG_BODY = """
     <button class="burger" aria-label="Menu">☰</button>
     <nav class="nav-links">
       <a href="/"><span class="lang-en">Home</span><span class="lang-th">หน้าแรก</span></a>
-      <a href="/results"><span class="lang-en">Results</span><span class="lang-th">ผลรางวัล</span></a>
-      <a href="/stats"><span class="lang-en">Statistics</span><span class="lang-th">สถิติ</span></a>
-      <a href="/search"><span class="lang-en">Search</span><span class="lang-th">ค้นหา</span></a>
-      <a href="/check"><span class="lang-en">Did I Win?</span><span class="lang-th">ฉันถูกไหม?</span></a>
-      <a href="/guides" class="active"><span class="lang-en">Guides</span><span class="lang-th">คู่มือ</span></a>
-      <a href="/faq"><span class="lang-en">FAQ</span><span class="lang-th">คำถามที่พบบ่อย</span></a>
-      <a href="/about"><span class="lang-en">About</span><span class="lang-th">เกี่ยวกับ</span></a>
+      <a href="/results/"><span class="lang-en">Results</span><span class="lang-th">ผลรางวัล</span></a>
+      <a href="/stats/"><span class="lang-en">Statistics</span><span class="lang-th">สถิติ</span></a>
+      <a href="/search/"><span class="lang-en">Search</span><span class="lang-th">ค้นหา</span></a>
+      <a href="/check/"><span class="lang-en">Did I Win?</span><span class="lang-th">ฉันถูกไหม?</span></a>
+      <a href="/guides/" class="active"><span class="lang-en">Guides</span><span class="lang-th">คู่มือ</span></a>
+      <a href="/faq/"><span class="lang-en">FAQ</span><span class="lang-th">คำถามที่พบบ่อย</span></a>
+      <a href="/about/"><span class="lang-en">About</span><span class="lang-th">เกี่ยวกับ</span></a>
       <a href="/contact"><span class="lang-en">Contact</span><span class="lang-th">ติดต่อ</span></a>
     </nav>
     <div class="lang-toggle" role="group" aria-label="Language">
@@ -468,9 +468,9 @@ _BLOG_BODY = """
         <div class="brand" style="margin-bottom:12px"><img src="/assets/logo.svg" alt="" width="30" height="30"><span class="bn">Thai Lottery<b>Numbers</b></span></div>
         <p class="muted" style="font-size:.86rem"><span class="lang-en">Compiled from official GLO announcements and reliable public records.</span><span class="lang-th">รวบรวมจากประกาศทางการของ GLO และบันทึกสาธารณะที่เชื่อถือได้</span></p>
       </div>
-      <div><h4><span class="lang-en">Explore</span><span class="lang-th">สำรวจ</span></h4><a href="/results"><span class="lang-en">Results</span><span class="lang-th">ผลรางวัล</span></a><a href="/stats"><span class="lang-en">Statistics</span><span class="lang-th">สถิติ</span></a><a href="/search"><span class="lang-en">Search</span><span class="lang-th">ค้นหา</span></a><a href="/check"><span class="lang-en">Did I Win?</span><span class="lang-th">ฉันถูกไหม?</span></a></div>
-      <div><h4><span class="lang-en">Project</span><span class="lang-th">โครงการ</span></h4><a href="/about"><span class="lang-en">About</span><span class="lang-th">เกี่ยวกับ</span></a><a href="/faq"><span class="lang-en">FAQ</span><span class="lang-th">คำถามที่พบบ่อย</span></a><a href="/contact"><span class="lang-en">Contact</span><span class="lang-th">ติดต่อ</span></a></div>
-      <div><h4><span class="lang-en">Legal</span><span class="lang-th">กฎหมาย</span></h4><a href="/privacy"><span class="lang-en">Privacy Policy</span><span class="lang-th">นโยบายความเป็นส่วนตัว</span></a><a href="/cookies"><span class="lang-en">Cookie Policy</span><span class="lang-th">นโยบายคุกกี้</span></a><a href="/terms"><span class="lang-en">Terms & Disclaimer</span><span class="lang-th">ข้อกำหนด & ข้อปฏิเสธ</span></a><a href="/responsible-play"><span class="lang-en">Responsible Play</span><span class="lang-th">เล่นอย่างมีสติ</span></a><a href="/cookie-settings"><span class="lang-en">Cookie Settings</span><span class="lang-th">ตั้งค่าคุกกี้</span></a><a href="/accessibility"><span class="lang-en">Accessibility</span><span class="lang-th">การเข้าถึง</span></a></div>
+      <div><h4><span class="lang-en">Explore</span><span class="lang-th">สำรวจ</span></h4><a href="/results/"><span class="lang-en">Results</span><span class="lang-th">ผลรางวัล</span></a><a href="/stats/"><span class="lang-en">Statistics</span><span class="lang-th">สถิติ</span></a><a href="/search/"><span class="lang-en">Search</span><span class="lang-th">ค้นหา</span></a><a href="/check/"><span class="lang-en">Did I Win?</span><span class="lang-th">ฉันถูกไหม?</span></a></div>
+      <div><h4><span class="lang-en">Project</span><span class="lang-th">โครงการ</span></h4><a href="/about/"><span class="lang-en">About</span><span class="lang-th">เกี่ยวกับ</span></a><a href="/faq/"><span class="lang-en">FAQ</span><span class="lang-th">คำถามที่พบบ่อย</span></a><a href="/contact"><span class="lang-en">Contact</span><span class="lang-th">ติดต่อ</span></a></div>
+      <div><h4><span class="lang-en">Legal</span><span class="lang-th">กฎหมาย</span></h4><a href="/privacy/"><span class="lang-en">Privacy Policy</span><span class="lang-th">นโยบายความเป็นส่วนตัว</span></a><a href="/cookies/"><span class="lang-en">Cookie Policy</span><span class="lang-th">นโยบายคุกกี้</span></a><a href="/terms/"><span class="lang-en">Terms & Disclaimer</span><span class="lang-th">ข้อกำหนด & ข้อปฏิเสธ</span></a><a href="/responsible-play/"><span class="lang-en">Responsible Play</span><span class="lang-th">เล่นอย่างมีสติ</span></a><a href="/cookie-settings/"><span class="lang-en">Cookie Settings</span><span class="lang-th">ตั้งค่าคุกกี้</span></a><a href="/accessibility/"><span class="lang-en">Accessibility</span><span class="lang-th">การเข้าถึง</span></a></div>
     </div>
     <div class="flag-rule"><i></i><i></i><i></i><i></i><i></i></div>
     <div class="ft-bottom">
@@ -538,7 +538,7 @@ def build_blog():
     # Blog index (/guides) — standalone, bilingual, no SPA engine
     html = BLOG_TEMPLATE.format(
         title=BLOG_INDEX_TITLE, desc=BLOG_INDEX_DESC, robots="index, follow",
-        canonical=f"{SITE}/guides", site=SITE, schema=blog_index_schema(),
+        canonical=f"{SITE}/guides/", site=SITE, schema=blog_index_schema(),
         main=blog_index_main(), ad_side=AD_SIDE, ad_banner=AD_BANNER)
     write(os.path.join(HERE, "guides", "index.html"), html)
     print("wrote guides/index.html (blog index)")
@@ -568,9 +568,12 @@ def build_pages():
     write(os.path.join(HERE, "404.html"),
           open(os.path.join(HERE, "index.html"), encoding="utf-8").read())
     print("wrote 404.html (SPA fallback)")
-    # Netlify SPA fallback
-    write(os.path.join(HERE, "_redirects"), "/*    /index.html    200\n")
-    print("wrote _redirects (Netlify fallback)")
+    # Netlify redirects: legacy path 301s first, then SPA fallback last
+    write(os.path.join(HERE, "_redirects"),
+          "/ghost-numbers/*    /spirit-numbers/:splat    301\n"
+          "/ghost-numbers    /spirit-numbers/    301\n"
+          "/*    /index.html    200\n")
+    print("wrote _redirects (Netlify redirects + fallback)")
 
 def build_robots():
     txt = f"""# robots.txt for thailotterynumbers.com
@@ -605,7 +608,7 @@ def build_sitemap():
             continue
         lm = LATEST if p["slug"] in ("", "results", "stats") else TODAY
         urls.append((canonical(p["slug"]), lm, p["changefreq"], p["priority"]))
-    urls.append((f"{SITE}/guides", TODAY, "weekly", "0.7"))   # blog index
+    urls.append((f"{SITE}/guides/", TODAY, "weekly", "0.7"))   # blog index
     for a in ARTICLES:
         urls.append((article_canonical(a), a["updated"], "monthly", "0.6"))
     body = "\n".join(
