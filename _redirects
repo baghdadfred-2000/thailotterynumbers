@@ -1,3 +1,5 @@
 /ghost-numbers/*    /spirit-numbers/:splat    301
 /ghost-numbers    /spirit-numbers/    301
-/*    /index.html    200
+/contact    /contact.html    301
+/results/*    /index.html    200
+/*    /404.html    404

@@ -11,7 +11,7 @@ Run after changing page copy or adding draws:
     python build_seo.py
 (The output is committed to the repo, so visitors never need to run anything.)
 """
-import os, json, datetime
+import os, json, re, datetime
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 SITE = "https://thailotterynumbers.com"
@@ -712,16 +712,50 @@ def build_pages():
             else os.path.join(HERE, p["slug"], "index.html")
         write(out, html)
         print("wrote", os.path.relpath(out, HERE))
-    # SPA fallback for dynamic URLs (e.g. /results/2026-06-01) on GitHub Pages
-    write(os.path.join(HERE, "404.html"),
-          open(os.path.join(HERE, "index.html"), encoding="utf-8").read())
-    print("wrote 404.html (SPA fallback)")
-    # Netlify redirects: legacy path 301s first, then SPA fallback last
+    # 404 page: same shell as the homepage so app.js boots and the router's
+    # notFound() view renders, but with its own <head> so it is NOT a
+    # byte-for-byte duplicate of the homepage (that made it a soft 404).
+    shell = open(os.path.join(HERE, "index.html"), encoding="utf-8").read()
+    nf_title = "Page Not Found (404) | ThaiLotteryNumbers.com"
+    nf_desc = ("The page you are looking for does not exist or has moved. "
+               "Browse the latest Thai Government Lottery results, statistics "
+               "and number search from the homepage.")
+    subs = [
+        (r"<title>.*?</title>", f"<title>{nf_title}</title>"),
+        (r'<meta name="description" content=".*?">',
+         f'<meta name="description" content="{nf_desc}">'),
+        (r'<meta name="robots" content=".*?">',
+         '<meta name="robots" content="noindex, follow">'),
+        (r'<meta property="og:title" content=".*?">',
+         f'<meta property="og:title" content="{nf_title}">'),
+        (r'<meta property="og:description" content=".*?">',
+         f'<meta property="og:description" content="{nf_desc}">'),
+        (r'<meta name="twitter:title" content=".*?">',
+         f'<meta name="twitter:title" content="{nf_title}">'),
+        (r'<meta name="twitter:description" content=".*?">',
+         f'<meta name="twitter:description" content="{nf_desc}">'),
+        # A 404 must not claim the homepage as its canonical URL.
+        (r'<link rel="canonical" href=".*?">', ""),
+        (r'<meta property="og:url" content=".*?">', ""),
+    ]
+    for pat, rep in subs:
+        shell = re.sub(pat, rep, shell, count=1, flags=re.S)
+    write(os.path.join(HERE, "404.html"), shell)
+    print("wrote 404.html (noindex, own title, no canonical)")
+    # Netlify redirects. Rules run top-to-bottom, and real static files are
+    # always served before any rule, so every baked route (/stats, /faq,
+    # /spirit-numbers, ...) is untouched by the catch-all below.
+    #   - /results/:date is the ONLY genuinely dynamic route (app.js
+    #     drawDetail()), so it keeps a 200 rewrite or deep links 404 on reload.
+    #   - Everything else unmatched is a real dead URL and must return a real
+    #     404 status, otherwise Google flags it as a soft 404.
     write(os.path.join(HERE, "_redirects"),
           "/ghost-numbers/*    /spirit-numbers/:splat    301\n"
           "/ghost-numbers    /spirit-numbers/    301\n"
-          "/*    /index.html    200\n")
-    print("wrote _redirects (Netlify redirects + fallback)")
+          "/contact    /contact.html    301\n"
+          "/results/*    /index.html    200\n"
+          "/*    /404.html    404\n")
+    print("wrote _redirects (SPA route 200, genuine 404s)")
 
 def build_robots():
     txt = f"""# robots.txt for thailotterynumbers.com
