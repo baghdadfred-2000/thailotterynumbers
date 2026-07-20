@@ -499,7 +499,71 @@ CULTURE_FAQ_TH = [
      "ไม่จริง ทุกงวดเป็นการสุ่มและเป็นอิสระ เลข &ldquo;มงคล&rdquo; จึงมีโอกาสเท่ากับเลขอื่นทุกประการ เลขมงคลเป็นทางเลือกทางวัฒนธรรม ไม่ใช่วิธีเพิ่มโอกาสถูกรางวัล"),
 ]
 
+# ---------------------------------------------------------------------------
+# Playing as a foreigner
+# ---------------------------------------------------------------------------
+FOREIGNERS = """
+      <p class="lead">Yes &mdash; foreigners can legally buy Thai Government Lottery tickets and claim any prize they win, up to and including the six-million-baht first prize. Whether you are a tourist passing through Bangkok, an expat living in Chiang Mai, or a migrant worker sending money home, the rules are the same: the ticket is what matters, not your passport. This guide explains exactly what you can and cannot do, and how to protect a winning ticket. Always confirm current procedures with the <a href="https://www.glo.or.th" target="_blank" rel="noopener nofollow">Government Lottery Office</a> (GLO), as details can change.</p>
+
+      <h3>Buying a ticket: open to everyone, in person</h3>
+      <p>There is no nationality requirement to buy a Thai Government Lottery ticket, and no ID is asked for at the point of sale. You simply buy from a licensed street vendor, market stall or lottery shop anywhere in Thailand. Draws are held twice a month, on the 1st and the 16th, and vendors sell right up until draw day.</p>
+      <p>The official face value is <b>80 baht</b> per ticket, each printed with one six-digit number. Vendors often ask more for &ldquo;popular&rdquo; numbers, and tickets are commonly bundled in matching pairs &mdash; which is why winners holding a pair collect twelve million baht instead of six. A small premium is common; several hundred baht for an ordinary ticket is not something you need to accept.</p>
+
+      <h3>What foreigners cannot do: the official digital lottery</h3>
+      <p>Thailand also sells official digital tickets through the GLO&rsquo;s online channels and the <b>Paotang app</b>, at a fixed 80 baht. Registration, however, requires e-KYC identity verification with a <b>Thai national ID card</b>, which most foreigners do not hold. Thai citizens can buy digital tickets from their phone; foreigners are limited to paper tickets bought in person.</p>
+      <p>The same applies from abroad: there is no official way to buy a Thai lottery ticket over the internet from outside Thailand. Websites selling &ldquo;Thai lottery tickets&rdquo; internationally, or offering Thai results as a betting product, are not part of the official lottery &mdash; and private lottery-style gambling is illegal under Thai law.</p>
+
+      <h3>If you win: your prize is yours</h3>
+      <p>Nationality does not affect the right to claim. A Thai lottery ticket is a <b>bearer instrument</b>: whoever presents the physical ticket can claim the prize. That cuts both ways &mdash; it means a foreigner faces no extra hurdle to the money, and it also means a lost or stolen ticket is as good as gone. The moment you buy, and certainly the moment you learn you have won, <b>sign your name on the back of the ticket</b>. For either claim route below, the ID a foreigner presents is the <b>passport used to enter Thailand</b>.</p>
+
+      <h3>Claiming a small prize (up to 20,000 baht): simple, but watch the fee</h3>
+      <p>For smaller wins &mdash; last-two-digit, three-digit and similar tiers &mdash; a foreigner can be paid <b>in cash on the spot</b> by an authorised lottery vendor or agent. Show the signed ticket and your passport. The special consideration here is the <b>service fee</b>: vendors typically deduct around 1&ndash;2% for the convenience, and as a visitor you should expect no official receipt from a street payout. If you want the full amount and formal paperwork, you can instead claim at a Government Lottery Office, where only the 0.5% stamp duty is withheld. For a tourist, cash from a vendor is usually the practical choice; for anyone who needs documentation &mdash; for example to satisfy a bank or a home-country tax office &mdash; the GLO route is worth the trip.</p>
+
+      <h3>Claiming a large prize (over 20,000 baht): plan for the cheque</h3>
+      <p>Prizes above 20,000 baht, including the six-million-baht first prize, must be claimed <b>in person</b> at the Government Lottery Office &mdash; the head office is at 359 Sanambin Nam Road, Nonthaburi, near Bangkok. You fill out a claim form, staff verify the ticket, duty is withheld, and the prize is paid <b>by cheque</b>, not cash. You may also be asked for a Thai <b>tax identification number</b> for prizes at this level; GLO staff can direct you through this step.</p>
+      <p>The cheque is the real special consideration for foreigners. It is drawn through the GLO&rsquo;s partner bank, <b>Krungthai Bank</b>, and the smoothest path is depositing it into a <b>Thai bank account</b> in your own name &mdash; something expats usually have, but short-stay tourists often do not. Reports also indicate that very large amounts (over roughly two million baht) may be transferred only into designated Thai bank accounts. If you have no Thai account, ask the GLO on the day about cashing the cheque at the partner bank; and remember that <b>customs declaration rules</b> apply to large amounts of currency leaving Thailand. The full step-by-step process is in our guide to <a href="/guides/how-to-claim-thai-lottery-prize/">claiming a Thai lottery prize</a>; procedures change, so confirm current requirements with the GLO first.</p>
+
+      <h3>Taxes and deductions</h3>
+      <p>Winnings from the Government Lottery carry a <b>0.5% stamp duty</b> (1% for charity draws), deducted when the prize is paid. There is no extra tax for foreigners &mdash; a foreign winner and a Thai winner take home the same amount. Keep the official receipt: your home country may require you to declare foreign lottery winnings, and rules vary widely, so check with your own tax authority. Details are in our <a href="/guides/thai-lottery-taxes-stamp-duty/">taxes and stamp duty guide</a>.</p>
+
+      <h3>Practical tips for foreign players</h3>
+      <ul>
+        <li><b>Buy in person, from a licensed vendor.</b> Online offers aimed at foreigners are scams or illegal gambling.</li>
+        <li><b>Know the real price:</b> 80 baht face value. A modest street premium is common; a large one is not worth paying.</li>
+        <li><b>Sign the ticket immediately</b> and photograph both sides.</li>
+        <li><b>Check results against official sources</b> &mdash; scan 20 years of draws with our <a href="/check/">Did I Win? checker</a>, then confirm with the GLO.</li>
+        <li><b>Claim before you leave.</b> Prizes stay valid for <b>two years</b>, but claiming requires the ticket and your passport in Thailand.</li>
+        <li><b>Timing:</b> results are announced from around 4:00 PM Bangkok time on the 1st and 16th of each month.</li>
+      </ul>
+
+      <h3>The bottom line</h3>
+      <p>Foreigners &mdash; tourists included &mdash; play the Thai lottery on almost equal footing with Thai citizens: buy any paper ticket in person, win any prize, pay the same small stamp duty. The real differences are access (no official online purchase without a Thai ID) and logistics (a big prize means a cheque from a GLO office, easiest with a Thai bank account). Play for fun, buy at a fair price, sign your ticket, and treat every draw as pure chance &mdash; our <a href="/guides/thai-lottery-odds-tier-by-tier/">odds guide</a> shows the honest numbers behind every tier.</p>
+"""
+
+FOREIGNERS_FAQ = [
+    ("Can a tourist buy a Thai lottery ticket?",
+     "Yes. Anyone can buy a paper ticket from a licensed vendor in Thailand — no ID, visa type or residency is required at the point of sale."),
+    ("Can foreigners use the Paotang app or buy tickets online?",
+     "Generally no. Official digital tickets require e-KYC registration with a Thai national ID card, so most foreigners can only buy paper tickets in person. Sites selling Thai tickets internationally are not official."),
+    ("Can a foreigner claim the first prize?",
+     "Yes. The ticket is a bearer instrument — whoever holds the winning ticket can claim. Bring the signed original ticket and your passport; prizes over 20,000 baht are claimed at a Government Lottery Office."),
+    ("Do foreigners pay extra tax on Thai lottery winnings?",
+     "No. The same 0.5% stamp duty (1% for charity draws) applies to everyone. Your home country may separately require you to declare the winnings — check your own tax rules."),
+    ("I'm a tourist without a Thai bank account — how do I collect a large prize?",
+     "Large prizes are paid by cheque through the GLO's partner bank, Krungthai Bank. Ask the GLO about cashing the cheque at the partner bank on the day; very large amounts may need to go into a designated Thai bank account. Confirm current options with the GLO before visiting."),
+    ("How long is a winning ticket valid?",
+     "Two years from the draw date. After that the prize is forfeited. If you are visiting, claim before you leave Thailand — the process requires the physical ticket and your passport."),
+]
+
 ARTICLES = [
+    dict(slug="can-foreigners-play-thai-lottery",
+         title="Can Foreigners Play the Thai Lottery? Rules, Buying & Claiming | ThaiLotteryNumbers",
+         desc="Yes — foreigners and tourists can legally buy Thai lottery tickets and claim any prize, including first prize. What you need, what it costs, the online restriction, and how claiming works.",
+         h1="Can Foreigners Play the Thai Lottery?",
+         category="Claiming &amp; Official Process",
+         published="2026-07-20", updated="2026-07-20",
+         body=FOREIGNERS, faq=FOREIGNERS_FAQ),
+
     dict(slug="thai-lucky-unlucky-numbers",
          title="Lucky and Unlucky Numbers in Thailand: A Cultural Guide | ThaiLotteryNumbers",
          desc="Why 9 is lucky, why 4 is avoided, and what every digit and sequence like 789 or 444 means in Thai culture \u2014 plus the honest truth about lucky numbers and the lottery.",

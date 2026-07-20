@@ -217,6 +217,20 @@ function home(){
     </a>
   </section>
 
+  <section class="section wrap fg-sec" style="padding-top:0">
+    <div class="fg-head">
+      <div><span class="eyebrow">${t("fg_eyebrow")}</span><h2>${t("fg_title")}</h2></div>
+      <a class="fg-all" href="/guides/">${t("fg_all")} →</a>
+    </div>
+    <div class="fg-grid">
+      ${((window.I18N[S.lang] && window.I18N[S.lang].fguides) || window.I18N.en.fguides).map(g=>`
+      <a class="fg-card" href="${g.href}">
+        <span class="fg-title">${esc(g.title)}</span>
+        <span class="fg-lead">${esc(g.lead)}</span>
+      </a>`).join("")}
+    </div>
+  </section>
+
   <section class="section wrap" style="padding-top:0">
     <span class="eyebrow">${t("prizes_title")}</span>
     <h2>${t("prizes_title")}</h2><p class="lead">${t("prizes_sub")}</p>
