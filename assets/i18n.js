@@ -131,7 +131,7 @@ window.I18N = {
     ],
     ghost_eyebrow:"New · Special feature",
     ghost_title:"Spirit Numbers",
-    ghost_sub:"Let a friendly spirit read your Chinese zodiac, your Thai birth-day color, and your core numerology number — then reveal the lucky two-digit numbers hidden in your stars.",
+    ghost_sub:"Let a friendly spirit read your birth details, or interpret last night's dream — either way, it reveals the lucky numbers hidden in your stars.",
     ghost_cta:"Summon your numbers",
     ghost_note:"Free · 30 seconds · for entertainment only",
   },
@@ -266,7 +266,7 @@ window.I18N = {
     ],
     ghost_eyebrow:"ใหม่ · ฟีเจอร์พิเศษ",
     ghost_title:"เลขภูตน้อย Spirit Numbers",
-    ghost_sub:"ให้ภูตน้อยใจดีอ่านนักษัตรจีน สีมงคลประจำวันเกิด และเลขศาสตร์ประจำตัวของคุณ แล้วเผยเลขนำโชคสองหลักที่ซ่อนอยู่ในดวงดาวของคุณ",
+    ghost_sub:"ให้ภูตน้อยใจดีอ่านวันเกิดของคุณ หรือทำนายฝันเมื่อคืนนี้ ไม่ว่าแบบไหนก็เผยเลขนำโชคที่ซ่อนอยู่ในดวงดาวของคุณ",
     ghost_cta:"เรียกเลขนำโชคของคุณ",
     ghost_note:"ฟรี · ใช้เวลา 30 วินาที · เพื่อความบันเทิงเท่านั้น",
   }

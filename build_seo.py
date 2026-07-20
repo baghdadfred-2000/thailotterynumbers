@@ -46,6 +46,8 @@ EDITORIAL = "By the ThaiLotteryNumbers editorial team · Genext Information Syst
 
 # Article content lives in article_content.py (one entry per guide page).
 from article_content import ARTICLES
+# Dream Number Dictionary lives in dream_content.py (one entry per symbol).
+from dream_content import DREAMS
 
 def article_canonical(a):
     return f"{SITE}/guides/{a['slug']}/"
@@ -323,6 +325,152 @@ def article_main(a):
             + _article_block(a, "en") + "\n"
             + _article_block(a, "th") + "\n"
             + '    </section>')
+
+
+# ---------- Dream Number Dictionary (/spirit-numbers/dreams/<slug>/) ----------
+def dream_canonical(d):
+    return f"{SITE}/spirit-numbers/dreams/{d['slug']}/"
+
+def dream_cards(lang):
+    cards = []
+    for d in DREAMS:
+        title = d["symbol_th"] if lang == "th" else d["symbol_en"]
+        desc = d["desc_th"] if lang == "th" else d["desc_en"]
+        cards.append(
+            f'<a class="guide-card" href="/spirit-numbers/dreams/{d["slug"]}/">'
+            f'<span class="gc-cat">{d["emoji"]} {"เลขเด็ดจากฝัน" if lang=="th" else "Dream Numbers"}</span>'
+            f'<div class="gc-title">{title}</div>'
+            f'<div class="gc-desc">{desc}</div></a>')
+    return "\n".join(cards)
+
+def dream_schema(d):
+    can = dream_canonical(d)
+    items = [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": f"{SITE}/"},
+        {"@type": "ListItem", "position": 2, "name": "Spirit Numbers", "item": f"{SITE}/spirit-numbers/"},
+        {"@type": "ListItem", "position": 3, "name": d["symbol_en"], "item": can},
+    ]
+    webpage = {
+        "@type": "WebPage", "@id": can + "#webpage", "url": can,
+        "name": d["title_en"], "description": d["desc_en"],
+        "isPartOf": {"@id": f"{SITE}/#website"}, "inLanguage": "en",
+        "dateModified": d["updated"], "publisher": {"@id": f"{SITE}/#org"},
+        "breadcrumb": {"@type": "BreadcrumbList", "itemListElement": items},
+    }
+    article = {
+        "@type": "Article", "@id": can + "#article",
+        "headline": d["symbol_en"], "description": d["desc_en"],
+        "datePublished": d["published"], "dateModified": d["updated"],
+        "author": {"@type": "Organization", "name": "ThaiLotteryNumbers editorial team", "url": SITE},
+        "publisher": {"@id": f"{SITE}/#org"},
+        "mainEntityOfPage": {"@id": can + "#webpage"},
+        "isPartOf": {"@id": f"{SITE}/#website"}, "inLanguage": "en",
+    }
+    graph = [ORG, WEBSITE, webpage, article]
+    return json.dumps({"@context": "https://schema.org", "@graph": graph},
+                      ensure_ascii=False, separators=(",", ":"))
+
+def _dream_block(d, lang):
+    th = lang == "th"
+    title = d["symbol_th"] if th else d["symbol_en"]
+    meaning = d["meaning_th"] if th else d["meaning_en"]
+    note = d["note_th"] if th else d["note_en"]
+    home = "หน้าแรก" if th else "Home"
+    spirit_l = "Spirit Numbers" if not th else "Spirit Numbers"
+    crumb = ('      <nav class="crumb" aria-label="Breadcrumb">'
+             f'<a href="/">{home}</a><span>&rsaquo;</span>'
+             f'<a href="/spirit-numbers/">{spirit_l}</a><span>&rsaquo;</span>{title}</nav>')
+    h1_l = f"{d['emoji']} {('ฝันเห็น' if th else 'Dreaming of ')}{title}" if th else f"{d['emoji']} Dreaming of {title}"
+    editor = EDITORIAL_TH if th else EDITORIAL
+    updated_l = "ปรับปรุงล่าสุด" if th else "Last updated"
+    head = (f'      <h1>{h1_l}</h1>\n'
+            f'      <p class="byline"><b>{editor}</b><br>{updated_l}: {d["updated"]}</p>')
+    two_l = "เลขสองตัวที่นิยม" if th else "Popular two-digit numbers"
+    three_l = "เลขสามตัวที่นิยม" if th else "Popular three-digit numbers"
+    two_html = " ".join(f'<span class="story-fact" style="display:inline-block;margin:2px"><b>{n}</b></span>' for n in d["two_digit"])
+    three_html = " ".join(f'<span class="story-fact" style="display:inline-block;margin:2px"><b>{n}</b></span>' for n in d["three_digit"])
+    note_html = f'\n      <p class="muted" style="font-size:.85rem">{note}</p>' if note else ""
+    cta = "ตรวจเลขของคุณ" if th else "Check your own numbers"
+    back = "ดูสัญลักษณ์ความฝันทั้งหมด" if th else "Browse all dream symbols"
+    body = (f'      <p class="lead">{meaning}</p>\n'
+            f'      <h3>{two_l}</h3>\n      <p>{two_html}</p>\n'
+            f'      <h3>{three_l}</h3>\n      <p>{three_html}</p>'
+            f'{note_html}\n'
+            f'      <p class="muted" style="font-size:.82rem;margin-top:10px">'
+            f'{"ทำนายฝันเป็นความเชื่อพื้นบ้าน ไม่ใช่การพยากรณ์ที่แม่นยำ ผลการออกรางวัลเป็นการสุ่มอย่างอิสระในทุกงวด" if th else "Dream interpretation is folk tradition, not prediction — every draw is an independent random event."}</p>\n'
+            f'      <a class="btn btn-gold" href="/check/">{cta}</a>\n'
+            f'      <p style="margin-top:10px"><a href="/spirit-numbers/dreams/">← {back}</a></p>')
+    inner = crumb + "\n" + head + "\n" + body
+    cls = "lang-th" if th else "lang-en"
+    return f'  <div class="{cls}">\n{inner}\n  </div>'
+
+def dream_main(d):
+    return ('    <section class="section wrap prose">\n'
+            + _dream_block(d, "en") + "\n"
+            + _dream_block(d, "th") + "\n"
+            + '    </section>')
+
+def dream_index_schema():
+    can = f"{SITE}/spirit-numbers/dreams/"
+    items = [{"@type": "ListItem", "position": 1, "name": "Home", "item": f"{SITE}/"},
+             {"@type": "ListItem", "position": 2, "name": "Spirit Numbers", "item": f"{SITE}/spirit-numbers/"},
+             {"@type": "ListItem", "position": 3, "name": "Dream Numbers", "item": can}]
+    page = {"@type": "CollectionPage", "@id": can + "#webpage", "url": can,
+            "name": "Dream Number Dictionary — Thai Dream Meanings & Lucky Numbers",
+            "description": "A dictionary of common Thai dream symbols — snakes, teeth falling out, water, monks and more — with their traditional meanings and associated lucky numbers.",
+            "isPartOf": {"@id": f"{SITE}/#website"}, "inLanguage": "en",
+            "publisher": {"@id": f"{SITE}/#org"},
+            "breadcrumb": {"@type": "BreadcrumbList", "itemListElement": items}}
+    return json.dumps({"@context": "https://schema.org", "@graph": [ORG, WEBSITE, page]},
+                      ensure_ascii=False, separators=(",", ":"))
+
+DREAM_INDEX_EN = ('      <p class="lead">Thai dream interpretation (ตำราทำนายฝัน) pairs common dream '
+    'symbols with traditional lucky numbers. Browse the dictionary below, or use the interactive '
+    '<a href="/spirit-numbers/">Dream Numbers</a> tool to search by symbol. This is folk tradition, '
+    'not prediction — every lottery draw is an independent, random event.</p>')
+DREAM_INDEX_TH = ('      <p class="lead">ตำราทำนายฝันของไทยจับคู่สัญลักษณ์ในฝันที่พบบ่อยกับเลขเด็ดตามความเชื่อดั้งเดิม '
+    'เลือกดูพจนานุกรมด้านล่าง หรือใช้เครื่องมือ <a href="/spirit-numbers/">เลขจากความฝัน</a> '
+    'เพื่อค้นหาตามสัญลักษณ์ นี่คือความเชื่อพื้นบ้าน ไม่ใช่การพยากรณ์ — ทุกงวดคือการสุ่มที่เป็นอิสระต่อกัน</p>')
+
+def dream_index_main():
+    en = (DREAM_INDEX_EN + '\n      <h3>Dream symbols</h3>\n'
+          '      <div class="guide-list">\n' + dream_cards("en") + '\n      </div>')
+    th = (DREAM_INDEX_TH + '\n      <h3>สัญลักษณ์ในฝัน</h3>\n'
+          '      <div class="guide-list">\n' + dream_cards("th") + '\n      </div>')
+    return ('    <section class="section wrap prose">\n'
+            f'  <div class="lang-en">\n{en}\n  </div>\n'
+            f'  <div class="lang-th">\n{th}\n  </div>\n'
+            '    </section>')
+
+def build_dreams():
+    # Dream index (/spirit-numbers/dreams/)
+    html = BLOG_TEMPLATE.format(
+        title="Dream Number Dictionary — Thai Dream Meanings & Lucky Numbers | ThaiLotteryNumbers",
+        desc="A dictionary of common Thai dream symbols with their traditional meanings and associated lucky numbers, from snakes and teeth falling out to monks and floods.",
+        robots="index, follow", canonical=f"{SITE}/spirit-numbers/dreams/", site=SITE,
+        schema=dream_index_schema(), main=dream_index_main(),
+        ad_side=AD_SIDE, ad_banner=AD_BANNER, ad_xadr=AD_XADR
+    ).replace('href="/guides/" class="active"', 'href="/guides/"')
+    write(os.path.join(HERE, "spirit-numbers", "dreams", "index.html"), html)
+    print("wrote spirit-numbers/dreams/index.html (dream dictionary index)")
+    # Individual dream pages
+    for d in DREAMS:
+        html = BLOG_TEMPLATE.format(
+            title=d["title_en"] + " | ThaiLotteryNumbers", desc=d["desc_en"],
+            robots="index, follow", canonical=dream_canonical(d), site=SITE,
+            schema=dream_schema(d), main=dream_main(d),
+            ad_side=AD_SIDE, ad_banner=AD_BANNER, ad_xadr=AD_XADR
+        ).replace('href="/guides/" class="active"', 'href="/guides/"')
+        out = os.path.join(HERE, "spirit-numbers", "dreams", d["slug"], "index.html")
+        write(out, html)
+        print("wrote", os.path.relpath(out, HERE))
+    # JSON feed for the interactive picker on /spirit-numbers/
+    feed = [{k: d[k] for k in (
+        "slug", "emoji", "symbol_en", "symbol_th", "meaning_en", "meaning_th",
+        "two_digit", "three_digit", "note_en", "note_th")} for d in DREAMS]
+    write(os.path.join(HERE, "assets", "data", "dreams.json"),
+          json.dumps(feed, ensure_ascii=False, indent=None, separators=(",", ":")))
+    print("wrote assets/data/dreams.json")
 
 
 # ---------- ad units (Adsterra / highperformanceformat) ----------
@@ -611,6 +759,9 @@ def build_sitemap():
     urls.append((f"{SITE}/guides/", TODAY, "weekly", "0.7"))   # blog index
     for a in ARTICLES:
         urls.append((article_canonical(a), a["updated"], "monthly", "0.6"))
+    urls.append((f"{SITE}/spirit-numbers/dreams/", TODAY, "monthly", "0.6"))  # dream index
+    for d in DREAMS:
+        urls.append((dream_canonical(d), d["updated"], "monthly", "0.5"))
     body = "\n".join(
         f"  <url>\n    <loc>{u}</loc>\n    <lastmod>{lm}</lastmod>\n"
         f"    <changefreq>{cf}</changefreq>\n    <priority>{pr}</priority>\n  </url>"
@@ -624,6 +775,7 @@ def build_sitemap():
 if __name__ == "__main__":
     build_pages()
     build_blog()
+    build_dreams()
     build_robots()
     build_sitemap()
     print("\nSEO build complete.")

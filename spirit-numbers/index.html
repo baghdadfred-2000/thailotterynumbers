@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Spirit Numbers — Find Your Lucky Thai Lottery Numbers | ThaiLotteryNumbers.com</title>
-<meta name="description" content="Let a friendly spirit reveal your personal lucky 2-digit numbers from your Chinese zodiac, Thai birth-day color, and numerology. A fun, free feature of ThaiLotteryNumbers.com.">
+<title>Spirit Numbers — Birth &amp; Dream Numbers | ThaiLotteryNumbers.com</title>
+<meta name="description" content="Let a friendly spirit reveal your lucky numbers two ways: from your Chinese zodiac, Thai birth-day color and numerology, or from what you dreamed last night. A fun, free feature of ThaiLotteryNumbers.com.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://thailotterynumbers.com/spirit-numbers/">
 <meta name="theme-color" content="#0B1026">
 <link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" type="image/png" href="/favicon.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta property="og:site_name" content="Thai Lottery Numbers">
-<meta property="og:title" content="Spirit Numbers — Find Your Lucky Thai Lottery Numbers">
-<meta property="og:description" content="A friendly spirit reads your Chinese zodiac, Thai birth-day color, and numerology to reveal your personal lucky 2-digit numbers.">
+<meta property="og:title" content="Spirit Numbers — Birth &amp; Dream Numbers">
+<meta property="og:description" content="A friendly spirit reads your Chinese zodiac, Thai birth-day color and numerology — or interprets your dream — to reveal your lucky numbers.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://thailotterynumbers.com/spirit-numbers/">
 <meta property="og:image" content="https://thailotterynumbers.com/assets/og-image.png">
@@ -86,6 +86,20 @@ tailwind.config = {
     *{animation:none!important;transition:none!important}
     #ghost{opacity:0!important}
   }
+
+  /* mode tabs + dream numbers */
+  .mode-tab{color:#9AA3C7}
+  .mode-tab.on{background:linear-gradient(135deg,#F7D778,#C8901F);color:#2A1C04}
+  .dlang-btn{color:#9AA3C7}
+  .dlang-btn.on{border-color:#F2C14E;color:#F2C14E;background:rgba(242,193,78,.1)}
+  .dream-chip{display:flex;flex-direction:column;align-items:center;gap:6px;
+    background:#141A38;border:1px solid #262F5C;border-radius:14px;padding:16px 10px;
+    cursor:pointer;transition:transform .2s,border-color .2s}
+  .dream-chip:hover{border-color:#F2C14E;transform:translateY(-2px)}
+  .dream-chip .em{font-size:1.9rem;line-height:1}
+  .dream-chip .lb{font-family:Kanit,sans-serif;font-size:.82rem;text-align:center;color:#D8DCEF}
+  .dream-num{font-family:"Space Mono",monospace;font-weight:700;background:#0E1430;
+    border:1px solid rgba(242,193,78,.4);color:#F2C14E;border-radius:10px;padding:6px 12px;font-size:.95rem}
 </style>
 </head>
 <body class="font-body text-slate-100 min-h-screen flex flex-col">
@@ -131,11 +145,49 @@ tailwind.config = {
 
     <p class="font-disp font-semibold text-[.78rem] tracking-[.24em] uppercase text-gold">✦ Special feature</p>
     <h1 class="font-disp font-bold text-5xl md:text-6xl mt-3 text-glow">Spirit <span class="text-gold">Numbers</span></h1>
-    <p class="text-mist max-w-xl mx-auto mt-5 text-lg">A friendly spirit reads your <b class="text-slate-100">Chinese zodiac</b>, your <b class="text-slate-100">Thai birth-day color</b>, and your <b class="text-slate-100">core numerology number</b> — then whispers the lucky two-digit numbers hidden in your stars.</p>
-    <button id="summon" class="mt-9 font-disp font-semibold text-lg bg-gradient-to-br from-goldsoft to-golddeep text-[#2A1C04] px-9 py-4 rounded-2xl shadow-[0_10px_34px_-10px_rgba(242,193,78,.6)] hover:-translate-y-0.5 hover:shadow-[0_16px_40px_-10px_rgba(242,193,78,.75)] transition">
-      👻 Summon Your Spirit Numbers
-    </button>
-    <p class="text-mist/60 text-xs mt-5">Free · takes 30 seconds · for entertainment only</p>
+    <p id="modeIntro" class="text-mist max-w-xl mx-auto mt-5 text-lg">A friendly spirit reads your <b class="text-slate-100">Chinese zodiac</b>, your <b class="text-slate-100">Thai birth-day color</b>, and your <b class="text-slate-100">core numerology number</b> — then whispers the lucky two-digit numbers hidden in your stars.</p>
+
+    <div class="mt-8 inline-flex bg-navy2 border border-line rounded-2xl p-1.5 gap-1" role="tablist" aria-label="Spirit Numbers mode">
+      <button id="modeBirthBtn" class="mode-tab font-disp font-semibold text-sm px-5 py-2.5 rounded-xl transition" data-mode="birth">🔮 Birth Numbers</button>
+      <button id="modeDreamBtn" class="mode-tab font-disp font-semibold text-sm px-5 py-2.5 rounded-xl transition" data-mode="dream">🌙 Dream Numbers</button>
+    </div>
+
+    <div id="birthEntry">
+      <button id="summon" class="mt-9 font-disp font-semibold text-lg bg-gradient-to-br from-goldsoft to-golddeep text-[#2A1C04] px-9 py-4 rounded-2xl shadow-[0_10px_34px_-10px_rgba(242,193,78,.6)] hover:-translate-y-0.5 hover:shadow-[0_16px_40px_-10px_rgba(242,193,78,.75)] transition block mx-auto">
+        👻 Summon Your Spirit Numbers
+      </button>
+      <p class="text-mist/60 text-xs mt-5">Free · takes 30 seconds · for entertainment only</p>
+    </div>
+  </section>
+
+  <!-- ============ DREAM NUMBERS ============ -->
+  <section id="dreamPanel" class="hidden max-w-3xl mx-auto pt-4 pb-16">
+    <div class="flex justify-center gap-2 mb-6">
+      <button data-dlang="en" class="dlang-btn font-disp text-xs px-4 py-1.5 rounded-full border border-line">EN</button>
+      <button data-dlang="th" class="dlang-btn font-disp text-xs px-4 py-1.5 rounded-full border border-line">ไทย</button>
+    </div>
+    <p class="text-center text-mist text-sm mb-6" id="dreamHint">What did you dream about? Pick a symbol below.</p>
+    <div id="dreamGrid" class="grid grid-cols-2 sm:grid-cols-4 gap-3"></div>
+    <div id="dreamReveal" class="hidden mt-8 bg-gradient-to-br from-panel2 to-navy2 border border-gold/40 rounded-2xl p-7 relative overflow-hidden">
+      <div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-golddeep via-goldsoft to-golddeep"></div>
+      <button id="dreamClose" class="absolute top-4 right-4 text-mist hover:text-white text-sm">✕</button>
+      <h3 id="dreamTitle" class="font-disp font-semibold text-2xl"></h3>
+      <p id="dreamMeaning" class="text-mist text-sm mt-3 leading-relaxed"></p>
+      <div class="mt-5">
+        <p class="font-disp text-gold text-xs tracking-[.16em] uppercase mb-2" id="dreamTwoLabel">Two-digit numbers</p>
+        <div id="dreamTwoNums" class="flex flex-wrap gap-2"></div>
+      </div>
+      <div class="mt-4">
+        <p class="font-disp text-gold text-xs tracking-[.16em] uppercase mb-2" id="dreamThreeLabel">Three-digit numbers</p>
+        <div id="dreamThreeNums" class="flex flex-wrap gap-2"></div>
+      </div>
+      <p id="dreamNote" class="text-mist/70 text-xs mt-4"></p>
+      <div class="flex flex-wrap gap-3 mt-6">
+        <a id="dreamFullLink" href="#" class="font-disp text-sm px-5 py-2.5 rounded-xl border border-gold/50 text-gold bg-gold/10 hover:bg-gold/20">Read the full page →</a>
+        <a href="/search/" class="font-disp text-sm px-5 py-2.5 rounded-xl border border-line bg-navy2 text-mist hover:text-white">Check against 20 years of draws →</a>
+      </div>
+    </div>
+    <p class="text-center text-mist/50 text-xs mt-8">Dream interpretation is Thai folk tradition, not prediction. Every draw is an independent, random event.</p>
   </section>
 
   <!-- ============ WIZARD ============ -->
@@ -491,6 +543,73 @@ $("#regen").onclick=renderNumbers;
 $("#copyAll").onclick=()=>copy([...document.querySelectorAll("#numbers button")].map(b=>b.dataset.n).join(" "));
 $("#restart").onclick=()=>{ $("#results").classList.add("hidden"); $("#ghost").classList.remove("excited"); begin(); };
 document.addEventListener("keyup",e=>{ if(e.key==="Enter" && !$("#wizard").classList.contains("hidden")) next(); });
+
+/* ---------------- Dream Numbers mode ---------------- */
+const DM = { mode:"birth", lang: localStorage.getItem("tln_lang")==="th" ? "th" : "en", dreams:null };
+
+const INTRO = {
+  birth:"A friendly spirit reads your <b class=\"text-slate-100\">Chinese zodiac</b>, your <b class=\"text-slate-100\">Thai birth-day color</b>, and your <b class=\"text-slate-100\">core numerology number</b> — then whispers the lucky two-digit numbers hidden in your stars.",
+  dream:"Tell the spirit what you dreamed about, and it will read the traditional Thai meaning — plus the lucky numbers commonly tied to that dream."
+};
+
+function setMode(mode){
+  DM.mode = mode;
+  $("#modeBirthBtn").classList.toggle("on", mode==="birth");
+  $("#modeDreamBtn").classList.toggle("on", mode==="dream");
+  $("#modeIntro").innerHTML = INTRO[mode];
+  $("#birthEntry").classList.toggle("hidden", mode!=="birth");
+  $("#dreamPanel").classList.toggle("hidden", mode!=="dream");
+  if(mode!=="birth"){ $("#wizard").classList.add("hidden"); $("#reading").classList.add("hidden"); $("#results").classList.add("hidden"); }
+  if(mode==="dream" && !DM.dreams) loadDreams();
+}
+$("#modeBirthBtn").onclick=()=>setMode("birth");
+$("#modeDreamBtn").onclick=()=>setMode("dream");
+
+function setDreamLang(lang){
+  DM.lang = lang;
+  localStorage.setItem("tln_lang", lang);
+  document.querySelectorAll(".dlang-btn").forEach(b=>b.classList.toggle("on", b.dataset.dlang===lang));
+  $("#dreamHint").textContent = lang==="th" ? "คุณฝันเห็นอะไร? เลือกสัญลักษณ์ด้านล่าง" : "What did you dream about? Pick a symbol below.";
+  $("#dreamTwoLabel").textContent = lang==="th" ? "เลขสองตัวที่นิยม" : "Two-digit numbers";
+  $("#dreamThreeLabel").textContent = lang==="th" ? "เลขสามตัวที่นิยม" : "Three-digit numbers";
+  $("#dreamFullLink").textContent = (lang==="th" ? "อ่านหน้าเต็ม" : "Read the full page") + " →";
+  if(DM.dreams) renderDreamGrid();
+}
+document.querySelectorAll(".dlang-btn").forEach(b=>b.onclick=()=>setDreamLang(b.dataset.dlang));
+
+async function loadDreams(){
+  try{
+    const r = await fetch("/assets/data/dreams.json");
+    DM.dreams = await r.json();
+  }catch(e){ DM.dreams = []; }
+  renderDreamGrid();
+}
+function renderDreamGrid(){
+  $("#dreamGrid").innerHTML = DM.dreams.map(d=>`
+    <div class="dream-chip" data-slug="${d.slug}">
+      <span class="em">${d.emoji}</span>
+      <span class="lb">${DM.lang==="th"?d.symbol_th:d.symbol_en}</span>
+    </div>`).join("");
+  document.querySelectorAll(".dream-chip").forEach(c=>c.onclick=()=>showDream(c.dataset.slug));
+}
+function showDream(slug){
+  const d = DM.dreams.find(x=>x.slug===slug);
+  if(!d) return;
+  const th = DM.lang==="th";
+  $("#dreamTitle").textContent = (th?"🌙 ฝันเห็น":"🌙 Dreaming of ") + (th?d.symbol_th:d.symbol_en);
+  $("#dreamMeaning").textContent = th ? d.meaning_th : d.meaning_en;
+  $("#dreamTwoNums").innerHTML = d.two_digit.map(n=>`<span class="dream-num">${n}</span>`).join("");
+  $("#dreamThreeNums").innerHTML = d.three_digit.map(n=>`<span class="dream-num">${n}</span>`).join("");
+  const note = th ? d.note_th : d.note_en;
+  $("#dreamNote").textContent = note || "";
+  $("#dreamFullLink").href = "/spirit-numbers/dreams/" + d.slug + "/";
+  $("#dreamReveal").classList.remove("hidden");
+  $("#dreamReveal").scrollIntoView({behavior:"smooth", block:"nearest"});
+}
+$("#dreamClose").onclick=()=>$("#dreamReveal").classList.add("hidden");
+
+setMode("birth");
+setDreamLang(DM.lang);
 })();
 </script>
 </body>
