@@ -227,6 +227,7 @@ function home(){
       <a class="fg-card" href="${g.href}">
         <span class="fg-title">${esc(g.title)}</span>
         <span class="fg-lead">${esc(g.lead)}</span>
+        <span class="fg-more">${t("fg_read")} →</span>
       </a>`).join("")}
     </div>
   </section>
