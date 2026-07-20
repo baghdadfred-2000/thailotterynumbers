@@ -5,7 +5,7 @@
 (() => {
 "use strict";
 
-const S = { lang: localStorage.getItem("tln_lang") || "en", draws: [], stats: null, cd: null };
+const S = { lang: localStorage.getItem("tln_lang") || "en", draws: [], stats: null, cd: null, sc: null };
 const $ = (s, r=document) => r.querySelector(s);
 const t = k => (window.I18N[S.lang][k] ?? window.I18N.en[k] ?? k);
 const tn = (k, n) => t(k).replace("{n}", n);
@@ -188,27 +188,7 @@ function home(){
   </section>
 
   <section class="section wrap story-sec">
-    <div class="story-card">
-      <figure class="story-media">
-        <img src="/assets/winner-inthira.jpg" alt="${esc(t("story_caption"))}" loading="lazy">
-        <figcaption>${t("story_caption")}</figcaption>
-      </figure>
-      <div class="story-body">
-        <span class="eyebrow">★ ${t("story_eyebrow")}</span>
-        <h2>${t("story_title")}</h2>
-        <p class="story-kicker">${t("story_kicker")}</p>
-        <p>${t("story_p1")}</p>
-        <blockquote class="story-quote">“${t("story_quote")}”</blockquote>
-        <p>${t("story_p2")}</p>
-        <div class="story-facts">
-          <div class="story-fact"><b>${t("story_fact1_v")}</b><span>${t("story_fact1_l")}</span></div>
-          <div class="story-fact"><b>${t("story_fact2_v")}</b><span>${t("story_fact2_l")}</span></div>
-          <div class="story-fact"><b>${t("story_fact3_v")}</b><span>${t("story_fact3_l")}</span></div>
-        </div>
-        <a class="btn btn-gold story-cta" href="/check">${t("story_cta")}</a>
-        <p class="story-by">${t("story_by")}</p>
-      </div>
-    </div>
+    ${storyCarousel()}
   </section>
 
   <section class="section wrap" style="padding-top:0">
@@ -281,6 +261,7 @@ function home(){
     </div>
   </section>`;
   startCountdown();
+  startStoryCarousel();
 }
 
 function startCountdown(){
@@ -297,6 +278,71 @@ function startCountdown(){
     box.innerHTML = cell(dd,t("days"))+cell(hh,t("hrs"))+cell(mm,t("min"))+cell(ss,t("sec"));
   };
   tick(); S.cd=setInterval(tick,1000);
+}
+
+/* ---------- winner-story carousel (home) ---------- */
+function storyCarousel(){
+  const list = (window.I18N[S.lang] && window.I18N[S.lang].stories) || window.I18N.en.stories || [];
+  const slide = s => `
+    <article class="story-slide"><div class="story-card">
+      <figure class="story-media">
+        <img src="${s.img}" alt="${esc(s.caption)}" loading="lazy">
+        <figcaption>${esc(s.caption)}</figcaption>
+      </figure>
+      <div class="story-body">
+        <span class="eyebrow">★ ${t("story_eyebrow")}</span>
+        <h2>${esc(s.title)}</h2>
+        <p class="story-kicker">${esc(s.kicker)}</p>
+        <p>${esc(s.p1)}</p>
+        <blockquote class="story-quote">“${esc(s.quote)}”</blockquote>
+        <p>${esc(s.p2)}</p>
+        <div class="story-facts">
+          <div class="story-fact"><b>${esc(s.amount)}</b><span>${t("story_stat_amount_l")}</span></div>
+          <div class="story-fact"><b>${esc(s.number)}</b><span>${t("story_stat_number_l")}</span></div>
+          <div class="story-fact"><b>${esc(s.tickets)}</b><span>${t("story_stat_tickets_l")}</span></div>
+        </div>
+        <a class="btn btn-gold story-cta" href="/check">${t("story_cta")}</a>
+        <p class="story-by">${t("story_by")}</p>
+      </div>
+    </div></article>`;
+  const dots = list.map((_,i)=>
+    `<button class="story-dot${i===0?' on':''}" data-i="${i}" type="button" aria-label="${esc(t("story_eyebrow"))} ${i+1}"></button>`).join("");
+  return `
+  <div class="story-carousel" id="storyCarousel">
+    <div class="story-viewport">
+      <div class="story-track" id="storyTrack">${list.map(slide).join("")}</div>
+    </div>
+    ${list.length>1?`<div class="story-dots" id="storyDots">${dots}</div>`:""}
+  </div>`;
+}
+
+function startStoryCarousel(){
+  if (S.sc) clearInterval(S.sc);
+  const track = $("#storyTrack");
+  if (!track) return;
+  const slides = track.children.length;
+  if (slides <= 1) return;
+  const dots = Array.from(document.querySelectorAll(".story-dot"));
+  const car = $("#storyCarousel");
+  let i = 0, paused = false;
+  const go = n => {
+    i = (n + slides) % slides;
+    track.style.transform = `translateX(-${i*100}%)`;
+    dots.forEach((d,k)=>d.classList.toggle("on", k===i));
+  };
+  const restart = () => { if (S.sc) clearInterval(S.sc); S.sc = setInterval(step, 5000); };
+  function step(){
+    const tk = $("#storyTrack");
+    if (!tk){ clearInterval(S.sc); S.sc=null; return; }   // navigated away
+    if (!paused) go(i+1);
+  }
+  dots.forEach(d => d.addEventListener("click", () => { go(+d.dataset.i); restart(); }));
+  if (car){
+    car.addEventListener("mouseenter", () => { paused = true; });
+    car.addEventListener("mouseleave", () => { paused = false; });
+  }
+  go(0);
+  restart();
 }
 
 function results(){
