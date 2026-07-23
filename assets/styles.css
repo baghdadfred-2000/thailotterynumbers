@@ -417,3 +417,18 @@ body.show-th .lang-th{display:revert}
   .prize-row{grid-template-columns:1fr 1fr}
 }
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto}}
+
+
+/* ============================================================ newsletter subscribe (footer) */
+.tln-sub{margin-top:20px;max-width:300px}
+.tln-sub .tln-note{color:var(--muted);font-size:.82rem;margin:0 0 12px}
+.tln-sub-input{width:100%;box-sizing:border-box;padding:11px 14px;border-radius:10px;background:#fff;color:#0B1026;font:inherit;font-size:.9rem;border:1px solid var(--line);outline:none;margin:0}
+.tln-sub-input::placeholder{color:#6E769B}
+.tln-sub-input:focus{border-color:var(--gold);box-shadow:0 0 0 2px rgba(242,193,78,.3)}
+.tln-sub .ml-form-embedSubmit{margin-top:12px}
+.tln-sub-btn{display:inline-flex;align-items:center;justify-content:center;padding:11px 22px;border-radius:10px;background:var(--gold);color:#0B1026;font:inherit;font-size:.88rem;font-weight:700;border:1px solid var(--gold);cursor:pointer;transition:box-shadow .15s,background .15s}
+.tln-sub-btn:hover{background:var(--gold-soft);box-shadow:0 12px 30px -10px rgba(242,193,78,.7)}
+.tln-sub .ml-form-embedSubmitLoad{display:inline-block;width:20px;height:20px}
+.tln-sub .ml-form-embedSubmitLoad:after{content:" ";display:block;width:11px;height:11px;margin:1px;border-radius:50%;border:3px solid #0B1026;border-color:#0B1026 #0B1026 #0B1026 transparent;animation:tln-sub-spin 1.2s linear infinite}
+@keyframes tln-sub-spin{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
+.tln-sub .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}

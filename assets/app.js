@@ -65,7 +65,32 @@ function buildShell(){
   $("#footerGrid").innerHTML = `
     <div>
       <div class="brand" style="margin-bottom:12px">${LOGO}<span class="bn">Thai Lottery<b>Numbers</b></span></div>
-      <p class="muted" style="font-size:.86rem">${t("data_note")}</p>
+      <div id="mlb2-44063259" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-44063259 tln-sub">
+          <div class="ml-form-embedWrapper">
+            <div class="ml-form-embedBody row-form">
+              <h4>Subscribe</h4>
+              <p class="tln-note">Latest results, stats and lucky-number updates by email.</p>
+              <form class="ml-block-form" action="https://assets.mailerlite.com/jsonp/2528952/forms/193796763912504673/subscribe" data-code="" method="post" target="_blank">
+                <div class="ml-form-fieldRow">
+                  <input aria-label="email" aria-required="true" type="email" name="fields[email]" placeholder="Enter your email" autocomplete="email" required class="tln-sub-input">
+                </div>
+                <input type="hidden" name="fields[company]" value="ThaiLotteryNumbers">
+                <input type="hidden" name="ml-submit" value="1">
+                <div class="ml-form-embedSubmit">
+                  <button type="submit" class="primary tln-sub-btn">Subscribe</button>
+                  <button disabled="disabled" style="display:none" type="button" class="loading tln-sub-btn"><div class="ml-form-embedSubmitLoad"></div><span class="sr-only">Loading...</span></button>
+                </div>
+                <input type="hidden" name="anticsrf" value="true">
+              </form>
+            </div>
+            <div class="ml-form-successBody row-success" style="display:none">
+              <div class="ml-form-successContent">
+                <h4>Subscribe</h4>
+                <p class="tln-note">Thank you — you’re on the list! 🎉</p>
+              </div>
+            </div>
+          </div>
+        </div>
     </div>
     <div><h4>${t("ft_explore")}</h4>
       <a href="/results">${t("nav_results")}</a><a href="/stats">${t("nav_stats")}</a>
@@ -86,6 +111,25 @@ function buildShell(){
       document.documentElement.lang=S.lang; buildShell(); render(); };
   });
   cookieBanner();
+  initMailerLite();
+}
+
+window.ml_webform_success_44063259 = function () {
+  var $j = window.ml_jQuery || window.jQuery;
+  if ($j) { $j('.ml-subscribe-form-44063259 .row-success').show(); $j('.ml-subscribe-form-44063259 .row-form').hide(); }
+  else {
+    document.querySelectorAll('.ml-subscribe-form-44063259 .row-success').forEach(function(el){el.style.display='';});
+    document.querySelectorAll('.ml-subscribe-form-44063259 .row-form').forEach(function(el){el.style.display='none';});
+  }
+};
+function initMailerLite(){
+  if(!document.querySelector('.ml-subscribe-form-44063259')) return;
+  if(!document.getElementById('ml-webforms-js')){
+    var sc=document.createElement('script'); sc.id='ml-webforms-js';
+    sc.src='https://groot.mailerlite.com/js/w/webforms.min.js?v83147fa8ce2d95cb73ece7f28b469519'; sc.async=true;
+    document.body.appendChild(sc);
+  }
+  try{ fetch('https://assets.mailerlite.com/jsonp/2528952/forms/193796763912504673/takel'); }catch(e){}
 }
 
 function cookieBanner(){
